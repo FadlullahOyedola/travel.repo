@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KWASU Student Portal</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+    }
+    header img {
+      width: 100px;
+    }
+    h1 {
+      color: green;
+    }
+    .portal {
+      color: lightsalmon;
+    }
+    main {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      background-color: green;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f7/Kwara_State_University_Logo.png/220px-Kwara_State_University_Logo.png" alt="KWASU Logo" />
+    <h1>KWASU</h1>
+    <p class="portal">Integrated Portal</p>
+  </header>
+
+  <main>
+    <p>Please sign in to your account below</p>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Application No. / Reg. No. / Matric..." required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit" >Login</button>
+      <p class="error" id="errorMsg"></p>
+    </form>
+  </main>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const error = document.getElementById('errorMsg');
+
+      if (username === "22/27el/1405" && password === "Fadlullah") {
+        window.location.href = "Rahla Portal.html";
+      } else {
+        error.textContent = "Invalid login credentials.";
+      }
+    });
+  </script>
+</body>
+</html>

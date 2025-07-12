@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Yusluv Gaming Store</title>
+       <style>
+        body{
+          font-family: sans-serif;
+          padding: 0;
+          margin: 0;
+          line-height: 1.6;
+        }
+
+        header{
+          background-color: #333;
+          color: #fff;
+          font-weight: bolder;
+          padding: 1.5em 0;
+        }
+        .container{
+          color: yellow;
+          font-size: 1.5em;
+          font-weight: bold;
+
+        }
+        nav{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 20px;
+        }
+
+        nav ul{
+          display: flex;
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        nav ul li{
+          margin-left: 20px;
+        }
+
+        nav ul li a{
+          color: yellow;
+          text-decoration: none;
+        }
+        .buttonn{
+          margin-left: 5px;
+          color: #333;
+          background-color: yellow;
+        }
+
+        .hero{
+          background-size: cover;
+          padding: 100px 20px;
+          text-align: center;
+        }
+
+        .hero h1{
+          font-size: 3em;
+          margin-bottom: 10px;
+        }
+
+        .hero p{
+          font-size: 1.2em;
+          margin-bottom: 20px;
+        }
+        
+        .button{
+          cursor: pointer;
+          background-color: yellow;
+          color: #333;
+          border-radius: 5px;
+          padding: 1em 2em;
+          text-decoration: none;
+          display: inline-block;
+        }
+
+        .games{
+          text-align: center;
+          padding: 40px 20px;
+        }
+        
+        .games h2{
+          margin-bottom: 20px;
+          font-size: 2em;
+        }
+
+        .games-grid{
+          display: flex;
+          grid-template-columns: repeat(auto-fit, minmax(300px 1fr));
+          gap: 140px;
+        }
+
+        .games-item{
+          background: #fff;
+          border-radius: 8px;
+          box-shadow: 0 2px 5px rgba(0 ,0, 0,0.1);
+          overflow: hidden;
+        }
+
+        .games-item img{
+          display: block;
+          width: 100%;
+          height: auto; /* Maintain aspect ratio */
+          object-fit: cover; /* Ensure image covers the area without distortion */
+          max-height: 200px; /* Optional: set a maximum height */
+        }
+
+        .games-item h3{
+          padding: 15px;
+          font-size: 1.2em;
+          margin: 0;
+        }
+
+        .games-item p{
+          padding: 0 15px 15px;
+          margin: 0;
+          color: #777;
+        }
+        
+        .contact{
+          text-align: center;
+          padding: 40px 20px;
+        }
+
+        .contact form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact input[type="text"],
+.contact input[type="email"],
+.contact textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.contact textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+    position: sticky; /* Or fixed, depending on your layout needs */
+    bottom: 0;
+    width: 100%;
+}
+       </style>
+    </head>
+    <body>
+       <header>
+        <nav>
+          <div class="container">Yusluv Gaming Store</div>
+          <ul>
+            <li><a href="#">Home-Page</a></li>
+            <li><a href="#">Games</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Check Games</a></li>
+            <button class="buttonn">View games</button>
+          </ul>
+        </nav>
+        <div class="hero">
+          <h1>Welcome to the paradise of Games</h1>
+          <p>Unlock your Gaming potentials form us</p>
+          <button class="button">Click to see link</button>
+        </div>
+       </header>
+
+       <section>
+        <div class="games">
+          <h2>Our Gaming Store Glance</h2>
+          <div class="games-grid">
+            <div class="games-item">
+              <img src="">
+              <h3>PS 5 Station Games</h3>
+              <p>unleash your football skills while playing and controlling players</p>
+              <p class="price">$500.700</p>
+              <button class="button">Order Now</button>
+            </div>
+            <div class="games-item">
+              <img src="">
+              <h3>Gaming Chair for streamers</h3>
+              <p>Relax while streaming by getting this</p>
+              <p class="price">$120.77</p>
+              <button class="button">Order Now</button>
+            </div>
+            <div class="games-item">
+              <img src="">
+              <h3>Gaming Pad</h3>
+              <p>Play with friends with double Pads</p>
+              <p class="price">$39.00</p>
+              <button class="button">Order Now</button>
+            </div>
+          </div>
+        </div>
+       </section>
+       
+       <section class="contact">
+        <h2>Contact us</h2>
+        <i>We are ready to take your message</i>
+        <p>Have any queries/questions, Feel free to inquire and ask</p>
+        <form method="post">
+          <input type="text" class="Your Name">
+          <input type="E-mail" class="E-mail">
+          <textarea placeholder="Your Message">Message</textarea>
+          <button class="button">Send Message</button>
+        </form>
+       </section>
+
+       <footer>
+        <div class="foot">
+          <P>&copy;2025 Yusluv Gaming Store. All rights reserved</P>
+        </div>
+       </footer>
+    </body>
+</html>

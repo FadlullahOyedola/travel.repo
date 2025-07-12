@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nasfat Organisation</title>
+    <link rel="cion" href="#">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif
+        }
+
+        body{
+            background: #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+
+        .login-container{
+            background: #777;
+            padding: 30px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h2{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label{
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type='text'],
+        input[type='address'],
+        input[type='tel'],
+        input[type='image']{
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            color: #333;
+        }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background: #2575fc;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background: #6a11cb;
+    }
+
+        .links{
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .links a{
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 14px;
+        }
+
+        .links a:hover{
+            text-decoration: underline;
+        }
+    </style>
+    </head>
+    <body>
+        <div class="login-container">
+            <h2>Login</h2>
+            <form action="#" method="post">
+                <label for="Username">Username</label>
+                <input type="text" id="username" name="username" placeholder="username" required>
+                
+                <label for="address">Password</label>
+                <input type="address" id="password" name="address" placeholder="address" required>
+
+                <label for="Telephone">Telephone</label>
+                <input type="tel" id="Telephone" name="Telephone" placeholder="Telephone">
+
+                <label for="image">Photo</label>
+                <input type="image" id="image" name="image" placeholder="image">
+
+                <input type="submit" value="login">
+                
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GT Bank Limited</title>
+        <link rel="icon" href="c:\Users\HP\Downloads\GT bank.png">
+        <style>
+            body{
+                font-family: sans-serif;
+                color: #333;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .container {
+                max-width: 1200px;
+                padding: 20px;
+                margin: 0 auto;
+            }
+
+            header {
+                background-color:orangered;
+                color: white;
+                padding: 1em 0;
+            }
+            header .h1 {
+                margin: 0;
+            }
+            
+            header .container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            nav ul {
+                display: flex;
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+
+            nav ul li a {
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+                padding: 0.5em 1em;
+            }
+
+            nav ul li a:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            .login-button a{
+                background-color:yellow;
+                color: #0056b3;
+                border-radius: 5px;
+                border: 1px solid orangered;
+                padding: 0.7em 1.5em;
+                transition: background-color 0.3s ease;
+                text-decoration: none;
+            }
+            
+            .login-button a:hover {
+                background-color: yellow;
+                color: white;
+            }
+            
+            main{
+                padding: 20px 0;
+            }
+
+            .hero {
+                background-color: #e9ecef;
+                padding: 40px;
+                text-align: center;
+            }
+
+            .hero h2 {
+                font-size: bold;
+                margin-bottom: 10px;
+            }
+             
+            .hero .button {
+                display: inline-block;
+                color: #0056b3;
+                background-color: yellow;
+                transition: background-color 0.3s ease;
+                border-radius: 5px;
+                border: 1px solid yellow;
+                padding: 0.7em 1.5em;
+            }
+
+            .features {
+                padding: 40px 0;
+            }
+            
+            .features h3 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .features-list {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
+            }
+            
+            .feautre-item {
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+                border-radius: 10px;
+                padding: 20px;
+                background-color: white;
+            }
+
+            footer {
+                text-align: center;
+                position: sticky;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <h1>Gt Bank Limited</h1>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Accounts</a></li>
+                        <li><a href="#">Transaction</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Services</a></li>
+                    </ul>
+                </nav>
+                <div class="login-button">
+                    <a href="#" class="button">Login</a>
+                </div>
+            </div>
+        </header>
+        
+        <main>
+            <section class="hero">
+                <div class="container">
+                    <h2>Welcome to secure bank portal</h2>
+                    <p>Enjoy smooth banking experience</p>
+                    <a href="#" class="button">Open Account</a>
+                </div>
+            </section>
+            
+            <section class="features">
+                <div class="container">
+                    <h3>Our Key Features</h3>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <img src="" alt="Accounts">
+                            <h4>Accounts</h4>
+                            <p>Open Accounts of differnet cateory</p>
+                        </div>
+                        <div class="feature-item">
+                            <img src="" alt="Pay Bills">
+                            <h4>Pay Bills</h4>
+                            <p>Pay bills with trusted merchants</p>
+                        </div>
+                        <div class="feature-item">
+                            <img src="" alt="Transfer">
+                            <h4>Send money to others using Bank app</h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="foot">
+                <p>&copy;2025 Gt Bank limited. All rights reserved</p>
+            </div>
+        </footer>
+    </body>
+</html>

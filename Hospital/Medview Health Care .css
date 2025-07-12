@@ -1,80 +1,252 @@
-body{
-    font-family: sans-serif;
+/* General Body Styles */
+body {
+    font-family: 'Arial', sans-serif; /* Prefer a common sans-serif font */
     color: #333;
     line-height: 1.6;
+    margin: 0; /* No need for padding: 0 here as margin covers it */
     padding: 0;
-    margin: 0;
 }
 
-.container{
-    width: 80%;
+/* Container for Centering Content */
+.container {
+    width: 90%; /* Slightly wider container for more content space */
+    max-width: 1200px; /* Max-width to prevent content from stretching too wide on large screens */
     margin: 0 auto;
-    overflow: hidden;
+    overflow: hidden; /* Clear floats */
 }
- header{
-    padding: 0;
-    background: #f8f8f8;
- }
 
- header.container{
+/* Header Styles */
+header {
+    background: #f8f8f8;
+    padding: 20px 0; /* Add some vertical padding to the header */
+    border-bottom: 1px solid #eee; /* Subtle separator at the bottom of the header */
+}
+
+/* Header Container for Layout */
+header .container { /* Corrected selector: header .container instead of header.container */
     display: flex;
     justify-content: space-between;
     align-items: center;
- }
+}
 
- header.logo h1{
+/* Logo Styling in Header */
+header .logo h1 { /* Corrected selector: header .logo h1 instead of header.logo h1 */
     margin: 0;
-    color: paleturquoise;
-    padding: 0;
- }
+    color: #4CAF50; /* Changed from paleturquoise to a more professional green */
+    font-size: 28px; /* Adjust font size for better visual balance */
+}
 
- header nav ul {
+/* Navigation Styling in Header */
+header nav ul {
     list-style: none;
     display: flex;
-    justify-content: space-between;
- }
+    margin: 0; /* Remove default ul margin */
+    padding: 0; /* Remove default ul padding */
+}
 
- header nav ul li a{
+header nav ul li {
+    margin-left: 25px; /* Spacing between navigation items */
+}
+
+header nav ul li a {
     text-decoration: none;
-    color: #333;
-    transition:color 0.3 ease;
- }
+    color: #555; /* Slightly softer black for links */
+    font-weight: bold; /* Make navigation links bold */
+    transition: color 0.3s ease; /* Consistent transition syntax */
+}
 
- header nav ul li a:hover{
-    color: aqua;
- }
+header nav ul li a:hover {
+    color: #4CAF50; /* Hover color matching logo green */
+}
 
-.button{
+/* Login Button Styling */
+.login-btn { /* Targeted the specific login button class */
     display: inline-block;
-    background:#e91e63 ;
+    background: #4CAF50; /* Consistent green background */
     color: #fff;
     padding: 10px 20px;
     text-decoration: none;
-    border-radius: 5px
-   transitionbackground-color 0.3 ease;
+    border-radius: 5px;
+    transition: background-color 0.3s ease; /* Corrected transition syntax */
+    margin-left: 15px; /* Add some space if it's separate from other nav items */
 }
 
-.button:hover{
-    color: red;
+.login-btn:hover { /* Hover state for the login button */
+    background-color: #45a049; /* Slightly darker green on hover */
+    color: #fff; /* Ensure text color remains white on hover */
 }
 
-.services {
-    padding: 50px 0;
+/* Main Content Sections */
+.services-section,
+.contact-form-section { /* Apply general padding to main sections */
+    padding: 60px 0;
+}
+
+/* Service Section Specific Styles */
+.services-section {
+    background-color: #f9f9f9; /* Light background for the services section */
     text-align: center;
 }
 
-.service h2{
-    margin-bottom: 30px;
+.services-section h2 { /* Targeting the h2 within the services section */
+    margin-bottom: 40px;
+    font-size: 32px;
+    color: #333;
 }
 
+/* Service Grid Layout */
 .service-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Slightly larger min-width for service items */
     gap: 30px;
 }
 
-.service{
-    border:1px solid #ddd;
-    padding: 20px;
+/* Individual Service Item Styling */
+.service-item { /* Corrected class name from .service to .service-item based on HTML */
+    border: 1px solid #ddd;
+    padding: 30px; /* Increased padding for more breathing room */
+    border-radius: 8px; /* Slightly more rounded corners */
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More prominent shadow on hover */
+}
+
+.service-item h3 {
+    color: #4CAF50; /* Green color for service titles */
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.service-item p {
+    color: #666;
+    font-size: 16px;
+}
+
+/* Contact Form Section */
+.contact-form-section {
+    background-color: #fff;
+    text-align: center;
+}
+
+.contact-form-section h2 {
+    margin-bottom: 40px;
+    font-size: 32px;
+    color: #333;
+}
+
+.contact-form-section form {
+    max-width: 600px; /* Limit form width for better readability */
+    margin: 0 auto;
+    padding: 30px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #fcfcfc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: 20px; /* Space between form fields */
+    text-align: left; /* Align labels and inputs to the left */
+}
+
+.form-group label {
+    display: block; /* Make labels take up full width */
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea { /* Style for all text-based inputs and textarea */
+    width: calc(100% - 20px); /* Account for padding */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: #4CAF50; /* Highlight on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Send Message Button */
+.button { /* Reusing the general .button style for the submit button */
+    display: inline-block;
+    background: #4CAF50;
+    color: #fff;
+    padding: 12px 25px; /* Slightly larger padding for the button */
+    text-decoration: none;
+    border: none; /* Remove default button border */
     border-radius: 5px;
+    cursor: pointer; /* Indicate it's clickable */
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px; /* Space above the button */
+}
+
+.button:hover {
+    background-color: #45a049; /* Darker green on hover */
+    color: #fff; /* Ensure text color remains white */
+}
+
+/* Footer Styles */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px; /* Space above the footer */
+    font-size: 14px;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Media Queries for Responsiveness (Basic Example) */
+@media (max-width: 768px) {
+    .container {
+        width: 95%; /* Wider container on smaller screens */
+    }
+
+    header .container {
+        flex-direction: column; /* Stack logo and nav vertically */
+        text-align: center;
+    }
+
+    header .logo h1 {
+        margin-bottom: 15px;
+    }
+
+    header nav ul {
+        flex-wrap: wrap; /* Allow navigation items to wrap */
+        justify-content: center;
+    }
+
+    header nav ul li {
+        margin: 5px 10px; /* Adjust spacing for wrapped items */
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr; /* Single column layout for services */
+    }
+
+    .service-item {
+        padding: 20px;
+    }
+
+    .contact-form-section form {
+        padding: 20px;
+    }
 }

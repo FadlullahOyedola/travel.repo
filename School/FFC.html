@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front Foundation College - Best place to learn everything</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    
+    <style>
+        /* General Body & Reset */
+        :root {
+            --primary-color: #004B8D; /* Deep Blue for school branding */
+            --secondary-color: #FFA000; /* Amber/Orange for highlights */
+            --text-color: #333;
+            --light-gray: #f8f8f8;
+            --dark-gray: #555;
+            --border-color: #ddd;
+            --white: #fff;
+            --black: #000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* A more professional font */
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: var(--secondary-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 25px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Header Styling */
+        .header-top-bar {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 0;
+            font-size: 0.9em;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .contact-info span {
+            margin-right: 20px;
+        }
+
+        .contact-info a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .main-header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo img {
+            height: 60px; /* Adjust as needed */
+        }
+
+        .main-navigation ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        .main-navigation a {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.1em;
+            text-transform: uppercase;
+        }
+
+        .main-navigation a:hover {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        
+        .auth-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .auth-links a {
+            color: var(--dark-gray);
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0, 75, 141, 0.7), rgba(0, 75, 141, 0.7)), url('images/college-hero-bg.jpg') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 20px;
+            min-height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* About Us Section */
+        .about-us-section {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+
+        .about-us-section h2 {
+            font-size: 2.8em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            margin-top: 40px;
+        }
+        
+        .about-text {
+            flex: 2;
+            font-size: 1.1em;
+            color: var(--text-color);
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .about-image img {
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Mission/Vision Statements */
+        .mission-vision-section {
+            padding: 60px 0;
+            text-align: center;
+            background-color: var(--white);
+        }
+
+        .mission-vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .mv-card {
+            background-color: var(--light-gray);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            text-align: center;
+            font-size: 1.2em;
+            color: var(--primary-color);
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: var(--secondary-color);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mv-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* App Download Section */
+        .app-download-section {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .app-download-section h3 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+
+        .app-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .app-buttons .btn-app {
+            background-color: var(--white);
+            color: var(--primary-color);
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        
+        .app-buttons .btn-app:hover {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            transform: translateY(-3px);
+            text-decoration: none;
+        }
+
+        .app-buttons .btn-app img {
+            height: 25px; /* Icon size */
+            width: auto;
+        }
+
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 40px 0 20px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-section h4 {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .footer-section ul {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95em;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .social-icons a img {
+            height: 35px;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a img:hover {
+            transform: scale(1.1);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.9em;
+            color: rgba(255,255,255,0.7);
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .navbar-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .main-navigation ul {
+                justify-content: center;
+                gap: 20px;
+            }
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .about-image {
+                order: -1; /* Image appears above text on smaller screens */
+            }
+            .about-image img {
+                max-width: 80%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-top-bar .top-bar-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .contact-info span {
+                margin-right: 0;
+                margin-bottom: 5px;
+            }
+            .main-navigation ul {
+                flex-wrap: wrap;
+            }
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+            .about-us-section h2 {
+                font-size: 2.2em;
+            }
+            .app-download-section h3 {
+                font-size: 1.8em;
+            }
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-section ul {
+                align-items: center;
+            }
+            .social-icons {
+                margin-top: 15px;
+            }
+            .social-icons a img {
+                margin: 0 5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8em;
+            }
+            .about-us-section h2 {
+                font-size: 1.8em;
+            }
+            .mv-card {
+                font-size: 1em;
+                padding: 20px;
+            }
+            .app-buttons {
+                flex-direction: column;
+            }
+            .app-buttons .btn-app {
+                width: 90%;
+                max-width: 250px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-top-bar">
+            <div class="container top-bar-content">
+                <div class="contact-info">
+                    <span>Email: <a href="mailto:info@frontfoundationcollege.com.ng">info@frontfoundationcollege.com.ng</a></span>
+                    <span>Opening Hours: Monday to Friday - 8 AM to 5 PM</span>
+                </div>
+                <div class="call-us">
+                    Need Help? Call us free: <a href="tel:+2347033201448">+234 703-320-1448</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-header">
+            <div class="container navbar-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/ffc-logo.png" alt="Front Foundation College Logo">
+                    </a>
+                </div>
+                <nav class="main-navigation">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about-us">About Us</a></li>
+                        <li><a href="#support">Support</a></li> <li><a href="#faqs">FAQs</a></li>     <li><a href="#contact-us">Contact Us</a></li> </ul>
+                </nav>
+                <div class="auth-links">
+                    <a href="#staff-login">Staff Login</a>
+                    <a href="#student-login">Student Login</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section" id="home">
+            <div class="container hero-content">
+                <h1>Best place to learn everything</h1>
+            </div>
+        </section>
+
+        <section class="about-us-section" id="about-us">
+            <div class="container">
+                <h2>Welcome to Front Foundation College</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Located in the heart of Abeokuta, Front Foundation College is a beacon of excellence in secondary education, committed to fostering intellectual growth, personal development, and social responsibility. Our school stands as a pillar of academic distinction and holistic development, providing a nurturing environment where students thrive both academically and personally.</p>
+                        <p>Front Foundation College was established with a clear vision: to create a dynamic and supportive learning environment that prepares students for the challenges of the future. Our commitment to high-quality education is evident in every aspect of our school, from our rigorous academic programs to our state-of-the-art boarding facilities.</p>
+                        <p>We believe that education is the foundation of a successful future, and we strive to ensure that every student who walks through our doors is equipped with the knowledge, skills, and values necessary to succeed in an ever-changing world.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="images/college-building.jpg" alt="Front Foundation College Building">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mission-vision-section">
+            <div class="container">
+                <div class="mission-vision-grid">
+                    <div class="mv-card">
+                        Unlock your potential at Front Foundation College! Where academic excellence meets personal growth, and future leaders are made.
+                    </div>
+                    <div class="mv-card">
+                        Ignite your passion for learning at Front Foundation! Where dreams take flight and every student is empowered to achieve greatness.
+                    </div>
+                </div>
+                <p style="margin-top: 40px; font-size: 1.1em; color: var(--text-color);">
+                    We believe in preparing students for future challenges and opportunities with integrity and passion. Our dynamic programs are designed to build critical thinking, leadership skills, and social responsibility. Our experienced faculty members are committed to guiding each student toward success.
+                </p>
+                <p style="margin-top: 15px; font-size: 1.1em; color: var(--text-color);">
+                    Front Foundation College is more than just a school; it’s a community where dreams are nurtured and futures are shaped. Join us in creating a bright and promising future for every student who walks through our doors.
+                </p>
+            </div>
+        </section>
+
+        <section class="app-download-section">
+            <div class="container">
+                <h3>Experience seamless learning on the go!</h3>
+                <p style="margin-bottom: 30px;">Download our app today from the Google Play Store or Mac App Store</p>
+                <div class="app-buttons">
+                    <a href="#" class="btn-app">
+                        <img src="images/google-play-icon.png" alt="Google Play Icon">
+                        Download on Google Play
+                    </a>
+                    <a href="#" class="btn-app">
+                        <img src="images/app-store-icon.png" alt="App Store Icon">
+                        Download on Mac App Store
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Sitemap</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about-us">About us</a></li>
+                        <li><a href="#support">Support</a></li>
+                        <li><a href="#faqs">FAQS</a></li>
+                        <li><a href="#privacy-policy">Privacy Policy</a></li>
+                        <li><a href="#terms-conditions">Terms and Conditions</a></li>
+                        <li><a href="#disclaimer">Disclaimer</a></li>
+                        <li><a href="#contact-us">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section footer-contact">
+                    <h4>Contact Us</h4>
+                    <p>Behind Old Ogun Radio Transmitting Station, Off Ayetoro Road, Sokoto Town Abeokuta</p>
+                    <p>Phone: <a href="tel:+2347033201448">+234 703-320-1448</a></p>
+                    <p>Email: <a href="mailto:info@frontfoundationcollege.com">info@frontfoundationcollege.com</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect With Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><img src="images/facebook-white.png" alt="Facebook"></a>
+                        <a href="#"><img src="images/twitter-white.png" alt="Twitter"></a>
+                        <a href="#"><img src="images/instagram-white.png" alt="Instagram"></a>
+                        </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Front Foundation College. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth scrolling for internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // No specific interactive elements mentioned, so JS is minimal.
+            // You can add more later if needed (e.g., mobile menu toggle, form validation).
+        });
+    </script>
+</body>
+</html>

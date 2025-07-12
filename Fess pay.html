@@ -1,0 +1,41 @@
+<!-- payment.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KWASU Payment</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Confirm Payment</h2>
+    <div id="summary">
+      <!-- JS will fill this -->
+    </div>
+    <button onclick="payNow()">Make Payment</button>
+  </div>
+
+  <script>
+    const data = JSON.parse(sessionStorage.getItem("studentData"));
+    const summaryDiv = document.getElementById("summary");
+
+    if (!data) {
+      summaryDiv.innerHTML = "<p>Missing student data. Please go back.</p>";
+    } else {
+      summaryDiv.innerHTML = `
+        <p><strong>Name:</strong> ${data.name}</p>
+        <p><strong>Matric:</strong> ${data.matric}</p>
+        <p><strong>Faculty:</strong> ${data.faculty}</p>
+        <p><strong>Department:</strong> ${data.dept}</p>
+        <p><strong>Total Fee:</strong> ₦5000</p>
+      `;
+    }
+
+    function payNow() {
+      alert("Payment Successful! Thank you.");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

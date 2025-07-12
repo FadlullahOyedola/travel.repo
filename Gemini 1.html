@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank App Dashboard</title>
+    <style>
+        body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #f0f2f5, #e1e6ed);
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+    padding-bottom: 60px; /* To accommodate the bottom navigation */
+}
+
+.dashboard-container {
+    max-width: 450px;
+    margin: 20px auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+}
+
+.dashboard-header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-header .user-info {
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-header .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.dashboard-header .user-details .greeting {
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+.dashboard-header .user-details .account-number {
+    font-size: 0.8em;
+    color: #ddd;
+}
+
+.dashboard-header .notifications {
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.dashboard-content {
+    padding: 25px;
+}
+
+.balance-overview h2,
+.quick-actions h2,
+.recent-transactions h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.4em;
+}
+
+.balance-card {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.balance-card .label {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 8px;
+    font-size: 0.9em;
+}
+
+.balance-card .amount {
+    font-size: 2.8em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.balance-card .view-details-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.balance-card .view-details-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.quick-actions .actions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.quick-actions .action-item {
+    background-color: #f8f8f8;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.quick-actions .action-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.quick-actions .action-item img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 8px;
+}
+
+.quick-actions .action-item span {
+    font-size: 0.95em;
+    color: #555;
+}
+
+.recent-transactions .transaction-list {
+    list-style: none;
+    padding: 0;
+}
+
+.recent-transactions .transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.recent-transactions .transaction-item:last-child {
+    border-bottom: none;
+}
+
+.recent-transactions .transaction-info .description {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.recent-transactions .transaction-info .date {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.recent-transactions .transaction-item .amount {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.recent-transactions .transaction-item .amount.negative {
+    color: #dc3545;
+}
+
+.recent-transactions .transaction-item .amount.positive {
+    color: #28a745;
+}
+
+.recent-transactions .view-all-transactions {
+    display: block;
+    width: 100%;
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1em;
+}
+
+.recent-transactions .view-all-transactions:hover {
+    background-color: #e0e0e0;
+}
+
+.bottom-navigation {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.bottom-navigation .nav-item {
+    flex-grow: 1;
+    text-align: center;
+    text-decoration: none;
+    color: #777;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.9em;
+}
+
+.bottom-navigation .nav-item.active {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.bottom-navigation .nav-item img {
+    width: 25px;
+    height: 25px;
+    margin-bottom: 5px;
+    opacity: 0.7;
+}
+
+.bottom-navigation .nav-item.active img {
+    opacity: 1;
+}
+
+.bottom-navigation .nav-item:hover {
+    color: #555;
+}
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const balanceCard = document.querySelector('.balance-card');
+    const viewDetailsBtn = document.querySelector('.view-details-btn');
+    const transactionList = document.querySelector('.transaction-list');
+    const viewAllTransactionsBtn = document.querySelector('.view-all-transactions');
+    const actionButtons = document.querySelectorAll('.quick-actions .action-item');
+    const navItems = document.querySelectorAll('.bottom-navigation .nav-item');
+
+    if (viewDetailsBtn) {
+        viewDetailsBtn.addEventListener('click', () => {
+            alert('Viewing account details...'); // Replace with actual functionality
+        });
+    }
+
+    if (viewAllTransactionsBtn) {
+        viewAllTransactionsBtn.addEventListener('click', () => {
+            alert('Loading all transactions...'); // Replace with actual functionality
+        });
+    }
+
+    actionButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const action = event.currentTarget.classList[1]; // Get the action class (transfer, pay-bills, etc.)
+            alert(`Initiating ${action}...`); // Replace with actual navigation/functionality
+        });
+    });
+
+    navItems.forEach(navItem => {
+        navItem.addEventListener('click', (event) => {
+            navItems.forEach(item => item.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            const page = event.currentTarget.querySelector('span').textContent;
+            // You would typically load content for the 'page' here
+            console.log(`Navigating to ${page}`);
+        });
+    });
+
+    // Simulate dynamic transaction amounts (just for visual)
+    const transactionAmounts = transactionList.querySelectorAll('.amount');
+    transactionAmounts.forEach(amount => {
+        if (amount.textContent.includes('-')) {
+            amount.classList.add('negative');
+        } else if (amount.textContent.includes('+')) {
+            amount.classList.add('positive');
+        }
+    });
+});
+    </script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="user-info">
+                <img src="user-avatar.png" alt="User Avatar" class="avatar">
+                <div class="user-details">
+                    <p class="greeting">Hello, John!</p>
+                    <p class="account-number">Account: 1234567890</p>
+                </div>
+            </div>
+            <div class="notifications">🔔</div>
+        </header>
+
+        <main class="dashboard-content">
+            <section class="balance-overview">
+                <h2>Account Balance</h2>
+                <div class="balance-card">
+                    <p class="label">Current Balance</p>
+                    <h1 class="amount">₦750,250.75</h1>
+                    <button class="view-details-btn">View Details</button>
+                </div>
+            </section>
+
+            <section class="quick-actions">
+                <h2>Quick Actions</h2>
+                <div class="actions-grid">
+                    <button class="action-item transfer">
+                        <img src="transfer-icon.png" alt="Transfer">
+                        <span>Transfer</span>
+                    </button>
+                    <button class="action-item pay-bills">
+                        <img src="bills-icon.png" alt="Pay Bills">
+                        <span>Pay Bills</span>
+                    </button>
+                    <button class="action-item airtime">
+                        <img src="airtime-icon.png" alt="Airtime">
+                        <span>Airtime</span>
+                    </button>
+                    <button class="action-item statements">
+                        <img src="statements-icon.png" alt="Statements">
+                        <span>Statements</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="recent-transactions">
+                <h2>Recent Transactions</h2>
+                <ul class="transaction-list">
+                    <li class="transaction-item">
+                        <div class="transaction-info">
+                            <p class="description">Transfer to Jane Doe</p>
+                            <p class="date">Today, 10:30 AM</p>
+                        </div>
+                        <p class="amount negative">-₦50,000.00</p>
+                    </li>
+                    <li class="transaction-item">
+                        <div class="transaction-info">
+                            <p class="description">Bill Payment - Electricity</p>
+                            <p class="date">Yesterday, 05:15 PM</p>
+                        </div>
+                        <p class="amount negative">-₦4,200.00</p>
+                    </li>
+                    <li class="transaction-item">
+                        <div class="transaction-info">
+                            <p class="description">Salary Deposit</p>
+                            <p class="date">Apr 30, 09:00 AM</p>
+                        </div>
+                        <p class="amount positive">+

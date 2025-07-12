@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KWASU Payment Portal</title>
+  <script>
+    console.log('hello world')
+    var Number=5 // inline comment
+
+    /* this is a
+    
+    ffff
+    fffff
+    fffff
+    multiline comment */
+  </script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(120deg, #2c3e50, #3498db);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    form {
+      background: #ffffff22;
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, select, button {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    input, select {
+      width: 100%;
+    }
+
+    button {
+      background-color: #2ecc71;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #27ae60;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>KWASU Payment Portal</h1>
+  <form id="paymentForm">
+    <input type="text" id="name" placeholder="Student Name" required>
+    <input type="text" id="matric" placeholder="Matric Number" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <select id="faculty" required>
+      <option value="">Select Faculty</option>
+      <option value="Agriculture">Agriculture</option>
+      <option value="Education">Education</option>
+      <option value="Engineering">Engineering</option>
+      <option value="Information and Communication Technology">ICT</option>
+      <option value="Humanities, Management and Social Sciences">HMSS</option>
+      <option value="Law">Law</option>
+      <option value="Life Sciences">Life Sciences</option>
+      <option value="Physical Sciences">Physical Sciences</option>
+      <option value="Pure and Applied Sciences">Pure and Applied Sciences</option>
+      <option value="Medical Sciences">Medical Sciences</option>
+    </select>
+    <select id="department" required>
+      <option value="">Select Department</option>
+      <option value="Computer Science">Computer Science</option>
+      <option value="Electrical Engineering">Electrical Engineering</option>
+      <option value="Mechanical Engineering">Mechanical Engineering</option>
+      <option value="Business Administration">Business Administration</option>
+      <option value="Accounting">Accounting</option>
+      <option value="Mass Communication">Mass Communication</option>
+      <option value="Microbiology">Microbiology</option>
+      <option value="Biochemistry">Biochemistry</option>
+      <option value="Law">Law</option>
+    </select>
+    <button type="submit">Pay ₦5000</button>
+  </form>
+
+  <!-- Paystack SDK -->
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    const paymentForm = document.getElementById('paymentForm');
+
+    paymentForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const matric = document.getElementById('matric').value;
+      const email = document.getElementById('email').value;
+      const faculty = document.getElementById('faculty').value;
+      const department = document.getElementById('department').value;
+
+      const amount = 5000 * 100;
+
+      const handler = PaystackPop.setup({
+        key: 'pk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxx', // replace with your public key
+        email: email,
+        amount: amount,
+        currency: 'NGN',
+        metadata: {
+          custom_fields: [
+            { display_name: "Name", variable_name: "name", value: name },
+            { display_name: "Matric Number", variable_name: "matric", value: matric },
+            { display_name: "Faculty", variable_name: "faculty", value: faculty },
+            { display_name: "Department", variable_name: "department", value: department }
+          ]
+        },
+        callback: function (response) {
+          const paymentData = {
+            name,
+            matric,
+            email,
+            faculty,
+            department,
+            amount: 5000,
+            ref: response.reference,
+            date: new Date().toLocaleString()
+          };
+
+          alert('Payment complete! Reference: ' + response.reference);
+          generateReceipt(paymentData);
+        },
+        onClose: function () {
+          alert('Payment window closed.');
+        }
+      });
+
+      handler.openIframe();
+    });
+
+    function generateReceipt(data) {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      doc.setFontSize(14);
+      doc.text("KWASU Payment Receipt", 20, 20);
+      doc.text(`Name: ${data.name}`, 20, 30);
+      doc.text(`Matric No: ${data.matric}`, 20, 40);
+      doc.text(`Email: ${data.email}`, 20, 50);
+      doc.text(`Faculty: ${data.faculty}`, 20, 60);
+      doc.text(`Department: ${data.department}`, 20, 70);
+      doc.text(`Amount Paid: ₦${data.amount}`, 20, 80);
+      doc.text(`Reference: ${data.ref}`, 20, 90);
+      doc.text(`Date: ${data.date}`, 20, 100);
+
+      doc.save(`${data.matric}_receipt.pdf`);
+    }
+  </script>
+</body>
+
+</html>

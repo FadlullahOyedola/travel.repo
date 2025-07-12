@@ -1,0 +1,84 @@
+/*Radar Kitchen.css */
+body{
+    background: url(https://media.istockphoto.com/id/1165399909/photo/delicious-meal-on-a-black-plate-top-view-copy-space.jpg?s=612x612&w=0&k=20&c=vrMzS4pY_QjiDtCzpVE3ClKqbU636fb4CKH0nlsduC4=);
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 10px;
+    padding: 10px;
+}
+
+.container{
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+header{
+    background: #003366; /* Dark blue for the background */
+    padding: 1rem 0;
+    color: white;
+}
+
+header .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1{
+    margin: 0;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.Product{
+    padding: 3rem 0;
+    align-items: center;
+    color: white;
+}
+
+.Product h2{
+    padding: 2rem;
+    text-align: center;
+    color: white;
+}
+
+.Prouct-grid{
+    display: grid;
+    gap: 3rem;
+}
+
+.Product-Item{
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.Product-Item img{
+    width: 10px;
+    margin-bottom: 1rem;
+}
+
+footer{
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+   
+}

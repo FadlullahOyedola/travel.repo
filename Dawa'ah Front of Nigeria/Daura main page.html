@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DAURA 1446AH/2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+  <style>
+    :root {
+      --primary: #0A9396;
+      --accent: #EE9B00;
+      --bg: #F6FFF9;
+      --text: #333;
+      --radius: 8px;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+    }
+    header {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    section {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: var(--radius);
+    }
+    h2 { color: var(--primary); }
+    .register {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .register input {
+      padding: 0.7rem;
+      border-radius: var(--radius);
+      border: 1px solid #ccc;
+      margin-right: 1rem;
+    }
+    .register button {
+      padding: 0.7rem 1.5rem;
+      background: var(--accent);
+      border: none;
+      color: #fff;
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+    footer {
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    #receipt {
+      display: none; /* hidden until generated */
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>DAURA 1446AH/2025</h1>
+  </header>
+
+  <section>
+    <p>Welcome to DAURA 2025! Register below and get your downloadable receipt instantly.</p>
+
+    <div class="register">
+      <input type="text" id="nameInput" placeholder="Enter your full name" required>
+      <button onclick="generateReceipt()">Register & Download Receipt</button>
+    </div>
+
+    <!-- Hidden Receipt Template -->
+    <div id="receipt">
+      <h2>DAURA 2025 Registration Receipt</h2>
+      <p>Name: <span id="rName"></span></p>
+      <p>Date: <span id="rDate"></span></p>
+      <p>Thank you for registering! May Allah reward you abundantly.</p>
+    </div>
+
+    <p style="text-align: center; margin-top: 2rem;">
+      <a href="admin.html" target="_blank">Go to Admin Page</a>
+    </p>
+  </section>
+
+  <footer>
+    &copy; 2025 Dawah Front Nigeria
+  </footer>
+
+  <script>
+    function generateReceipt() {
+      const name = document.getElementById('nameInput').value.trim();
+      if (!name) {
+        alert('Please enter your name.');
+        return;
+      }
+      const today = new Date().toLocaleDateString();
+      document.getElementById('rName').innerText = name;
+      document.getElementById('rDate').innerText = today;
+
+      const element = document.getElementById('receipt');
+      element.style.display = 'block';
+
+      html2pdf().from(element).save(`DAURA_2025_Receipt_${name}.pdf`);
+
+      // Optionally: Hide it again
+      setTimeout(() => { element.style.display = 'none'; }, 1000);
+    }
+  </script>
+</body>
+</html>

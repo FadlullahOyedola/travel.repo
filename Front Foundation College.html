@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width initial-scale=1.0">
+        <title>Front Foundation College</title>
+        <link rel="icon " href="#">
+        <style>
+            body{
+                font-family: Arial, Helvetica, sans-serif;
+                color: #333;
+                background-color: #f4f4f4;
+                padding: 0;
+                margin: 0;
+            }
+
+        header {
+            background-color: #28a745;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul{
+            display: flex;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        nav ul li{
+            margin-left: 1rem;
+        }
+
+        nav ul li a{
+            color: white;
+            padding: 0.5rem 0.75rem;
+            text-decoration: none;
+            border-radius: 0.25rem;
+        }
+
+        nav ul li a:hover{
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        #home{
+            text-align: center;
+            color: white;
+            background: linear-gradient(to right, #28a745, #1e7e3e);
+            padding: 5rem 0;
+        }
+
+        #home h1{
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        #home p{
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .register-button{
+            text-decoration: none;
+            color: #28a745;
+            border-radius:2rem;
+            padding: 0.75rem 2rem;
+            background-color: white;
+            font-weight: bold;
+        }
+        
+        section{
+            padding: 3rem 0;
+            background-color: white;
+        }
+
+        section h2{
+            color: #28a745;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .about-content, .payment-grid, .contact-grid, .feature-grid{
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .about-content, .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .feature-grid, .payment-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 992px) {
+            .payment-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .contact-info p {
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form input[type="tel"],
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 0.25rem;
+            box-sizing: border-box;
+        }
+
+        .contact-form button {
+            background-color: #28a745;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .contact-form button:hover {
+            background-color: #1e7e34;
+        }
+    </style>
+    </head>
+    <body>
+        <header>
+            <div class="container header-content">
+                <div class="logo">
+                    <a href="#">Front Foundation College</a>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#ducation">Education</a></li>
+                        <li><a href="#mission">Mission</a></li>
+                        <li><a href="#hostel">Hostel</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+        <section id="home">
+            <div class="container">
+                <h1>Welcome to your paradise of Academics excellence</h1>
+                <p>Enroll to acquire a thankful education</p>
+                <a href="#" class="register-button">Register</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container about-content">
+                <div class="about-text">
+                    <h2>About Our Institution</h2>
+                      <p>Our annual Islamic Camp is designed to provide a holistic environment for spiritual, intellectual, and physical development. We aim to instill Islamic values, foster brotherhood/sisterhood, and create lasting memories.</p>
+                     <p>Participants will engage in a variety of activities including Quranic studies, Hadith lessons, interactive workshops, outdoor sports, team-building exercises, and inspiring lectures from renowned scholars.</p>
+                     <p>The camp promotes a safe and nurturing atmosphere where individuals can deepen their understanding of Islam and connect with fellow Muslims in a positive setting.</p>
+                </div>
+                <div class="about-image">
+                    <img src="#" alt="School ground" style="max-width: 100%; height: auto; border-radius: 0.5rem;">
+                </div>
+            </div>
+        </section>
+
+        <section id="features">
+            <h2>Our Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <img src="">
+                    <h3>Library</h3>
+                    <p>Well equiped Library for student's use</p>
+                </div>
+                <div class="feature-item">
+                    <img src="#" alt="#">
+                    <h3>Boarding Hostel</h3>
+                    <p>Hostel are meant for discpline students</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="payment">
+            <div class="container">
+                <h2>School Fees and other Fees</h2>
+                <div class="payment-grid">
+                    <div class="payment-card">
+                        <h3>Junior Classes</h3>
+                        <p>From Js1 - Js2</p>
+                        <p class="price">$65.00</p>
+                    </div>
+                    <div class="payment-card">
+                        <h3>Senior Classes</h3>
+                        <p>From Ss1 - Ss2</p>
+                        <p class="price">$75.00</p>
+                    </div>
+                    <div class="payment-card">
+                        <h3>Junior Three</h3>
+                        <p>Only Js3</p>
+                        <p class="price">$69.00</p>
+                    </div>
+                    <div class="payment-card">
+                        <h3>Senior Three</h3>
+                        <p>Only Ss3</p>
+                        <p class="price">$100.00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container contact-grid">
+                <div class="contact-info">
+                    <h3>Contact Us</h3>
+                    <div>
+                        <h3>Our Location</h3>
+                        <p>Off Ogun radio, sokoto village</p>
+                    </div>
+                    <div>
+                        <h3>Call Us</h3>
+                        <p><a href="Telephone:09057580118, 08103104787">(+234) 9057580118, 8103104787</a></p>
+                    </div>
+                    <div>
+                        <h3>Email</h3>
+                        <p><a href="mailto:info@fronfoundationcollege.gmail.com">info@Fronfoundationcollege.gmail.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact-form">
+            <h2>Send Us Meassage</h2>
+            <form action="#" method="post">
+                <div>
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div>
+                    <label for="email">Your Email:</label>
+                    <input type="text" id="email" name="email required">
+                </div>
+                <div>
+                    <label for="message">Your Message:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                    <button type="submit">Message</button>
+                </div>
+            </form>
+        </section>
+    </body>
+</html>

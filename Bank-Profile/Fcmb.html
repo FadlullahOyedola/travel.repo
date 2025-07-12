@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCMB Limited - Your Preferred Bank</title>
+    <link rel="icon" href="path/to/your/FCMB_Logo.png"> <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: 'Poppins', Arial, sans-serif;
+            color: #333;
+            background-color: #f8f8f8; /* Lighter background */
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('path/to/your/fcmb-header-background-nigeria.jpg'); /* Replace with a relevant FCMB/Nigeria image */
+            background-size: cover;
+            background-position: center;
+            color: #FFD700; /* Gold/Yellow for contrast */
+            padding: 1.5em 0; /* Slightly more padding */
+            font-weight: 600;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #FFD700; /* Subtle border */
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo img {
+            width: 40px; /* Slightly smaller logo */
+            height: auto;
+            margin-right: 10px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8em; /* Slightly larger title */
+        }
+
+        nav ul {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: #FFD700;
+            text-decoration: none;
+            padding: 0.8em 1.2em; /* More padding */
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white; /* Brighter on hover */
+        }
+
+        .login-button .btn {
+            background-color: #fff;
+            color: #8E24AA;
+            padding: 0.8em 1.8em;
+            border: 1px solid #fff;
+            border-radius: 25px; /* More rounded button */
+            font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .login-button .btn:hover {
+            background-color: #FFD700;
+            color: #8E24AA;
+            border-color: #FFD700;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 20px; /* More vertical padding */
+            background-color: #eee; /* Default background for slider */
+            color: #8E24AA;
+            border-bottom: 5px solid #FFD700; /* Accent line */
+            position: relative; /* For slider controls */
+            overflow: hidden; /* Hide overflowing slider images */
+        }
+
+        .hero-slider {
+            display: flex;
+            transition: transform 0.8s ease-in-out; /* Smooth slide transition */
+        }
+
+        .hero-slide {
+            min-width: 100%; /* Each slide takes full width */
+            box-sizing: border-box; /* Include padding in width */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px; /* Internal padding for text */
+            background-size: cover;
+            background-position: center;
+            color: white; /* Text color for slides with background images */
+            height: 400px; /* Fixed height for the slider */
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for readability */
+        }
+        
+        /* Specific slide backgrounds and text colors */
+        .hero-slide:nth-child(1) {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('path/to/your/hero-banking.jpg'); /* UPDATE THIS PATH */
+        }
+        .hero-slide:nth-child(2) {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('path/to/your/hero-sme.jpg'); /* UPDATE THIS PATH */
+        }
+        .hero-slide:nth-child(3) {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('path/to/your/hero-digital.jpg'); /* UPDATE THIS PATH */
+        }
+
+        .hero-slide h2 {
+            color: white; /* Ensure text is white on image backgrounds */
+            font-weight: 700;
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .hero-slide p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .hero-slide .btn {
+            background-color: #FFD700; /* Yellow button on dark background */
+            color: #8E24AA;
+            border: 2px solid #8E24AA;
+            padding: 1.2em 2.5em;
+            font-size: 1.1em;
+            border-radius: 30px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .hero-slide .btn:hover {
+            background-color: #8E24AA;
+            color: #FFD700;
+            border-color: #FFD700;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: #FFD700;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            color: #8E24AA;
+            margin-bottom: 40px;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #FFD700;
+            border-radius: 2px;
+        }
+
+        /* General Button Styling */
+        .btn {
+            display: inline-block; /* Ensures proper spacing */
+            background-color: #8E24AA;
+            color: #FFD700;
+            border: 2px solid #8E24AA; /* Match background for initial look */
+            padding: 0.8em 2em; /* Slightly reduced padding */
+            font-size: 1em; /* Slightly smaller font */
+            border-radius: 25px; /* Consistent rounded corners */
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Include border-color in transition */
+            text-decoration: none; /* Remove underlines from links styled as buttons */
+            font-weight: 600;
+            cursor: pointer; /* Indicate interactivity */
+            outline: none; /* Remove default focus outline */
+            margin-bottom: 10px; /* Add some bottom margin for spacing when in grids */
+        }
+
+        .btn:hover {
+            background-color: #FFD700;
+            color: #8E24AA;
+            border-color: #FFD700; /* Keep border consistent with hover background */
+        }
+
+        /* Feature Section */
+        .feature {
+            padding: 60px 20px;
+            background-color: #fff;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px; /* More spacing */
+        }
+
+        .feature-item {
+            background-color: #fff;
+            border-radius: 10px; /* More rounded corners */
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1); /* Softer, larger shadow */
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px); /* Lift effect on hover */
+            box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-item img {
+            width: 100%;
+            display: block;
+            max-height: 220px; /* Slightly larger image height */
+            height: auto;
+            object-fit: cover;
+            border-bottom: 3px solid #8E24AA; /* Accent line */
+        }
+
+        .feature-item h3 {
+            color: #8E24AA;
+            font-size: 1.8em;
+            margin: 20px 0 10px;
+            font-weight: 600;
+        }
+
+        .feature-item p {
+            padding: 0 20px 20px;
+            color: #555;
+        }
+
+        .feature-item .btn {
+            background-color: #8E24AA;
+            color: #FFD700;
+            border: none;
+            padding: 0.8em 2em;
+            border-radius: 25px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .feature-item .btn:hover {
+            background-color: #FFD700;
+            color: #8E24AA;
+        }
+
+        /* About, Facts, Achievements Sections */
+        .info-section {
+            padding: 60px 20px;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .info-section:nth-child(even) {
+            background-color: #fff; /* Alternate background for sections */
+        }
+
+        .info-section h3 {
+            color: #8E24AA;
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .info-section p {
+            font-size: 1.1em;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            max-width: 900px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            text-align: left;
+        }
+
+        .info-list li {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding-left: 45px;
+            font-size: 1.05em;
+            color: #444;
+        }
+
+        .info-list li::before {
+            content: '✓'; /* Checkmark icon */
+            position: absolute;
+            left: 15px;
+            color: #FFD700; /* Yellow checkmark */
+            font-size: 1.5em;
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: bold;
+        }
+
+        .info-list li strong {
+            color: #8E24AA;
+        }
+
+        /* Job Career Section */
+        .Job-career {
+            padding: 60px 20px;
+            background-color: #f4f4f4;
+        }
+
+        .Job-career-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .Job-career-item {
+            padding: 30px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .Job-career-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .Job-career-item img {
+            width: 50px; /* Adjust icon size */
+            height: 50px;
+            margin-bottom: 15px;
+            object-fit: contain;
+            filter: grayscale(100%); /* Initially grayscale */
+            transition: filter 0.3s ease; /* Smooth grayscale transition */
+        }
+
+        .Job-career-item:hover img {
+            filter: none; /* Remove grayscale on hover */
+        }
+
+        .Job-career-item h3 {
+            color: #8E24AA;
+            font-size: 1.6em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .Job-career-item p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .Job-career-item .btn {
+            background-color: #8E24AA;
+            color: #FFD700;
+            border: 2px solid #8E24AA; /* Maintain border */
+            padding: 0.8em 2em;
+            border-radius: 25px;
+            margin-bottom: 0; /* Remove bottom margin here as it's in the item */
+            font-weight: 600;
+        }
+
+        .Job-career-item .btn:hover {
+            background-color: #FFD700;
+            color: #8E24AA;
+            border-color: #FFD700; /* Maintain border */
+        }
+
+        /* Contact Section */
+        .Contact {
+            padding: 60px 20px;
+            background-color: #8E24AA; /* Purple background for contrast */
+            color: white;
+        }
+
+        .Contact h2 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            color: #FFD700;
+            font-weight: 700;
+        }
+
+        .Contact p {
+            color: #ddd;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .Contact form {
+            max-width: 600px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .Contact input[type="text"],
+        .Contact input[type="email"],
+        .Contact textarea {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.1em;
+            width: calc(100% - 30px); /* Adjust for padding */
+            color: #333;
+        }
+
+        .Contact textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .Contact .btn {
+            background-color: #FFD700;
+            color: #8E24AA;
+            border: none;
+            padding: 1.2em 2.5em;
+            border-radius: 30px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: 600;
+        }
+
+        .Contact .btn:hover {
+            background-color: #FFD700;
+            color: #8E24AA;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #333;
+            color: white;
+            font-size: 0.9em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+            }
+
+            nav ul {
+                flex-direction: column;
+                margin-top: 15px;
+            }
+
+            nav ul li {
+                margin-bottom: 10px;
+            }
+
+            .hero-slide h2 {
+                font-size: 2.2em;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .feature-grid, .Job-career-grid, .info-list {
+                grid-template-columns: 1fr;
+            }
+
+            .login-button {
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="path/to/your/FCMB_Logo.png" alt="FCMB Logo"> <h1>FCMB</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Services</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#career">Careers</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="login-button">
+                <a href="#" class="btn">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-slider">
+            <div class="hero-slide">
+                <h2>Welcome to FCMB Internet Banking</h2>
+                <p>Experience seamless and secure banking at your fingertips. Your financial journey, simplified.</p>
+                <a href="#" class="btn">Register Now</a>
+            </div>
+            <div class="hero-slide">
+                <h2>Empowering SMEs for Growth</h2>
+                <p>Access tailored financial solutions and support to help your business thrive and expand.</p>
+                <a href="#" class="btn">Explore SME Solutions</a>
+            </div>
+            <div class="hero-slide">
+                <h2>Innovative Digital Banking</h2>
+                <p>Bank smarter, not harder. Enjoy convenient mobile and online banking services 24/7.</p>
+                <a href="#" class="btn">Learn About Digital</a>
+            </div>
+        </div>
+        <div class="slider-dots"></div>
+    </section>
+
+    <section class="feature" id="features">
+        <h2 class="section-title">Our Key Services</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <img src="path/to/your/account-opening.jpg" alt="Account Opening Image"> <h3>Accounts Opening</h3>
+                <p>Open various account types tailored to your needs, from savings to current accounts, easily online.</p>
+                <a href="#" class="btn">Open Account</a>
+            </div>
+            <div class="feature-item">
+                <img src="path/to/your/transfer-funds.jpg" alt="Transfer Funds Image"> <h3>Transfer Funds</h3>
+                <p>Send money securely and instantly to any bank account, locally or internationally, with ease.</p>
+                <a href="#" class="btn">Start Transfer</a>
+            </div>
+            <div class="feature-item">
+                <img src="path/to/your/pay-bills.jpg" alt="Pay Bills Image"> <h3>Pay Bills</h3>
+                <p>Settle all your utility bills, subscriptions, and merchant payments conveniently from one place.</p>
+                <a href="#" class="btn">Pay Bills</a>
+            </div>
+            <div class="feature-item">
+                <img src="path/to/your/loans-credit.jpg" alt="Loans & Credit Image"> <h3>Loans & Credit</h3>
+                <p>Access flexible loan products and credit facilities to help you achieve your personal and business goals.</p>
+                <a href="#" class="btn">Apply for Loan</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section" id="about">
+        <h2 class="section-title">About FCMB Group Plc</h2>
+        <p>FCMB Group Plc is a leading financial services institution in Nigeria, with a rich history dating back to 1977. We are a bank-led financial holding company dedicated to providing comprehensive financial solutions across banking, investment management, and investment banking.</p>
+        <p>With over 9 million customers and 204 branches in Nigeria, plus a banking subsidiary in the UK, we are committed to fostering economic growth and empowering individuals and businesses.</p>
+
+        <h3>Key Facts About FCMB</h3>
+        <ul class="info-list">
+            <li><strong>Founded:</strong> Our roots trace back to City Securities Limited, established in September 1977.</li>
+            <li><strong>Pioneering Spirit:</strong> First City Merchant Bank Limited (our precursor) was established in August 1983 as **Nigeria's first privately owned merchant bank** without government support.</li>
+            <li><strong>Comprehensive Offerings:</strong> We operate through three main business groups: **Banking, Investment Management, and Investment Banking.**</li>
+            <li><strong>Extensive Reach:</strong> Over **9 million customers** and **204 branches** in Nigeria, plus a banking subsidiary in the United Kingdom (FCMB Bank (UK) Limited).</li>
+            <li><strong>Stock Exchange Listing:</strong> FCMB Group Plc is listed on the **Nigerian Stock Exchange (NSE)** with the ticker symbol 'FCMB'.</li>
+            <li><strong>Growth through Acquisition:</strong> We've expanded through strategic mergers, including FinBank Plc in 2012, strengthening our market position.</li>
+            <li><strong>Digital Focus:</strong> Significant growth in digital payments, lending, and wealth management, contributing notably to gross earnings.</li>
+            <li><strong>Special Focus Areas:</strong> Strong commitment to supporting **SMEs, women-owned businesses, youth, and renewable energy** projects.</li>
+        </ul>
+    </section>
+
+    <section class="info-section" id="achievements">
+        <h2 class="section-title">Our Achievements & Impact</h2>
+        <p>FCMB's dedication to excellence, innovation, and community development has earned us numerous accolades and a strong reputation in the financial sector.</p>
+        <ul class="info-list">
+            <li><strong>Consistent Profitability:</strong> Demonstrated strong financial results, with significant growth in gross earnings and profit after tax. For instance, in **2024, gross earnings grew by 53.9% to N794.8 billion**, and **profit after tax increased by 16.05% to N107.9 billion.**</li>
+            <li><strong>Leading SME Support:</strong> Consistently recognized as **"Best SME Bank in Africa"** multiple times (e.g., 2020, 2021, 2022, 2024), and awarded for **"Highest Impact on MSMEs Accessing Credit for the First Time in Nigeria."**</li>
+            <li><strong>Massive SME Lending:</strong> Disbursed **N180 billion in loans to over 800,000 MSMEs** between January and June 2024 alone, empowering small businesses across Nigeria.</li>
+            <li><strong>Pioneering Digital Transformation:</strong> Achieved **69.2% growth in digital revenues** in 2024, with **1.6 million retail loans** and **18,000+ SME loans** disbursed through digital channels.</li>
+            <li><strong>Empowering Women:</strong> Through **"SheVentures,"** provided over **N20 billion in interest-free loans** to women-owned SMEs in 2023, coupled with training and mentoring.</li>
+            <li><strong>Sustainability Champion:</strong> Recognized for **"Highest Disbursement to Sustainability Projects,"** actively financing renewable energy initiatives and supporting projects that align with sustainable development goals.</li>
+            <li><strong>Successful Capital Raising:</strong> Successfully raised **N144.6 billion** through a public offer in 2024, significantly strengthening our capital base.</li>
+            <li><strong>Social Impact Initiatives:</strong> Invested in education, youth empowerment, and health initiatives, including providing scholarships and partnering to restore sight for over 2,000 people.</li>
+            <li><strong>Human Resource Excellence:</strong> Received the ITF Merit Award as **"Best Contributing Employer in Human Resource Development"** for robust employee capacity development programs.</li>
+        </ul>
+    </section>
+
+    <section class="Job-career" id="career">
+        <h2 class="section-title">Join Our Team: Career Opportunities at FCMB</h2>
+        <div class="Job-career-grid">
+            <div class="Job-career-item">
+                <img src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-graduation-cap.svg" alt="Graduate Training Icon">
+                <h3>Graduate Trainee Program</h3>
+                <p>Kickstart your career with our comprehensive graduate training program designed to develop future leaders.</p>
+                <a href="#" class="btn">Enroll Now</a>
+            </div>
+            <div class="Job-career-item">
+                <img src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-laptop-code.svg" alt="IT Engineer Icon">
+                <h3>IT Engineer Roles</h3>
+                <p>Innovate with us! We're seeking talented IT engineers to join our dynamic technology team.</p>
+                <a href="#" class="btn">Apply Now</a>
+            </div>
+            <div class="Job-career-item">
+                <img src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-shield-halved.svg" alt="Cyber-security Icon">
+                <h3>Cybersecurity Personnel</h3>
+                <p>Protect our digital landscape. Apply for a challenging role in our cybersecurity department.</p>
+                <a href="#" class="btn">Apply Now</a>
+            </div>
+             <div class="Job-career-item">
+                <img src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-headphones.svg" alt="Customer Service Icon">
+                <h3>Customer Service Executive</h3>
+                <p>Be the voice of FCMB! Join our customer service team and help us deliver exceptional experiences.</p>
+                <a href="#" class="btn">Apply Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="Contact" id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <p>Have any questions or need assistance? Our team is ready to help. Feel free to reach out to us.</p>
+        <form method="post">
+            <input type="text" placeholder="Your Full Name" required>
+            <input type="email" placeholder="Your Email Address" required>
+            <textarea placeholder="Drop your message here..." required></textarea>
+            <button type="submit" class="btn">Submit Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="container foot">
+            <p>&copy; 2025 First City Monument Bank. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop - document.querySelector('header').offsetHeight, // Adjust for sticky header
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Hero Section Image Slider
+        const heroSlider = document.querySelector('.hero-slider');
+        const slides = document.querySelectorAll('.hero-slide');
+        const dotsContainer = document.querySelector('.slider-dots');
+        let currentIndex = 0;
+        let slideInterval;
+
+        function createDots() {
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    goToSlide(index);
+                    resetInterval();
+                });
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function updateDots() {
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                if (index === currentIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            if (currentIndex >= slides.length) {
+                currentIndex = 0;
+            } else if (currentIndex < 0) {
+                currentIndex = slides.length - 1;
+            }
+            heroSlider.style.transform = `translateX(-${currentIndex * 100}%)`;
+            updateDots();
+        }
+
+        function nextSlide() {
+            goToSlide(currentIndex + 1);
+        }
+
+        function startSlider() {
+            slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        }
+
+        function resetInterval() {
+            clearInterval(slideInterval);
+            startSlider();
+        }
+
+        // Initialize slider
+        createDots();
+        startSlider();
+    </script>
+</body>
+</html>

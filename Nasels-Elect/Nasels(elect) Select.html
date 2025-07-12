@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nasels 2025 Election Portal</title>
+  <meta name="description" content="Official Nasels 2025 Election Portal. View positions, requirements, and apply to lead your department.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    html { scroll-behavior: smooth; }
+    :root {
+      --color-primary: #1E3A2F; /* Dark Green */
+      --color-accent: #2ECC71; /* Bright Green */
+      --color-bg: #F0FFF4; /* Light Greenish White */
+      --color-white: #fff;
+      --color-dark: #333;
+      --color-light-gray: #f9f9f9;
+      --color-border: #ddd;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      margin: 0; background: var(--color-bg);
+      color: var(--color-dark);
+      line-height: 1.6;
+    }
+    .container { max-width: 1200px; margin: auto; padding: 0 20px; }
+    header {
+      background: var(--color-primary);
+      color: var(--color-white);
+      padding: 15px 0; position: sticky; top:0; z-index: 10;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    header .container { display: flex; justify-content: space-between; align-items: center; }
+    header a.logo { color: var(--color-white); font-family: 'Montserrat'; font-weight: 700; font-size: 1.8em; text-decoration: none; }
+    nav ul { list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; }
+    nav a { color: var(--color-white); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+    nav a:hover { color: var(--color-accent); }
+    .hero {
+      background: linear-gradient(rgba(30, 58, 47, 0.8), rgba(30, 58, 47, 0.8)),
+      url('https://via.placeholder.com/1600x500/1e3a2f/ffffff?text=Nasels+2025+Elections') no-repeat center/cover;
+      color: var(--color-white); text-align: center; padding: 100px 20px;
+      min-height: 350px; display: flex; align-items: center; justify-content: center;
+    }
+    .hero h1 { font-family: 'Montserrat'; font-size: 3.5em; margin: 0 0 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+    .hero p { font-size: 1.3em; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto; }
+    .btn {
+      background: var(--color-accent); color: var(--color-white);
+      padding: 14px 30px; border-radius: 50px; text-decoration: none;
+      font-weight: bold; display: inline-block; transition: all 0.3s;
+      border: none; cursor: pointer; font-size: 1em;
+    }
+    .btn:hover { background: #27ae60; transform: scale(1.05); }
+    section { margin: 60px 0; padding: 20px 0; }
+    h2 { font-family: 'Montserrat'; font-size: 2.8em; color: var(--color-primary); text-align: center; margin-bottom: 40px; }
+    h3 { font-family: 'Montserrat'; color: var(--color-primary); }
+
+    /* Vote Grid */
+    .vote-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px; margin-top: 30px;
+    }
+    .vote-item {
+      background: var(--color-white); border: 1px solid var(--color-border); padding: 25px; border-radius: 10px;
+      text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: 0.3s;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .vote-item:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+    .vote-item img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 3px solid var(--color-accent); }
+    .vote-item h3 { margin: 0 0 12px; font-size: 1.6em; }
+    .vote-item p { margin: 0 0 8px; font-size: 0.95em; color: #555; }
+    .vote-item strong { color: var(--color-primary); }
+    .vote-item .btn { margin-top: 20px; padding: 12px 25px; border-radius: 8px; }
+
+    /* Rules Section */
+    .rules-list {
+      background: var(--color-white);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+    .rules-list ol {
+      list-style: decimal;
+      padding-left: 25px;
+      margin: 0;
+    }
+    .rules-list li {
+      margin-bottom: 15px;
+      line-height: 1.8;
+    }
+    .rules-list li strong {
+      color: var(--color-primary);
+    }
+
+    /* Contact Form */
+    #contact form {
+      background: var(--color-white);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    #contact label { display: block; margin: 15px 0 8px; font-weight: 600; color: var(--color-primary); }
+    #contact input, #contact textarea {
+      width: calc(100% - 22px);
+      padding: 12px;
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1em;
+      transition: border-color 0.3s;
+    }
+    #contact input:focus, #contact textarea:focus {
+      border-color: var(--color-accent);
+      outline: none;
+    }
+    #contact textarea { resize: vertical; min-height: 100px; }
+    #contact .btn { margin-top: 25px; width: 100%; padding: 15px; }
+
+    footer {
+      background: var(--color-primary); color: var(--color-white); text-align: center; padding: 25px;
+      margin-top: 60px;
+    }
+    .scroll-top {
+      position: fixed; bottom: 30px; right: 30px; background: var(--color-primary);
+      color: var(--color-white); border: none; border-radius: 50%; width: 55px; height: 55px;
+      cursor: pointer; font-size: 1.8em; display: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: background 0.3s, transform 0.3s;
+    }
+    .scroll-top:hover { background: #27ae60; transform: translateY(-3px); }
+
+    /* Modal Styles */
+    .modal {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6); justify-content: center; align-items: center;
+      z-index: 100;
+    }
+    .modal-content {
+      background: var(--color-white); padding: 30px; border-radius: 10px; width: 90%; max-width: 450px;
+      position: relative; box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      animation: fadeInScale 0.3s ease-out;
+    }
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .modal-content h3 { margin-top: 0; color: var(--color-primary); font-size: 1.8em; }
+    .modal-content label { display: block; margin: 12px 0 6px; font-weight: 600; color: var(--color-primary); }
+    .modal-content input { width: calc(100% - 22px); padding: 12px; border: 1px solid var(--color-border); border-radius: 6px; font-size: 1em; }
+    .modal-content input:focus { border-color: var(--color-accent); outline: none; }
+    .modal-content .fee-display {
+      font-size: 1.1em;
+      font-weight: bold;
+      color: var(--color-accent);
+      margin-top: 15px;
+      text-align: right;
+    }
+    .modal-content button.close {
+      position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 2em; cursor: pointer;
+      color: #777; transition: color 0.3s;
+    }
+    .modal-content button.close:hover { color: var(--color-primary); }
+    .modal-content .btn { margin-top: 25px; width: 100%; padding: 15px; }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      header .container { flex-direction: column; text-align: center; }
+      nav ul { margin-top: 15px; }
+      .hero h1 { font-size: 2.5em; }
+      .hero p { font-size: 1em; }
+      h2 { font-size: 2em; }
+      .vote-grid { grid-template-columns: 1fr; }
+      .modal-content { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <a href="#" class="logo">Nasels Elections</a>
+      <nav>
+        <ul>
+          <li><a href="#rules">Rules</a></li>
+          <li><a href="#vote">Positions</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Your Vote, Your Voice</h1>
+        <p>Shape the future of Nasels by voting in the 2025 elections. Apply for leadership roles or learn about the voting process.</p>
+        <a href="#vote" class="btn">View Positions</a>
+      </div>
+    </section>
+
+    <div class="container">
+      <section id="rules">
+        <h2>Voting & Application Rules</h2>
+        <div class="rules-list">
+          <p>Welcome to the Nasels 2025 Election Portal. To ensure a fair and transparent election process, please adhere to the following rules and regulations:</p>
+          <ol>
+            <li><strong>Eligibility to Apply:</strong> All applicants must be registered students of Nasels and meet the specific CGPA requirements outlined for each position.</li>
+            <li><strong>Application Fee:</strong> A non-refundable application fee, as specified for each position, must be paid via Paystack during the application process. Your application will not be processed without successful payment.</li>
+            <li><strong>Documentation:</strong> Applicants must be ready to provide necessary academic records and any other required documentation upon request by the Electoral Committee.</li>
+            <li><strong>Campaigning Guidelines:</strong>
+              <ul>
+                <li>Campaign activities are strictly limited to the official campaign period.</li>
+                <li>Defamation, hate speech, or any form of misconduct will lead to immediate disqualification.</li>
+                <li>Respectful and constructive engagement is expected from all candidates and their supporters.</li>
+              </ul>
+            </li>
+            <li><strong>Voter Eligibility:</strong> Only duly registered Nasels students with valid matriculation numbers will be eligible to vote.</li>
+            <li><strong>One Vote Per Person:</strong> Each eligible student is entitled to one vote per position. Attempting to vote multiple times will result in disqualification of all votes from that individual.</li>
+            <li><strong>Secrecy of Ballots:</strong> All votes cast are confidential and anonymous to ensure voter privacy.</li>
+            <li><strong>Electoral Committee Authority:</strong> The Nasels Electoral Committee's decisions on all matters pertaining to the elections are final.</li>
+            <li><strong>Dispute Resolution:</strong> Any disputes or grievances must be formally lodged with the Electoral Committee within 24 hours of the alleged incident.</li>
+          </ol>
+          <p>By participating in these elections, you agree to abide by these rules. We wish all applicants and voters a successful and democratic election.</p>
+        </div>
+      </section>
+
+      <section id="vote">
+        <h2>Available Positions</h2>
+        <div class="vote-grid">
+          <div class="vote-item">
+            <img src="https://placehold.co/120x120/2ECC71/fff?text=President" alt="Candidate for Executive President">
+            <h3>Executive President</h3>
+            <p>Lead the department and represent student interests.</p>
+            <p><strong>Fee:</strong> NGN 5,000</p>
+            <p><strong>CGPA:</strong> 3.5+</p>
+            <button class="btn apply-btn"
+                    data-position="Executive President"
+                    data-fee="500000">Apply Now</button>
+          </div>
+          <div class="vote-item">
+            <img src="https://placehold.co/120x120/1E3A2F/fff?text=VP" alt="Candidate for Vice President">
+            <h3>Vice President</h3>
+            <p>Support the President and oversee specific committees.</p>
+            <p><strong>Fee:</strong> NGN 3,000</p>
+            <p><strong>CGPA:</strong> 3.0+</p>
+            <button class="btn apply-btn"
+                    data-position="Vice President"
+                    data-fee="300000">Apply Now</button>
+          </div>
+          <div class="vote-item">
+            <img src="https://placehold.co/120x120/2ECC71/fff?text=Sec" alt="Candidate for General Secretary">
+            <h3>General Secretary</h3>
+            <p>Manage records, communication, and administrative tasks.</p>
+            <p><strong>Fee:</strong> NGN 2,500</p>
+            <p><strong>CGPA:</strong> 3.0+</p>
+            <button class="btn apply-btn"
+                    data-position="General Secretary"
+                    data-fee="250000">Apply Now</button>
+          </div>
+          <div class="vote-item">
+            <img src="https://placehold.co/120x120/1E3A2F/fff?text=Fin" alt="Candidate for Financial Secretary">
+            <h3>Financial Secretary</h3>
+            <p>Handle financial records and ensure transparency.</p>
+            <p><strong>Fee:</strong> NGN 2,000</p>
+            <p><strong>CGPA:</strong> 2.8+</p>
+            <button class="btn apply-btn"
+                    data-position="Financial Secretary"
+                    data-fee="200000">Apply Now</button>
+          </div>
+          <div class="vote-item">
+            <img src="https://placehold.co/120x120/2ECC71/fff?text=PRO" alt="Candidate for Public Relations Officer">
+            <h3>Public Relations Officer</h3>
+            <p>Manage public image and external communications.</p>
+            <p><strong>Fee:</strong> NGN 2,000</p>
+            <p><strong>CGPA:</strong> 2.8+</p>
+            <button class="btn apply-btn"
+                    data-position="Public Relations Officer"
+                    data-fee="200000">Apply Now</button>
+          </div>
+          <div class="vote-item">
+            <img src="https://placehold.co/120x120/1E3A2F/fff?text=Sport" alt="Candidate for Sports Director">
+            <h3>Sports Director</h3>
+            <p>Organize and oversee all sporting activities.</p>
+            <p><strong>Fee:</strong> NGN 2,000</p>
+            <p><strong>CGPA:</strong> 2.5+</p>
+            <button class="btn apply-btn"
+                    data-position="Sports Director"
+                    data-fee="200000">Apply Now</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Contact Us</h2>
+        <form action="https://formspree.io/f/xvgrypgb" method="post">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="_replyto" required>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Nasels Electorate Body. Designed for the future.</p>
+  </footer>
+
+  <button class="scroll-top" aria-label="Scroll to top">&#8679;</button>
+
+  <div class="modal" id="applyModal">
+    <div class="modal-content">
+      <button class="close">&times;</button>
+      <h3>Apply for <span id="modalPosition"></span></h3>
+      <label for="applicantName">Full Name</label>
+      <input type="text" id="applicantName" placeholder="Your Name" required>
+      <label for="applicantEmail">Email</label>
+      <input type="email" id="applicantEmail" placeholder="Your Email" required>
+      <label for="applicantMatric">Matric Number</label>
+      <input type="text" id="applicantMatric" placeholder="Matric Number" required>
+      <p class="fee-display">Application Fee: <span id="modalFee">NGN 0</span></p>
+      <button class="btn" id="paystackPayBtn">Pay & Apply</button>
+    </div>
+  </div>
+
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <script>
+    // Scroll to top button
+    const scrollBtn = document.querySelector('.scroll-top');
+    window.addEventListener('scroll', () => {
+      scrollBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
+    });
+    scrollBtn.onclick = () => window.scrollTo({top:0, behavior:'smooth'});
+
+    // Modal logic
+    const modal = document.getElementById('applyModal');
+    const modalPositionSpan = document.getElementById('modalPosition');
+    const modalFeeSpan = document.getElementById('modalFee');
+    const applicantNameInput = document.getElementById('applicantName');
+    const applicantEmailInput = document.getElementById('applicantEmail');
+    const applicantMatricInput = document.getElementById('applicantMatric');
+    const paystackPayBtn = document.getElementById('paystackPayBtn');
+
+    let currentPosition = '';
+    let currentFee = 0; // Stored in kobo (subunit of Naira)
+
+    document.querySelectorAll('.apply-btn').forEach(btn => {
+      btn.onclick = () => {
+        currentPosition = btn.dataset.position;
+        currentFee = parseInt(btn.dataset.fee); // Get fee in kobo
+        modalPositionSpan.textContent = currentPosition;
+        modalFeeSpan.textContent = `NGN ${new Intl.NumberFormat('en-NG').format(currentFee / 100)}`; // Display in Naira
+        modal.style.display = 'flex';
+      };
+    });
+
+    modal.querySelector('.close').onclick = () => {
+      modal.style.display = 'none';
+      // Clear form fields on close
+      applicantNameInput.value = '';
+      applicantEmailInput.value = '';
+      applicantMatricInput.value = '';
+    };
+    window.onclick = e => { if (e.target === modal) modal.style.display = 'none'; };
+
+    // Paystack Integration
+    paystackPayBtn.onclick = () => {
+      const name = applicantNameInput.value.trim();
+      const email = applicantEmailInput.value.trim();
+      const matric = applicantMatricInput.value.trim();
+
+      if (!name || !email || !matric) {
+        alert('Please fill in all application fields (Full Name, Email, Matric Number).');
+        return;
+      }
+
+      // --- IMPORTANT: Replace with your actual Paystack Public Key (pk_test_...) ---
+      // For testing, you can use a test key from your Paystack dashboard.
+      // For live, use your live public key.
+      const PAYSTACK_PUBLIC_KEY = 'pk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'; // Replace with your Public Key
+
+      let handler = PaystackPop.setup({
+        key: PAYSTACK_PUBLIC_KEY,
+        email: email, // Applicant's email
+        amount: currentFee, // Amount in kobo
+        ref: `${currentPosition.replace(/\s+/g, '')}-${matric}-${Date.now()}`, // Unique reference
+        metadata: {
+          full_name: name,
+          matric_number: matric,
+          position_applied: currentPosition,
+        },
+        onClose: function(){
+          alert('Payment window closed. Your application was not submitted.');
+        },
+        callback: function(response){
+          // This callback is fired once the payment is successful on Paystack's end.
+          // IMPORTANT: NEVER rely solely on client-side callbacks for payment verification.
+          // You MUST verify this transaction on your backend to prevent fraud.
+          const reference = response.reference;
+          alert('Payment successful! Reference: ' + reference + '. Your application has been submitted.');
+          console.log('Paystack response:', response);
+
+          // In a real application, you would send this 'reference' to your backend
+          // for verification and to actually record the application.
+          // Example:
+          /*
+          fetch('/api/verify-payment', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ reference: reference, position: currentPosition, name: name, matric: matric, email: email }),
+          })
+          .then(res => res.json())
+          .then(data => {
+            if (data.success) {
+              alert('Application confirmed and submitted successfully!');
+              modal.style.display = 'none';
+              applicantNameInput.value = '';
+              applicantEmailInput.value = '';
+              applicantMatricInput.value = '';
+            } else {
+              alert('Application submission failed after payment verification. Please contact support.');
+            }
+          })
+          .catch(error => {
+            console.error('Error verifying payment:', error);
+            alert('An error occurred during verification. Please contact support.');
+          });
+          */
+
+          // For this demo, we'll just close the modal and clear fields
+          modal.style.display = 'none';
+          applicantNameInput.value = '';
+          applicantEmailInput.value = '';
+          applicantMatricInput.value = '';
+        }
+      });
+      handler.openIframe();
+    };
+  </script>
+
+</body>
+</html>

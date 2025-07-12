@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MILO® Nigeria - Nourishing Energy for Champions</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    
+    <style>
+        /* General Body & Reset */
+        :root {
+            --primary-color: #007BFF; /* Example blue */
+            --secondary-color: #28a745; /* Example green */
+            --milo-green: #007A3E; /* A common MILO green */
+            --milo-brown: #5B3B2B; /* A common MILO brown */
+            --text-color: #333;
+            --light-gray: #f8f8f8;
+            --dark-gray: #555;
+            --border-color: #ddd;
+            --milo-yellow: #FFD700; /* For highlights */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif; /* Or your preferred font */
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #fff;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--milo-green);
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .btn-main {
+            display: inline-block;
+            background-color: var(--milo-green);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-main:hover {
+            background-color: var(--milo-brown);
+            text-decoration: none;
+        }
+
+        .btn-learn-more {
+            display: inline-block;
+            color: var(--milo-green);
+            font-weight: bold;
+            margin-top: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .btn-learn-more:hover {
+            color: var(--milo-brown);
+            text-decoration: underline;
+        }
+
+        /* Header Styling */
+        .main-header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .utility-nav ul, .auth-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .utility-nav a, .auth-links a {
+            color: var(--dark-gray);
+            font-size: 0.9em;
+        }
+
+        .header-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+        }
+
+        .logo img {
+            height: 50px; /* Adjust as needed */
+        }
+
+        .main-navigation ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        .main-navigation a {
+            color: var(--text-color);
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .main-navigation a:hover {
+            color: var(--milo-green);
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero-bg.jpg') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 100px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+
+        .hero-content h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+        }
+
+        .hero-categories {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .category-tag {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        /* Products Overview */
+        .products-overview {
+            padding: 60px 5%;
+            text-align: center;
+            background-color: var(--light-gray);
+        }
+
+        .products-overview h2 {
+            font-size: 2.5em;
+            color: var(--milo-brown);
+            margin-bottom: 30px;
+        }
+
+        .product-filters {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-button {
+            background-color: #fff;
+            color: var(--milo-green);
+            border: 1px solid var(--milo-green);
+            padding: 10px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .filter-button:hover,
+        .filter-button.active {
+            background-color: var(--milo-green);
+            color: #fff;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 25px;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .product-card img {
+            max-height: 180px; /* Adjust image height as needed */
+            object-fit: contain;
+            margin-bottom: 15px;
+            display: block; /* Remove extra space below image */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .product-card h3 {
+            font-size: 1.6em;
+            color: var(--milo-brown);
+            margin-bottom: 5px;
+        }
+
+        .product-card .product-time {
+            font-style: italic;
+            color: var(--dark-gray);
+            margin-bottom: 10px;
+        }
+
+        .product-card .product-description {
+            font-size: 0.95em;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            flex-grow: 1; /* Allows description to take up available space */
+        }
+
+
+        /* Key Ingredients */
+        .key-ingredients {
+            padding: 60px 5%;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .key-ingredients h2 {
+            font-size: 2.5em;
+            color: var(--milo-brown);
+            margin-bottom: 40px;
+        }
+
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto 40px auto;
+        }
+
+        .ingredient-item {
+            background-color: var(--light-gray);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .ingredient-item img {
+            max-height: 80px;
+            margin-bottom: 15px;
+        }
+
+        .ingredient-item h3 {
+            font-size: 1.5em;
+            color: var(--milo-green);
+            margin-bottom: 10px;
+        }
+
+        .ingredient-item p {
+            font-size: 0.95em;
+            color: var(--text-color);
+        }
+
+
+        /* Newsletter Signup */
+        .newsletter-signup {
+            background-color: var(--milo-green);
+            color: #fff;
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .newsletter-signup h2 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+        }
+
+        .newsletter-signup p {
+            font-size: 1.2em;
+            margin-bottom: 25px;
+        }
+
+        .newsletter-signup form {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap; /* For smaller screens */
+        }
+
+        .newsletter-signup input[type="email"] {
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: none;
+            width: 300px;
+            max-width: 90%;
+            font-size: 1em;
+            outline: none;
+        }
+
+        .newsletter-signup .btn-main {
+            background-color: var(--milo-yellow);
+            color: var(--milo-brown);
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .newsletter-signup .btn-main:hover {
+            background-color: #e6c200; /* Slightly darker yellow */
+        }
+
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--milo-brown);
+            color: #fff;
+            padding: 40px 5% 20px 5%;
+        }
+
+        .footer-links-group {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-nav ul {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-nav a {
+            color: #fff;
+            font-size: 0.95em;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: var(--milo-yellow);
+            text-decoration: underline;
+        }
+
+        .connect-with-us {
+            text-align: right;
+        }
+
+        .connect-with-us h4 {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: var(--milo-yellow);
+        }
+
+        .social-icons img {
+            height: 30px;
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.1);
+        }
+
+        .btn-ask-expert {
+            display: inline-block;
+            background-color: var(--milo-green);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-ask-expert:hover {
+            background-color: #006633; /* Slightly darker green */
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .legal-nav ul {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .legal-nav a {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85em;
+        }
+
+        .legal-nav a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .copyright {
+            font-size: 0.85em;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Basic Responsiveness */
+        @media (max-width: 1024px) {
+            .main-navigation ul {
+                gap: 20px;
+            }
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .header-main {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            .main-navigation ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            .hero-content h1 {
+                font-size: 2em;
+            }
+            .hero-content p {
+                font-size: 1.2em;
+            }
+            .product-grid, .ingredients-grid {
+                grid-template-columns: 1fr; /* Stack on small screens */
+            }
+            .footer-links-group {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-nav ul {
+                align-items: center;
+            }
+            .connect-with-us {
+                text-align: center;
+            }
+            .social-icons img {
+                margin: 0 5px;
+            }
+            .btn-ask-expert {
+                margin-left: 0; /* Adjust for centering */
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            .legal-nav ul {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                padding: 60px 5%;
+            }
+            .hero-content h1 {
+                font-size: 1.8em;
+            }
+            .products-overview h2, .key-ingredients h2, .newsletter-signup h2 {
+                font-size: 2em;
+            }
+            .newsletter-signup form {
+                flex-direction: column;
+                align-items: center;
+            }
+            .newsletter-signup input[type="email"] {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-top">
+            <nav class="utility-nav">
+                <ul>
+                    <li><a href="#about">About MILO®</a></li>
+                    <li><a href="#faq">Frequently Asked Questions</a></li>
+                    <li><a href="#articles">Articles</a></li>
+                </ul>
+            </nav>
+            <div class="auth-links">
+                <a href="#login">Login / Register</a>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/milo-logo.png" alt="MILO® Logo">
+                </a>
+            </div>
+            <nav class="main-navigation">
+                <ul>
+                    <li><a href="#explore-products">Explore Products</a></li>
+                    <li><a href="#milo-nutrition">Milo & Nutrition</a></li>
+                    <li><a href="#recipes">Discover Recipes</a></li>
+                    <li><a href="#sports">Success Through Sports</a></li>
+                    <li><a href="#latest">LATEST FROM MILO</a></li>
+                    <li><a href="#sustainability">Sustainability</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>ENERGIZE YOUR KIDS WITH THE NOURISHING ENERGY</h1>
+                <p>MILO®: Fueling Nigerian Kids with Nourishing Energy for Over 60 Years.</p>
+                <div class="hero-categories">
+                    <span class="category-tag">Breakfast</span>
+                    <span class="category-tag">Lunch</span>
+                    <span class="category-tag">Through the day</span>
+                    <span class="category-tag">Snack</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="products-overview" id="explore-products">
+            <h2>5 products to explore:</h2>
+            <div class="product-filters">
+                <button class="filter-button active" data-category="all">See All</button>
+                <button class="filter-button" data-category="powder">Powder</button>
+                <button class="filter-button" data-category="ready-to-drink">Ready To Drink</button>
+                <button class="filter-button" data-category="snack">Snack</button>
+            </div>
+
+            <div class="product-grid">
+                <div class="product-card" data-category="powder">
+                    <img src="images/milo-original.png" alt="MILO® Original">
+                    <h3>MILO® Original</h3>
+                    <p class="product-time">Breakfast</p>
+                    <p class="product-description">Kickstart their day with our nourishing energy beverage that has been a trusted companion for moms and kids in Nigeria for the past 60 years...</p>
+                    <a href="#" class="btn-learn-more">Learn More</a>
+                </div>
+
+                <div class="product-card" data-category="powder">
+                    <img src="images/milo-3in1.png" alt="MILO® 3 in 1">
+                    <h3>MILO® 3 in 1</h3>
+                    <p class="product-time">Breakfast</p>
+                    <p class="product-description">Enjoy the complete and affordable nourishing energy beverage, enriched with the goodness of malt, loaded with milk and cocoa...</p>
+                    <a href="#" class="btn-learn-more">Learn More</a>
+                </div>
+
+                <div class="product-card" data-category="ready-to-drink">
+                    <img src="images/milo-drink.png" alt="MILO® Drink">
+                    <h3>MILO® Drink</h3>
+                    <p class="product-time">Lunchtime</p>
+                    <p class="product-description">Elevate your kids' lunch box with the nourishing energy drink, made with the unique combination of malt, milk, and cocoa...</p>
+                    <a href="#" class="btn-learn-more">Learn More</a>
+                </div>
+
+                <div class="product-card" data-category="snack">
+                    <img src="images/milo-enersnakz.png" alt="MILO® Enersnakz">
+                    <h3>MILO® Enersnakz</h3>
+                    <p class="product-time">Lunchtime</p>
+                    <p class="product-description">Refuel your kids with our nutritious energy snack at halftime as they regroup in the locker room to catch their breath...</p>
+                    <a href="#" class="btn-learn-more">Learn More</a>
+                </div>
+
+                <div class="product-card" data-category="snack">
+                    <img src="images/milo-energy-cubes.png" alt="MILO® Energy Cubes">
+                    <h3>MILO® Energy Cubes</h3>
+                    <p class="product-time">Through the Day</p>
+                    <p class="product-description">Unleash nourishing energy anytime, anywhere with our energy cubes. Made from the perfect blend of malt, milk, and cocoa...</p>
+                    <a href="#" class="btn-learn-more">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="key-ingredients">
+            <h2>3 Key Ingredients of MILO®</h2>
+            <div class="ingredients-grid">
+                <div class="ingredient-item">
+                    <img src="images/malt-icon.png" alt="Malt Icon">
+                    <h3>Malt</h3>
+                    <p>Malt is a nourishing source of energy. Nestle uses a unique extraction process to capture all the natural goodness from Sorghum malt in the production of MILO®.</p>
+                </div>
+                <div class="ingredient-item">
+                    <img src="images/milk-icon.png" alt="Milk Icon">
+                    <h3>Milk</h3>
+                    <p>Milk gives MILO® its creamy taste. It also provides protein and calcium that is important for kid's growth.​</p>
+                </div>
+                <div class="ingredient-item">
+                    <img src="images/cocoa-icon.png" alt="Cocoa Icon">
+                    <h3>Cocoa</h3>
+                    <p>This key ingredient gives MILO® its unique and beloved chocolatey taste.</p>
+                </div>
+            </div>
+            <a href="#goodness-of-milo" class="btn-main">Learn more on Goodness of MILO®</a>
+        </section>
+
+        <section class="newsletter-signup">
+            <h2>Sign Up & Never Miss A Great Promo!</h2>
+            <p>Create MILO Account</p>
+            <form action="#" method="POST">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit" class="btn-main">Subscribe</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-links-group">
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="#explore-products">Explore Products</a></li>
+                    <li><a href="#milo-nutrition">MILO® & Nutrition</a></li>
+                    <li><a href="#recipes">Discover Recipes</a></li>
+                    <li><a href="#sports">Success Through Sports</a></li>
+                    <li><a href="#about">About MILO®</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="#faq">Frequently Asked Questions</a></li>
+                    <li><a href="#articles">Articles</a></li>
+                </ul>
+            </nav>
+            <div class="connect-with-us">
+                <h4>CONNECT WITH US</h4>
+                <div class="social-icons">
+                    <a href="#"><img src="images/facebook-icon.png" alt="Facebook"></a>
+                    <a href="#"><img src="images/twitter-icon.png" alt="Twitter"></a>
+                    <a href="#"><img src="images/instagram-icon.png" alt="Instagram"></a>
+                </div>
+                <a href="#ask-expert" class="btn-ask-expert">Ask an expert</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <nav class="legal-nav">
+                <ul>
+                    <li><a href="#terms">TERMS OF USE</a></li>
+                    <li><a href="#cookies">Cookies POLICY</a></li>
+                    <li><a href="#privacy">PRIVACY POLICY</a></li>
+                    <li><a href="#sitemap">Sitemap</a></li>
+                </ul>
+            </nav>
+            <p class="copyright">Copyright 2024 © Nestlé. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Product Filtering Logic
+            const filterButtons = document.querySelectorAll('.filter-button');
+            const productCards = document.querySelectorAll('.product-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to the clicked button
+                    button.classList.add('active');
+
+                    const category = button.dataset.category; // Get the category from data-category attribute
+
+                    productCards.forEach(card => {
+                        const cardCategory = card.dataset.category;
+
+                        if (category === 'all' || cardCategory === category) {
+                            card.style.display = 'flex'; // Show the card
+                        } else {
+                            card.style.display = 'none'; // Hide the card
+                        }
+                    });
+                });
+            });
+
+            // Example: Smooth scrolling for internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

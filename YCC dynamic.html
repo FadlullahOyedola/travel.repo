@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Young Changemakers Club</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /*
+         * This CSS is written with SCSS/Sass concepts in mind (variables, nesting, mixins).
+         * In a real project, this would be compiled from .scss files.
+         */
+
+        /* Variables */
+        :root {
+            --color-primary-green: #22c55e; /* Tailwind green-600 */
+            --color-dark-green: #16a34a;    /* Tailwind green-700 */
+            --color-emerald-green: #059669; /* Tailwind emerald-600 */
+            --color-light-green-bg: #ecfdf5; /* Tailwind green-50 */
+            --color-accent-gold: #D4AF37;
+            --color-text-gray: #374151;     /* Tailwind gray-800 */
+            --color-white: #ffffff;
+            --color-light-gray: #f9f9f9;
+            --color-border-gray: #e5e7eb;
+            --color-hover-green: #45a049;
+            --color-shadow-base: rgba(0, 0, 0, 0.1);
+            --color-shadow-light: rgba(0, 0, 0, 0.06);
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: linear-gradient(to bottom right, var(--color-light-green-bg), #d1fae5); /* Matching Tailwind gradient */
+            color: var(--color-text-gray);
+            padding: 1rem; /* p-4 */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Custom Logo Styles (retaining original distinctiveness) */
+        .logo-container {
+            display: inline-block;
+            margin-bottom: 1rem; /* mb-4 */
+        }
+        .logo-container .text-top,
+        .logo-container .text-middle,
+        .logo-container .text-bottom {
+            line-height: 1;
+            color: var(--color-accent-gold);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle text shadow for depth */
+        }
+        .logo-container .text-top {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em; /* Adjusted from 3em */
+            font-weight: 700;
+            margin-bottom: -0.1em;
+            text-transform: uppercase;
+        }
+        .logo-container .text-middle {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4em; /* Adjusted from 5em */
+            font-weight: normal;
+            margin-top: 0;
+            margin-bottom: -0.15em;
+        }
+        .logo-container .text-bottom {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em; /* Adjusted from 3.5em */
+            font-weight: 700;
+            margin-top: 0;
+            text-transform: uppercase;
+        }
+
+        /* Header Specific Styles */
+        header {
+            background-image: linear-gradient(to right, var(--color-dark-green), var(--color-emerald-green));
+            text-align: center;
+            padding: 2rem 3rem; /* p-8 md:p-12 lg:p-16 */
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+            width: 100%;
+            max-width: 80rem; /* max-w-5xl, using larger value for more impact */
+            margin-bottom: 1.5rem; /* mb-6 */
+        }
+        header h1 {
+            font-size: 2.25rem; /* text-4xl */
+            line-height: 1.25;
+            margin-bottom: 0.75rem; /* mb-3 */
+        }
+        header p {
+            font-size: 1.25rem; /* text-xl */
+            opacity: 0.9;
+            margin-bottom: 1.5rem; /* mb-6 */
+        }
+        .header-button {
+            display: inline-block;
+            margin-top: 1rem; /* mt-4 */
+            padding: 0.75rem 2rem; /* px-8 py-3 */
+            background-color: #6ee7b7; /* green-400 */
+            color: #10b981; /* green-900 */
+            font-weight: 700;
+            font-size: 1.125rem; /* text-lg */
+            border-radius: 9999px; /* rounded-full */
+            box-shadow: 0 4px 6px -1px var(--color-shadow-base), 0 2px 4px -1px var(--color-shadow-light); /* shadow-md */
+            transform: scale(1);
+            transition: all 0.3s ease-in-out;
+            text-decoration: none;
+        }
+        .header-button:hover {
+            background-color: #a7f3d0; /* green-300 */
+            transform: scale(1.05);
+        }
+        .header-button:active {
+            transform: scale(0.95);
+        }
+
+        /* Main Content Grid */
+        main {
+            display: grid;
+            grid-template-columns: 1fr; /* Single column on small screens */
+            gap: 1.5rem; /* gap-6 */
+            width: 100%;
+            max-width: 80rem; /* max-w-5xl */
+            flex-grow: 1; /* Allows main to take available vertical space */
+        }
+
+        @media (min-width: 768px) { /* md breakpoint */
+            main {
+                grid-template-columns: repeat(2, 1fr); /* Two columns on larger screens */
+            }
+            main section:nth-of-type(3), /* What Our Members Say */
+            main section:nth-of-type(4), /* FAQ */
+            main section:nth-of-type(5), /* Donation Accounts */
+            main section:nth-of-type(6) { /* Contact Us */
+                grid-column: span 2; /* These sections span both columns */
+            }
+        }
+
+        /* Section Card Styles (mixin concept) */
+        main section {
+            background-color: var(--color-white);
+            padding: 1.5rem; /* p-6 */
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 1px 3px 0 var(--color-shadow-base), 0 1px 2px 0 var(--color-shadow-light); /* shadow-lg */
+            transition: all 0.3s ease-in-out;
+            transform: scale(1); /* Initial state for transition */
+        }
+        main section:hover {
+            box-shadow: 0 10px 15px -3px var(--color-shadow-base), 0 4px 6px -2px var(--color-shadow-light); /* hover:shadow-xl */
+            transform: translateY(-5px); /* Lift effect */
+        }
+
+        /* Headings within sections */
+        h2 {
+            font-size: 1.875rem; /* text-3xl */
+            font-weight: 700;
+            color: var(--color-dark-green);
+            margin-bottom: 1rem; /* mb-4 */
+            display: flex;
+            align-items: center;
+        }
+        h2.justify-center { /* For centered headings */
+             justify-content: center;
+        }
+        h3 {
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 600;
+            color: var(--color-dark-green);
+            margin-bottom: 0.75rem; /* mb-3 */
+        }
+
+        /* What We Do - Image Grid */
+        .activity-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsive grid for images */
+            gap: 1rem; /* gap-4 */
+            margin-top: 1.5rem; /* mt-6 */
+        }
+        .activity-images img {
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 1px 3px 0 var(--color-shadow-base); /* shadow-md */
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* Testimonial Cards */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem; /* gap-6 */
+        }
+        @media (min-width: 768px) {
+            .testimonial-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .testimonial-card {
+            background-color: #ecfdf5; /* green-50 */
+            padding: 1.25rem; /* p-5 */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06); /* shadow-inner */
+            border: 1px solid #d1fae5; /* green-200 */
+        }
+        .testimonial-card p {
+            font-style: italic;
+            color: #4b5563; /* gray-700 */
+            margin-bottom: 0.75rem; /* mb-3 */
+        }
+        .testimonial-card .author {
+            font-weight: 600;
+            text-align: right;
+            color: #166534; /* green-800 */
+        }
+
+        /* Accordion (FAQ) Custom Styles */
+        .accordion-item {
+            background-color: #f0fdf4; /* green-100 */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+            overflow: hidden; /* Important for content transition */
+        }
+
+        .accordion-item input[type="checkbox"] {
+            display: none; /* Hide the default checkbox */
+        }
+
+        .accordion-item label {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background-color: #e6f4e6; /* Lighter green for item headers */
+            border-radius: 0.5rem; /* Apply to top corners */
+            transition: background-color 0.2s ease;
+            font-size: 1.125rem; /* text-lg */
+            font-weight: 600;
+            color: var(--color-dark-green);
+        }
+
+        .accordion-item label:hover {
+            background-color: #d8ead8; /* Slightly darker on hover */
+        }
+
+        .accordion-item label::after {
+            content: '+'; /* Plus sign for closed state */
+            font-weight: bold;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            color: var(--color-dark-green); /* Ensure consistent color */
+        }
+
+        .accordion-item input[type="checkbox"]:checked + label::after {
+            content: '-'; /* Minus sign for open state */
+            transform: rotate(0deg); /* No rotation, just content change for '-' */
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            padding: 0 1rem; /* Initial padding, vertical will be added on open */
+            background-color: var(--color-light-gray); /* Off-white for content area */
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+        }
+
+        .accordion-item input[type="checkbox"]:checked ~ .accordion-content {
+            max-height: 200px; /* Adjust as needed based on max content, could be higher for longer answers */
+            padding: 1rem; /* Full padding when open */
+        }
+        .accordion-content p {
+            padding-bottom: 0.5rem; /* Space below paragraph within content */
+            color: #4b5563; /* gray-700 */
+        }
+
+
+        /* Donation Accounts Section */
+        .donation-section {
+            padding-bottom: 1rem; /* mb-6 equivalent */
+            border-bottom: 1px solid var(--color-border-gray); /* border-b border-gray-200 */
+            text-align: center;
+        }
+        .donation-section ul {
+            list-style: none; /* Remove default list bullets */
+            padding-left: 0;
+            margin: 0 auto; /* Center the list */
+            max-width: fit-content; /* Shrink to content width */
+        }
+        .donation-section ul li {
+            margin-bottom: 0.5rem; /* space-y-2 */
+            text-align: left;
+            display: flex;
+            align-items: center; /* Align text and button */
+            flex-wrap: wrap; /* Allow wrapping for account number line */
+        }
+        .account-number-display {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; /* font-mono */
+            background-color: #f3f4f6; /* gray-100 */
+            padding: 0.25rem 0.75rem; /* px-3 py-1 */
+            border-radius: 0.375rem; /* rounded-md */
+            color: #4b5563; /* gray-700 */
+            user-select: all; /* select-all */
+            margin-left: 0.5rem; /* ml-2 */
+            display: inline-block; /* Ensure it respects padding/margin correctly */
+        }
+        .copy-button {
+            margin-left: 0.75rem; /* ml-3 */
+            padding: 0.5rem 1rem; /* px-4 py-2 */
+            background-color: var(--color-primary-green); /* green-600 */
+            color: var(--color-white);
+            border-radius: 0.375rem; /* rounded-md */
+            box-shadow: 0 1px 2px 0 var(--color-shadow-base); /* shadow-sm */
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            outline: none;
+            cursor: pointer;
+            border: none;
+        }
+        .copy-button:hover {
+            background-color: var(--color-dark-green); /* hover:bg-green-700 */
+            transform: translateY(-1px);
+        }
+        .copy-button:focus {
+            ring: 2px var(--color-primary-green); /* focus:ring-2 focus:ring-green-500 */
+            ring-opacity: 0.5; /* focus:ring-opacity-50 */
+        }
+        .tel-link {
+            color: #2563eb; /* blue-600 */
+            text-decoration: none;
+        }
+        .tel-link:hover {
+            text-decoration: underline;
+        }
+
+        .donate-card-button {
+            display: inline-block;
+            margin-top: 0.5rem; /* mt-2 */
+            padding: 0.75rem 2rem; /* px-8 py-3 */
+            background-image: linear-gradient(to right, #0d9488, #10b981); /* from-teal-600 to-emerald-500 */
+            color: var(--color-white);
+            font-weight: 700;
+            font-size: 1.125rem; /* text-lg */
+            border-radius: 9999px; /* rounded-full */
+            box-shadow: 0 4px 6px -1px var(--color-shadow-base), 0 2px 4px -1px var(--color-shadow-light); /* shadow-md */
+            transform: scale(1);
+            transition: all 0.3s ease-in-out;
+            text-decoration: none;
+        }
+        .donate-card-button:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1); /* Slightly brighten on hover */
+        }
+        .donate-card-button:active {
+            transform: scale(0.95);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem; /* space-y-4 */
+            max-width: 32rem; /* max-w-lg */
+            margin: 0 auto; /* mx-auto */
+        }
+        .contact-form input,
+        .contact-form textarea {
+            padding: 0.75rem; /* p-3 */
+            border: 1px solid #d1d5db; /* border-gray-300 */
+            border-radius: 0.5rem; /* rounded-lg */
+            font-size: 1rem; /* text-base */
+            transition: all 0.2s ease;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            ring: 2px var(--color-primary-green); /* focus:ring-2 focus:ring-green-500 */
+            border-color: transparent; /* focus:border-transparent */
+        }
+        .contact-form button[type="submit"] {
+            padding: 0.75rem; /* p-3 */
+            background-color: var(--color-dark-green); /* green-700 */
+            color: var(--color-white);
+            font-weight: 700;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px var(--color-shadow-base); /* shadow-md */
+            transition: background-color 0.2s ease;
+            font-size: 1.125rem; /* text-lg */
+            cursor: pointer;
+            border: none;
+        }
+        .contact-form button[type="submit"]:hover {
+            background-color: #14532d; /* green-800 */
+        }
+        .contact-form button[type="submit"]:focus {
+            outline: none;
+            ring: 2px var(--color-primary-green); /* focus:ring-2 focus:ring-green-500 */
+            ring-opacity: 0.75; /* focus:ring-opacity-75 */
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            color: #4b5563; /* gray-600 */
+            font-size: 0.875rem; /* text-sm md:text-base */
+            margin-top: 2rem; /* mt-8 */
+            padding: 1rem 0; /* py-4 */
+            width: 100%;
+            max-width: 80rem; /* max-w-5xl */
+        }
+
+        /* Message Box */
+        #messageBox {
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100%);
+            top: 1rem; /* top-4 */
+            width: 90%; /* w-11/12 */
+            max-width: 30rem; /* Adjusted for better appearance on larger screens */
+            background-color: var(--color-primary-green);
+            color: var(--color-white);
+            text-align: center;
+            padding: 0.75rem 1.5rem; /* py-3 px-6 */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+            transition: all 0.4s ease-out;
+            opacity: 0;
+            z-index: 50;
+        }
+        #messageBox.opacity-100 {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Back-to-Top Button styles */
+        #backToTopBtn {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed position */
+            bottom: 20px; /* Place at the bottom */
+            right: 20px; /* Place at the right */
+            z-index: 99; /* Ensure it's on top */
+            font-size: 24px; /* Large icon */
+            border: none; /* No border */
+            outline: none; /* No outline */
+            background-color: var(--color-primary-green); /* Green background */
+            color: var(--color-white); /* White text */
+            cursor: pointer; /* Pointer cursor on hover */
+            padding: 15px 20px; /* Some padding */
+            border-radius: 50%; /* Circular shape */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        #backToTopBtn:hover {
+            background-color: var(--color-hover-green); /* Darker green on hover */
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body class="p-4 min-h-screen flex flex-col items-center">
+
+    <div id="messageBox" class="fixed inset-x-0 top-4 mx-auto w-11/12 sm:w-1/2 md:w-1/3 lg:w-1/4" role="alert">
+        Account number copied to clipboard!
+    </div>
+
+    <header>
+        <div class="logo-container">
+            <p class="text-top">THE</p>
+            <p class="text-middle">Young Changemakers</p>
+            <p class="text-bottom">CLUB</p>
+        </div>
+        <h1 class="text-white">
+            Empowering the Next Generation of Student Leaders <span class="text-green-300">💚</span>
+        </h1>
+        <p class="text-white">
+            Join the movement!🤝
+        </p>
+        <a
+            class="header-button"
+            href="https://chat.whatsapp.com/KpjVQU23Hs4DXxL7azwxuO"
+            target="_blank"
+        >
+            Join Our WhatsApp Group <span class="ml-1">🚀</span>
+        </a>
+    </header>
+
+    <main>
+        <section>
+            <h2 class="text-green-700">
+                Our Mission <span class="ml-3 text-yellow-500 text-3xl">💡</span>
+            </h2>
+            <p class="text-base md:text-lg leading-relaxed">
+                We empower Naselsites to become agents of change. From supporting
+                local orphanages to advocating for social justice, our club is
+                dedicated to making a difference.
+            </p>
+        </section>
+
+        <section>
+            <h2 class="text-green-700">
+                What We Do <span class="ml-3 text-blue-500 text-3xl">💪🧩</span>
+            </h2>
+            <ul class="list-disc list-inside text-base md:text-lg space-y-2 mb-6">
+                <li>Organize donations and volunteer events</li>
+                <li>Support local causes and encourage younger generations</li>
+                <li>Develop leadership and advocacy skills</li>
+                <li>Foster a community of like-minded young changemakers</li>
+            </ul>
+            <div class="activity-images">
+                <img src="https://via.placeholder.com/150/4CAF50/FFFFFF?text=Activity+1" alt="Club members volunteering" class="">
+                <img src="https://via.placeholder.com/150/4CAF50/FFFFFF?text=Activity+2" alt="Youth leadership workshop" class="">
+                <img src="https://via.placeholder.com/150/4CAF50/FFFFFF?text=Activity+3" alt="Community outreach" class="">
+                <img src="https://via.placeholder.com/150/4CAF50/FFFFFF?text=Activity+4" alt="Advocacy campaign" class="">
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-green-700 justify-center">
+                What Our Members Say <span class="ml-3 text-indigo-500 text-3xl">💬</span>
+            </h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"Joining YCC has been a life-changing experience. I've learned so much about leadership and how to truly make an impact!"</p>
+                    <p class="author">- Aisha K., Member</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The projects we work on are so rewarding. It's inspiring to see how much we can achieve together."</p>
+                    <p class="author">- Emeka J., Member</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"YCC gave me the confidence to speak up for what's right and the tools to organize effective campaigns."</p>
+                    <p class="author">- David O., Member</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"A fantastic community where every idea is valued and turned into action. Highly recommend!"</p>
+                    <p class="author">- Fatima L., Member</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-green-700 justify-center">
+                Frequently Asked Questions <span class="ml-3 text-orange-500 text-3xl">❓</span>
+            </h2>
+            <div class="space-y-4">
+                <div class="accordion-item">
+                    <input type="checkbox" id="faq1">
+                    <label for="faq1">
+                        Who can join the Young Changemakers Club?
+                    </label>
+                    <div class="accordion-content">
+                        <p>The Young Changemakers Club is open to all students passionate about community service and leadership development. We welcome students from all academic backgrounds and levels.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <input type="checkbox" id="faq2">
+                    <label for="faq2">
+                        What kind of activities does the club organize?
+                    </label>
+                    <div class="accordion-content">
+                        <p>We organize a wide range of activities including donation drives, volunteer events at local orphanages and community centers, workshops on leadership and advocacy, and social justice campaigns. We also hold regular meetings for planning and discussion.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <input type="checkbox" id="faq3">
+                    <label for="faq3">
+                        How can I contribute if I'm not a student?
+                    </label>
+                    <div class="accordion-content">
+                        <p>While our core members are students, we welcome support from the wider community! You can contribute through financial donations via our donation accounts, by volunteering your time, or by offering expertise for our workshops. Please reach out via our contact form!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-green-700 justify-center">
+                Donation Accounts <span class="ml-3 text-yellow-600 text-3xl">💰</span>
+            </h2>
+            <p class="text-center text-base md:text-lg mb-4">
+                If you'd like to support our initiatives, you can donate using these methods:
+            </p>
+
+            <div class="donation-section">
+                <h3 class="text-green-800">Bank Transfer / Mobile Money</h3>
+                <ul>
+                    <li><strong>Bank Name:</strong> Palmpay</li>
+                    <li><strong>Account Name:</strong> Fadlullah Oyedola Mayokun</li>
+                    <li>
+                        <strong>Account Number:</strong>
+                        <span id="accountNumber" class="account-number-display">8103104787</span>
+                        <button class="copy-button" onclick="copyAccountNumber()">Copy</button>
+                    </li>
+                    <li>
+                        <strong>Mobile Number:</strong>
+                        <a href="tel:+2348103104787" class="tel-link">+234 810 310 4787</a>
+                    </li>
+                </ul>
+                <p class="mt-4 text-sm md:text-base italic text-gray-600">
+                    Please use your full name as reference and send us a message via
+                    the contact form after donating.
+                </p>
+            </div>
+
+            <div class="text-center mt-6">
+                <h3 class="text-green-800">Credit/Debit Card Payment</h3>
+                <p class="text-base md:text-lg mb-4">
+                    You can also donate instantly with your card, bank transfer or USSD by clicking
+                    the button below:
+                </p>
+                <a
+                    href="https://paystack.shop/pay/ctem64klra"
+                    target="_blank"
+                    class="donate-card-button"
+                >
+                    Donate with Card, Transfer, or USSD <span class="ml-2">💳</span>
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-green-700 justify-center">
+                Contact Us <span class="ml-3 text-purple-600 text-3xl">📬</span>
+            </h2>
+            <p class="text-center text-base md:text-lg mb-6">Have questions or ideas? We'd love to hear from you!</p>
+            <form action="https://formspree.io/f/xrbkajpl" method="POST" class="contact-form">
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    required
+                />
+                <input
+                    type="email"
+                    name="_replyto"
+                    placeholder="Your Email"
+                    required
+                />
+                <textarea
+                    name="message"
+                    rows="5"
+                    placeholder="Your Message"
+                    required
+                ></textarea>
+                <button
+                    type="submit"
+                >
+                    Send Message
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Young Changemakers Club. All rights reserved.</p>
+    </footer>
+
+    <button onclick="topFunction()" id="backToTopBtn" title="Go to top">▲</button>
+
+    <script>
+        // JavaScript for Message Box (Copied from your original code)
+        function showMessageBox(message) {
+            const msgBox = document.getElementById('messageBox');
+            msgBox.textContent = message;
+            msgBox.classList.remove('opacity-0', '-translate-y-full');
+            msgBox.classList.add('opacity-100', 'translate-y-0');
+
+            setTimeout(() => {
+                msgBox.classList.remove('opacity-100', 'translate-y-0');
+                msgBox.classList.add('opacity-0', '-translate-y-full');
+            }, 3000); // Hide after 3 seconds
+        }
+
+        function copyAccountNumber() {
+            const accNum = document.getElementById('accountNumber').textContent;
+            // Using navigator.clipboard.writeText for modern browsers, fallback for older
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(accNum)
+                    .then(() => {
+                        showMessageBox('Account number copied to clipboard!');
+                    })
+                    .catch(err => {
+                        console.error('Failed to copy text using Clipboard API:', err);
+                        // Fallback to old method if Clipboard API fails (e.g., due to permissions)
+                        const tempInput = document.createElement('textarea');
+                        tempInput.value = accNum;
+                        document.body.appendChild(tempInput);
+                        tempInput.select();
+                        try {
+                            document.execCommand('copy');
+                            showMessageBox('Account number copied to clipboard!');
+                        } catch (err2) {
+                            console.error('Failed to copy text with execCommand:', err2);
+                            showMessageBox('Failed to copy account number.');
+                        } finally {
+                            document.body.removeChild(tempInput);
+                        }
+                    });
+            } else {
+                // Fallback for very old browsers (or if Clipboard API is not available)
+                const tempInput = document.createElement('textarea');
+                tempInput.value = accNum;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                try {
+                    document.execCommand('copy');
+                    showMessageBox('Account number copied to clipboard!');
+                } catch (err) {
+                    console.error('Failed to copy text with execCommand:', err);
+                    showMessageBox('Failed to copy account number.');
+                } finally {
+                    document.body.removeChild(tempInput);
+                }
+            }
+        }
+
+
+        // JavaScript for Back-to-Top Button
+        // Get the button
+        const backToTopBtn = document.getElementById("backToTopBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+
+        // JavaScript for Accordion (FAQ)
+        document.querySelectorAll('.accordion-item input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', (event) => {
+                // Close all other open accordions when one is opened
+                if (event.target.checked) {
+                    document.querySelectorAll('.accordion-item input[type="checkbox"]').forEach(otherCheckbox => {
+                        if (otherCheckbox !== event.target && otherCheckbox.checked) {
+                            otherCheckbox.checked = false;
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

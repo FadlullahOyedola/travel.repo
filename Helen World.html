@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial scale-1.0">
+        <title>Helen Photograpgy World</title>
+        <link rel="icon" href="c:\Users\HP\Downloads\Black and White Illustration Photography Logo.png">
+        <style>
+            body{
+                font-family: sans-serif;
+                color: #333;
+                padding: 0;
+                margin: 0;
+                line-height: 1.6;
+                background-color: #f4f4f4;
+            }
+
+            header{
+                  background:linear-gradient(rgba(0,0,0,0.4)), url(https://studiozero-wedding.jp/en/kobe/img/gallery/azur/zoom/002.jpg);
+                padding: 1em 0;
+                color: #fff;
+            }
+             header .container{
+                margin-left: 10px;
+                font-size: 2em;
+                font-weight: bold;
+             }
+
+             nav{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+             }
+
+             nav ul{
+                padding: 0;
+                margin: 0;
+                list-style: none;
+                display: flex;
+             }
+
+             nav ul li {
+                margin-left: 20px;
+             }
+
+             nav ul li a{
+                text-decoration: none;
+                color: #fff;
+             }
+
+             nav ul li.cta a{
+                padding: 0.8em 0.5em;
+                background-color: #f9a825;
+                color: #fff;
+                border-radius: 5px;
+                outline: none;
+             }
+             
+             .hero{
+                text-align: center;
+                background-size: cover;
+                padding: 80px 20px;
+                color: #fff;
+             }
+
+             .hero h2{
+                font-size: 3em;
+                margin-bottom: 10px;
+             }
+
+             .hero p{
+                margin-bottom: 20px;
+                font-size: 1.5em;
+             }
+
+ .button {
+    display: inline-block;
+    background-color: #f9a825;
+    color: #fff;
+    padding: 1em 2em;
+    text-decoration: none;
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 10px;
+}
+             .photos{
+                text-align: center;
+                padding: 40px 20px;
+             }
+
+             .photos-h2{
+                margin-bottom: 20px;
+                font-size: 2em;
+             }
+             .photos-grid{
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+             }
+
+             .photos-item{
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+                overflow: hidden;
+             }
+
+             .photos-item img{
+                width: 100%;
+                display: block;
+                max-height: 200px; /* Optional: set a maximum height */
+                height: auto; /* Maintain aspect ratio */
+                object-fit: cover; /* Ensure image covers the area without distortion */
+             }
+
+             .amenities{
+                padding: 40px 20px;
+                text-align: center;
+                background-color: #eee;
+             }
+
+             .amenities h2{
+                font-size: 2em;
+                margin-bottom: 20px;
+             }
+
+             .amenities ul{
+                display: flex;
+                flex-wrap: wrap;
+                padding: 0;
+                justify-content: center;
+                margin: 0;
+                list-style: none;
+                gap: 20px;
+             }
+
+             .amenities ul li{
+                background-color: #fff;
+                padding: 15px 15px;
+                border-radius: 5px;
+                box-shadow: rgba(0, 0, 0, 0.05);
+             }
+             
+             .contact {
+                padding: 40px 20px;
+                text-align: center;
+             }
+
+             .contact h2{
+                font-size: 2em;
+                text-align: center;
+                margin-bottom: 20px;
+             }
+
+             .contact p{
+                margin-bottom: 20px;
+                color: #777;
+             }
+
+             .contact i{
+                margin-bottom: 10px;
+             }
+
+             .contact input[type='text'],
+             .contact input[type='email'],
+             .contact textarea{
+                padding: 10px;
+                font-size: 1em;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+             }
+
+             .contact form{
+                max-width: 500px;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                margin: 0 auto;
+             }
+
+             .specialization{
+                padding: 40px 20px;
+                text-align: center;
+                background-color: #eee;
+             }
+
+             .specialization h2{
+                font-size: 2em;
+                margin-bottom: 20px;
+             }
+
+             .specialization ul{
+                display: flex;
+                flex-wrap: wrap;
+                padding: 0;
+                justify-content: center;
+                margin: 0;
+                list-style: none;
+                gap: 20px;
+             }
+
+             .specialization ul li{
+                background-color: #fff;
+                padding: 15px 15px;
+                border-radius: 5px;
+                box-shadow: rgba(0, 0, 0, 0.05);
+             }
+
+             .contact textarea{
+                resize: vertical;
+                min-height: 100px;
+             }
+             
+             footer{
+                position: sticky;
+                text-align: center;
+                font-weight: bold;
+             }
+             
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="container">Helen Photography World</div>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li class="cta"><a href="#">Book now</a></li>
+                </ul>
+            </nav>
+
+            <div class="hero">
+                <h1>Welcome to home of Galleries</h1>
+                <p>Enjoy Favorable shot from us</p>
+                <button class="button">Book a shot</button>
+            </div>
+        </header>
+
+        <section class="photos">
+            <img src=""> <h2>Our Key services</h2>
+            <div class="photos-grid">
+                <div class="photos-item">
+                    <img src="https://i0.wp.com/ridethewave.co/wp-content/uploads/2023/09/RTW_7989_websize.jpg?ssl=1" alt="Birthday Shoot">
+                    <h3>Birthday Shoot</h3>
+                    <p>Capture your immense pictures on your birthday</p>
+                    <a href="#" class="button">Book now</a>
+                </div>
+                <div class="photos-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLAHyBA7pScTH2MalAtkHecwoVlr-uUWqUSA&s" alt="Corporate shoot">
+                    <h3>Corporate Shoot</h3>
+                    <p>Enjoy smooth capturing of your corporate style</p>
+                    <a href="#" class="button">Book now</a>
+                </div>
+                <div class="photos-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/61190ff4b386442902078c3c/1629472172909-CP4YQF4LO2TR1AP61B4Y/Danny+%26+Jess-8.jpg" alt="Casual photos">
+                    <h3>Casual Photos</h3>
+                    <p>What is a life without depicting it in a real photo</p>
+                    <a href="#" class="button">Book now</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="amenities">
+            <h2>Amenities</h2>
+            <ul>
+                <li>Event Photography</li>
+                <li>Real Estate Photography</li>
+                <li>Potrait Photography</li>
+                <li>Commercial Photography</li>
+                <li>Food Photogarphy</li>
+                <li>Pet Photography</li>
+            </ul>
+        </section>
+
+        <section class="specialization">
+            <h2>Specialization</h2>
+            <ul>
+                <li>Operational Aspects</li>
+                <li>Workshops and Training</li>
+                <li>Digital Asset Management</li>
+                <li>Framing Services</li>
+                <Li>Photo Album</Li>
+            </ul>
+        </section>
+
+        <section class="contact">
+            <h2>Contact Us</h2>
+            <p>Have any questions?. Fell free to ask</p>
+            <i>We are here to reply your questions</i>
+            <form method="post">
+                <input type="text" class="Your-Name">
+                <input type="password"  class="Your-Password">
+                <textarea placeholder="Your-Message">Messaage</textarea>
+                <a href="#" class="button">Submit</a>
+            </form>
+        </section>
+
+        <footer>
+            <div class="foot">
+                <p>&copy;2025 Helen Photography World. All rights reserved</p>
+            </div>
+        </footer>
+    </body>
+</html>

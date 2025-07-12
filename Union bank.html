@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="width=device-width, initial-scale=1.0">
+        <title>Union Bank limited</title>
+        <link rel="icon" href="c:\Users\HP\Downloads\union bank.png">
+        <style>
+            body{
+                font-family: sans-serif;
+                padding: 0;
+                margin: 0;
+                color: #333;
+                background-color: #f4f4f4;
+            }
+
+            header{
+                background-color: #0056b3;
+                color: white;
+                padding: 1em 0;
+            }
+            
+            .container{
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+
+            header .container{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            header h1{
+               margin: 0; 
+            }
+
+            nav ul{
+                display: flex;
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+
+            nav ul li a{
+                color: white;
+                text-decoration: none;
+                padding: 0.5em 1em;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+            }
+
+            nav ul li a:hover{
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            .login-button a{
+                color: white;
+                background-color: #0056b3;
+                text-decoration: none;
+                padding: 0.7em 1.5em;
+                transition: background-color 0.3s ease;
+                border-radius: 5px;
+                border: 1px solid white;
+            }
+
+            .login-button a:hover{
+                background-color: #0056b3;
+                color: white;
+            }
+
+            main{
+                padding: 20px 0;
+            }
+
+            .Hero{
+                background-color: #e9ecef;
+                padding: 40px;
+                text-align: center;
+            }
+
+            .Hero h2 {
+                margin-bottom: 10px;
+            }
+            
+            .Hero .button{
+                display: inline-block;
+                padding: 1em 1em;
+                border: 1px solid white;
+                color: white;
+                background-color: #007bbf;
+                border-radius: 5px;
+                text-decoration: none;
+                transition: background-color 0.3s ease;
+            }
+            
+            .Hero button:hover{
+                background-color: #0056b3;
+            }
+
+            .features{
+                padding: 40px 0;
+            }
+            
+            .features h3 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .features-list {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
+            }
+
+            .feature-item{
+                background-color: white;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+
+            footer{
+                position: sticky;
+                text-align: center;
+            }
+
+            header img{
+                vertical-align: middle;
+                margin-left: 0;
+                display: inline-block;
+                width: 50px;
+                height: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <img src="c:\Users\HP\Downloads\union bank.png"><h1>Union Internet Banking</h1>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Accounts</a></li>
+                        <li><a href="#">Transactions</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="login-button">
+                    <a href="#">Login</a>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="Hero">
+                <div class="container">
+                    <h2>Welcome to your secure banking portal</h2>
+                    <p>Enjoy smoothly Banking experience</p>
+                    <a href="#" class="button" target="_blank">Open Account</a>
+                </div>
+            </section>
+
+            <section class="features">
+                <div class="container">
+                    <h3>Our Services</h3>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <img src="" alt="Accounts">
+                            <h4>View Accounts</h4>
+                            <p>Check your Transactions Details</p>
+                        </div>
+                        <div class="feature-item">
+                            <img src="" alt="Transfer Funds">
+                            <h4>Transfer Funds</h4>
+                            <p>Send money to others</p>
+                        </div>
+                        <div class="feature-item">
+                            <img src="" alt="Pay Bills">
+                            <h4>Pay Bills</h4>
+                            <p>Pay Bills to trusted Merchants</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p>&copy;2025 Union Bank Limited. All rights reserved</p>
+            </div>
+        </footer>
+    </body>
+</html>

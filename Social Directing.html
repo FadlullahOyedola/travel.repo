@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imperial Hotels - Luxury Stays & Unforgettable Experiences</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* Custom Properties (CSS Variables) for a sophisticated palette */
+        :root {
+            --color-primary: #1A237E; /* Deep Indigo - for headers, primary backgrounds */
+            --color-secondary: #FFC107; /* Vibrant Gold - for accents, buttons */
+            --color-tertiary: #E8F5E9; /* Light Mint Green - for subtle backgrounds */
+            --color-text-dark: #333333; /* Dark Grey for body text */
+            --color-text-light: #F0F0F0; /* Light Grey for text on dark backgrounds */
+            --color-white: #FFFFFF;
+            --color-shadow: rgba(0, 0, 0, 0.15); /* Soft shadow for depth */
+
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+
+            --spacing-unit: 1.5rem; /* Base spacing unit */
+            --border-radius-lg: 10px;
+            --transition-speed: 0.3s ease-in-out;
+        }
+
+        /* Base Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+            font-family: var(--font-body);
+            color: var(--color-text-dark);
+            background-color: var(--color-white);
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+        }
+
+        /* Global Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* Headings */
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            color: var(--color-primary);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2.5rem; margin-bottom: var(--spacing-unit) * 2; text-align: center; position: relative; }
+        h3 { font-size: 1.8rem; }
+
+        /* Underline effect for main headings */
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--color-secondary);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px; /* Pill-shaped buttons */
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition-speed);
+            cursor: pointer;
+            border: none; /* Remove default button border */
+            font-size: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .primary-btn {
+            background-color: var(--color-secondary);
+            color: var(--color-primary); /* Dark text on gold */
+        }
+
+        .primary-btn:hover {
+            background-color: #FFD700; /* Slightly brighter gold */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .secondary-btn {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .secondary-btn:hover {
+            background-color: #2c3a9f; /* Slightly darker primary */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Header */
+        .main-header {
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px var(--color-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; /* Allow wrapping for mobile */
+        }
+
+        .logo h1 {
+            font-size: 2rem;
+            margin: 0;
+            color: var(--color-secondary); /* Gold logo */
+            letter-spacing: 0.05em;
+        }
+
+        .logo a {
+            text-decoration: none;
+        }
+
+        .main-nav .nav-list {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .main-nav .nav-list li {
+            margin-left: 2rem;
+        }
+
+        .main-nav .nav-list a {
+            color: var(--color-text-light);
+            text-decoration: none;
+            font-weight: 400;
+            transition: color var(--transition-speed);
+            padding: 0.5rem 0;
+            position: relative; /* For underline effect on hover */
+        }
+
+        .main-nav .nav-list a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-secondary);
+            transition: width var(--transition-speed);
+        }
+
+        .main-nav .nav-list a:hover::after {
+            width: 100%;
+        }
+
+        .main-nav .nav-list .cta-button a {
+            background-color: var(--color-secondary);
+            color: var(--color-primary);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: all var(--transition-speed);
+        }
+
+        .main-nav .nav-list .cta-button a:hover {
+            background-color: #FFD700;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none; /* Hidden on desktop */
+            background: none;
+            border: none;
+            color: var(--color-text-light);
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+            color: var(--color-white);
+            text-align: center;
+            padding: 6rem 1rem;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-content h2 {
+            font-size: 3.8rem;
+            color: var(--color-white);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Rooms Section */
+        .rooms-section {
+            padding: var(--spacing-unit) * 4 0;
+            background-color: var(--color-white);
+        }
+
+        .room-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .room-item {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 8px 20px var(--color-shadow);
+            overflow: hidden;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .room-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .room-item img {
+            width: 100%;
+            height: 250px; /* Consistent image height */
+            object-fit: cover;
+            display: block;
+        }
+
+        .room-item .item-content {
+            padding: 1.5rem;
+            flex-grow: 1; /* Allows content to expand and align buttons */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Pushes button to bottom if space allows */
+        }
+
+        .room-item h3 {
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+            color: var(--color-primary);
+        }
+
+        .room-item p {
+            font-size: 0.95rem;
+            color: var(--color-text-dark);
+            margin-bottom: 1rem;
+            flex-grow: 1; /* Ensures descriptions take up available space */
+        }
+
+        .room-item .price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-secondary);
+            margin-bottom: 1.2rem;
+            display: block; /* Make it block level to occupy full width */
+        }
+
+        .room-item .btn {
+            align-self: flex-start; /* Align button to the left */
+            width: auto; /* Allow button to size according to content */
+        }
+
+        /* Amenities Section */
+        .amenities-section {
+            background-color: var(--color-tertiary); /* Light mint background */
+            padding: var(--spacing-unit) * 4 0;
+        }
+
+        .amenities-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem; /* Space between amenity items */
+        }
+
+        .amenities-list li {
+            background-color: var(--color-white);
+            padding: 1.2rem 1.8rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--color-primary);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem; /* Space between icon and text */
+        }
+
+        .amenities-list li i {
+            font-size: 1.3rem;
+            color: var(--color-secondary); /* Gold icons */
+        }
+
+        .amenities-list li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: var(--spacing-unit) * 4 0;
+            background-color: var(--color-white);
+        }
+
+        .contact-section p {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2.5rem;
+            background-color: var(--color-tertiary);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 8px 20px var(--color-shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: var(--font-body);
+            transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+        }
+
+        .contact-form input[type="text"]:focus,
+        .contact-form input[type="email"]:focus,
+        .contact-form textarea:focus {
+            border-color: var(--color-secondary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.2);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form .submit-btn {
+            align-self: center; /* Center the submit button */
+            padding: 1rem 3rem; /* Larger padding for submit */
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: var(--spacing-unit) * 4 0;
+            background-color: var(--color-white);
+            text-align: center;
+        }
+
+        .about-section p {
+            max-width: 800px;
+            margin: 1.5rem auto;
+            font-size: 1.05rem;
+            color: #555;
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 -2px 10px var(--color-shadow);
+        }
+
+        .main-footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 1024px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 2rem; }
+            h3 { font-size: 1.5rem; }
+
+            .main-nav .nav-list li {
+                margin-left: 1.5rem;
+            }
+
+            .hero-content h2 {
+                font-size: 3rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .room-grid {
+                gap: 2rem;
+            }
+
+            .amenities-list li {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .main-nav {
+                width: 100%;
+                margin-top: 1rem;
+            }
+
+            .menu-toggle {
+                display: block; /* Show hamburger icon */
+                position: absolute;
+                top: 1.5rem;
+                right: 1.5rem;
+            }
+
+            .main-nav .nav-list {
+                flex-direction: column;
+                width: 100%;
+                background-color: var(--color-primary);
+                position: absolute;
+                top: 100%; /* Position below header */
+                left: 0;
+                transform: translateY(-100%); /* Start off-screen */
+                opacity: 0;
+                pointer-events: none;
+                transition: transform var(--transition-speed), opacity var(--transition-speed);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+            }
+
+            .main-nav .nav-list.active {
+                transform: translateY(0); /* Slide in */
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .main-nav .nav-list li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .main-nav .nav-list li:last-child {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .main-nav .nav-list a {
+                display: block;
+                padding: 1rem 0;
+                font-size: 1.1rem;
+            }
+
+            .main-nav .nav-list .cta-button a {
+                margin: 1rem auto; /* Center the button in mobile menu */
+                display: inline-block;
+                width: auto;
+            }
+
+            .hero-content h2 {
+                font-size: 2.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .rooms-section, .amenities-section, .contact-section, .about-section {
+                padding: var(--spacing-unit) * 3 0;
+            }
+
+            .room-grid {
+                grid-template-columns: 1fr; /* Single column layout for rooms */
+            }
+
+            .amenities-list {
+                gap: 1rem;
+            }
+
+            .amenities-list li {
+                width: calc(50% - 1rem); /* Two items per row on smaller screens */
+                justify-content: center;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.8rem; }
+            .hero-content h2 { font-size: 2rem; }
+            .hero-content p { font-size: 1rem; }
+
+            .btn {
+                padding: 0.8rem 1.8rem;
+                font-size: 0.9rem;
+            }
+
+            .amenities-list li {
+                width: 100%; /* Single item per row on very small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container container">
+            <div class="logo">
+                <a href="index.html"><h1>Imperial Hotels</h1></a>
+            </div>
+            <nav class="main-nav">
+                <button class="menu-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-list">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#rooms">Rooms</a></li>
+                    <li><a href="#amenities">Amenities</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li class="cta-button"><a href="#">Book Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="hero-section">
+        <div class="hero-content container">
+            <h2>Experience Unrivaled Luxury</h2>
+            <p>Your journey to an unforgettable stay begins here. Discover comfort, elegance, and exceptional service.</p>
+            <a href="#rooms" class="btn primary-btn">Explore Our Rooms</a>
+        </div>
+    </section>
+
+    <main>
+        <section id="rooms" class="rooms-section">
+            <div class="container">
+                <h2>Our Luxurious Rooms</h2>
+                <div class="room-grid">
+                    <div class="room-item">
+                        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbf6db?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Elegantly decorated room with a large bed and modern furnishings.">
+                        <div class="item-content">
+                            <h3>Deluxe King Room</h3>
+                            <p>A spacious, fully-equipped room for your personal comfort and privacy.</p>
+                            <span class="price">$149.89 per night</span>
+                            <a href="#" class="btn secondary-btn">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="room-item">
+                        <img src="https://images.unsplash.com/photo-1620245041916-d39763560ae7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Modern room with a large window and a comfortable armchair.">
+                        <div class="item-content">
+                            <h3>Executive Suite</h3>
+                            <p>Indulge in our French-style ventilated suite, offering exquisite design and comfort.</p>
+                            <span class="price">$299.78 per night</span>
+                            <a href="#" class="btn secondary-btn">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="room-item">
+                        <img src="https://images.unsplash.com/photo-1596436889106-be35e1f57bb8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Luxurious hotel room with a view of the city and a spacious balcony.">
+                        <div class="item-content">
+                            <h3>Presidential Penthouse</h3>
+                            <p>Experience unparalleled luxury and breathtaking city views from your private sanctuary.</p>
+                            <span class="price">$528.50 per night</span>
+                            <a href="#" class="btn secondary-btn">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="room-item">
+                        <img src="https://images.unsplash.com/photo-1605658197171-2b083c74e1d7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cozy and inviting hotel room with a comfortable bed and warm lighting.">
+                        <div class="item-content">
+                            <h3>Standard Double Room</h3>
+                            <p>Comfortable and inviting space, perfect for couples or small families.</p>
+                            <span class="price">$99.45 per night</span>
+                            <a href="#" class="btn secondary-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="amenities" class="amenities-section">
+            <div class="container">
+                <h2>Exceptional Amenities for a Memorable Stay</h2>
+                <ul class="amenities-list">
+                    <li><i class="fas fa-utensils"></i> Fine Dining Restaurant</li>
+                    <li><i class="fas fa-spa"></i> Relaxing Spa & Wellness Center</li>
+                    <li><i class="fas fa-cloud-sun"></i> Rooftop Terrace with City Views</li>
+                    <li><i class="fas fa-wifi"></i> Complimentary High-Speed Wi-Fi</li>
+                    <li><i class="fas fa-concierge-bell"></i> 24/7 Concierge Services</li>
+                    <li><i class="fas fa-dumbbell"></i> State-of-the-art Fitness Center</li>
+                    <li><i class="fas fa-car"></i> Secure Valet Parking</li>
+                    <li><i class="fas fa-swimming-pool"></i> Invigorating Swimming Pool</li>
+                    <li><i class="fas fa-glass-cheers"></i> Elegant Bar & Lounge</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2>Connect With Imperial Hotels</h2>
+                <p>Have questions or special requests? We are here to assist you. Please fill out the form below or reach out to us directly.</p>
+                <form action="https://formspree.io/f/xvgrypgb" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name:</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email:</label>
+                        <input type="email" id="email" name="email" placeholder="john.doe@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message:</label>
+                        <textarea id="message" name="message" placeholder="I'd like to inquire about..." rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="btn primary-btn submit-btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2>About Imperial Hotels</h2>
+                <p>Imperial Hotels offers a premier hospitality experience, blending classic elegance with modern comfort. Located in the heart of the city, we pride ourselves on exceptional service, exquisite dining, and luxurious accommodations. Our mission is to provide every guest with an unforgettable stay, whether for business or leisure.</p>
+                <p>Since our establishment in 20XX, we've been dedicated to creating a serene and opulent retreat for travelers worldwide. We look forward to welcoming you to your home away from home.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> Imperial Hotels. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for dynamic year and mobile menu functionality
+
+        // Set the current year for the copyright
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle functionality
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navList = document.querySelector('.nav-list');
+
+        if (menuToggle && navList) { // Ensure elements exist before adding listeners
+            menuToggle.addEventListener('click', () => {
+                navList.classList.toggle('active');
+                // Toggle between hamburger and close icon
+                const icon = menuToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                }
+            });
+
+            // Close menu when a navigation link is clicked (for smoother mobile navigation)
+            document.querySelectorAll('.nav-list a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navList.classList.contains('active')) {
+                        navList.classList.remove('active');
+                        const icon = menuToggle.querySelector('i');
+                        if (icon) {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>

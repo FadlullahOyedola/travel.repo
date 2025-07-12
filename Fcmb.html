@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fcmb Limited</title>
+    <link rel="icon" href="c:\Users\HP\Downloads\FCMB_Logo.png">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #8E24AA;
+            color: yellow;
+            padding: 1em 0;
+            background-color:#8E24AA/* Start with a deep purple base */;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            display: inline-block;
+            margin-right: 5px; /* Adjust as needed */
+        }
+
+        header img {
+            display: inline-block;
+            width: 50px;
+            height: auto;
+            vertical-align: middle;
+            margin-left: 0; /* Adjust as needed */
+        }
+
+        nav ul {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: yellow;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .login-button a {
+            display: inline-block;
+            border-radius: 5px;
+            color: #8E24AA;
+            background-color: white;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            padding: 0.7em 1.5em;
+            border: 1px solid white;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #eee;
+            color: purple;
+        }
+
+        .hero h2 {
+            color: purple;
+            font-weight: bold;
+        }
+
+        .hero p {
+            margin-top: 10px;
+        }
+
+        .btn {
+            padding: 1em 2em;
+            border-radius: 5px;
+            border: 1px solid white;
+            color: yellow;
+            background-color: #8E24AA;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            outline: none;
+            margin-bottom: 25px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .feature-h2 {
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-item {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+
+        .feature-item img {
+            width: 100%;
+            display: block;
+            max-height: 200px; /* Optional: set a maximum height */
+            height: auto; /* Maintain aspect ratio */
+            object-fit: cover; /* Ensure image covers the area without distortion */
+        }
+
+        .Job-career {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 20px;
+        }
+
+        .Job-career-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .Job-career-item {
+            padding: 20px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .Contact {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 20px;
+        }
+
+        .Contact h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .Contact p {
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .Contact form {
+            max-width: 500px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .Contact input[type="text"],
+        .Contact input[type="email"],
+        .Contact textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .Contact textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        footer {
+            text-align: center;
+            position: sticky;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="c:\Users\HP\Downloads\FCMB_Logo.png" alt="FCMB Logo">
+            <h1>FCMB</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Accounts</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Transactions</a></li>
+                    <li><a href="#">Contact-Us</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="login-button">
+                <a href="#" class="btn">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h2>Welcome to FCMB Internet Banking</h2>
+        <p>Enjoy smooth banking experience</p>
+        <button class="btn">Register</button>
+    </section>
+
+    <section class="feature">
+        <h2>Our Key Feature</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <img src="c:\Users\HP\Downloads\istockphoto-173886251-612x612.jpg" alt="Account Opening">
+                <h3>Accounts Opening</h3>
+                <p>Open accounts of different categories</p>
+                <button class="btn">Open-Account</button>
+            </div>
+            <div class="feature-item">
+                <img src="c:\Users\HP\Downloads\istockphoto-1493524066-640x640.jpg" alt="Transfer Funds">
+                <h3>Transfer Funds</h3>
+                <p>Send money to your loved ones </p>
+                <button class="btn">Sign-up</button>
+            </div>
+            <div class="feature-item">
+                <img src="c:\Users\HP\Downloads\istockphoto-2078490118-612x612.jpg" alt="Pay Bills">
+                <h3>Pay Bills</h3>
+                <p>Settle unpaid bills from trusted merchants</p>
+                <button class="btn">Sign-up</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="Job-career">
+        <h2>Job Career from us</h2>
+        <div class="Job-career-grid">
+            <div class="Job-career-item">
+                <img src="#" alt="Graduate Training">
+                <h3>Graduate Training</h3>
+                <p>Enroll for graduate jobs</p>
+                <button class="btn">Enroll</button>
+            </div>
+            <div class="Job-career-item">
+                <img src="#" alt="IT Engineer">
+                <h3>IT Engineer</h3>
+                <p>Apply for IT Engineer works at FCMB</p>
+                <button class="btn">Apply</button>
+            </div>
+            <div class="Job-career-item">
+                <img src="#" alt="Cyber-security personnel">
+                <h3>Cyber-security personnel</h3>
+                <p>Apply for Cyber-security Personnel role</p>
+                <button class=" btn">Apply</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="Contact">
+        <h2>Contact-Us</h2>
+        <p>Have any questions?. Feel free to ask</p>
+        <form method="post">
+            <input type="text" placeholder="Your Full-Name">
+            <input type="email" placeholder="Customer email">
+            <textarea placeholder="Drop your message"></textarea>
+            <button class="btn">Submit</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="foot">
+            <p>&copy;2025 First City Monument Bank. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

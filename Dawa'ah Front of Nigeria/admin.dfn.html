@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DAURA 1446AH/2025 Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+
+  <style>
+    :root {
+      --primary: #0A9396;
+      --accent: #EE9B00;
+      --bg: #F6FFF9;
+      --text: #333;
+      --white: #fff;
+      --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      --radius: 8px;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      background: var(--primary);
+      color: var(--white);
+      text-align: center;
+      padding: 1.5rem 1rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    .logout-btn {
+        background: var(--accent);
+        color: var(--white);
+        border: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: var(--radius);
+        cursor: pointer;
+        font-weight: 600;
+        transition: background 0.3s ease;
+    }
+    .logout-btn:hover {
+        background: #D88A00;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 2.5rem auto;
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    h2 { 
+      color: var(--primary); 
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    #login-container, #dashboard-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .form-group {
+        width: 100%;
+        max-width: 400px;
+        text-align: left;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: var(--primary);
+    }
+    .form-group input {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #ccc;
+        border-radius: var(--radius);
+        box-sizing: border-box;
+        font-size: 1rem;
+    }
+    .form-group input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(10, 147, 150, 0.2);
+    }
+    .login-btn {
+        padding: 0.8rem 2rem;
+        background: var(--primary);
+        color: var(--white);
+        border: none;
+        border-radius: var(--radius);
+        cursor: pointer;
+        font-size: 1.1rem;
+        font-weight: 600;
+        transition: background 0.3s ease;
+        width: 100%;
+        max-width: 400px;
+    }
+    .login-btn:hover {
+        background: #086B6D;
+    }
+    #login-feedback {
+        color: #D32F2F;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    /* Dashboard table styling */
+    #registrations-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 2rem;
+        font-size: 0.95rem;
+    }
+    #registrations-table th, #registrations-table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+    #registrations-table th {
+        background-color: var(--primary);
+        color: var(--white);
+        font-weight: 600;
+    }
+    #registrations-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    #registrations-table tr:hover {
+        background-color: #ddd;
+    }
+    .payment-status-pending { color: var(--accent); font-weight: 600; }
+    .payment-status-paid { color: #28a745; font-weight: 600; } /* Green */
+    .payment-status-failed { color: #dc3545; font-weight: 600; } /* Red */
+    .payment-status-abandoned { color: #6c757d; font-weight: 600; } /* Grey */
+
+    #loading-message {
+        text-align: center;
+        font-style: italic;
+        color: #666;
+    }
+
+    @media (max-width: 768px) {
+        #registrations-table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        #registrations-table thead, #registrations-table tbody, #registrations-table th, #registrations-table td, #registrations-table tr {
+            display: block;
+        }
+        #registrations-table thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+        #registrations-table tr {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+        #registrations-table td {
+            border: none;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 50%;
+            text-align: right;
+        }
+        #registrations-table td::before {
+            content: attr(data-label);
+            position: absolute;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+            text-align: left;
+            font-weight: 600;
+            color: var(--primary);
+        }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>DAURA 1446AH/2025 Admin</h1>
+    <button id="logoutBtn" class="logout-btn" style="display: none;">Logout</button>
+  </header>
+
+  <section>
+    <div id="login-container">
+      <h2>Admin Login</h2>
+      <div class="form-group">
+        <label for="adminEmail">Email:</label>
+        <input type="email" id="adminEmail" placeholder="Admin Email" required>
+      </div>
+      <div class="form-group">
+        <label for="adminPassword">Password:</label>
+        <input type="password" id="adminPassword" placeholder="Password" required>
+      </div>
+      <button id="loginBtn" class="login-btn">Login</button>
+      <p id="login-feedback" style="display: none;"></p>
+    </div>
+
+    <div id="dashboard-container" style="display: none;">
+      <h2>Registered Attendees</h2>
+      <p id="loading-message">Loading registrations...</p>
+      <table id="registrations-table">
+        <thead>
+          <tr>
+            <th>Reg ID</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Reg Date</th>
+            <th>Payment Status</th>
+            <th>Flutterwave TX Ref</th>
+          </tr>
+        </thead>
+        <tbody>
+          </tbody>
+      </table>
+    </div>
+  </section>
+
+  <script>
+    // 1. Firebase Configuration - REPLACE WITH YOUR ACTUAL FIREBASE CONFIG
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_AUTH_DOMAIN",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_STORAGE_BUCKET",
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    const loginContainer = document.getElementById('login-container');
+    const dashboardContainer = document.getElementById('dashboard-container');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const loginBtn = document.getElementById('loginBtn');
+    const adminEmailInput = document.getElementById('adminEmail');
+    const adminPasswordInput = document.getElementById('adminPassword');
+    const loginFeedback = document.getElementById('login-feedback');
+    const registrationsTableBody = document.querySelector('#registrations-table tbody');
+    const loadingMessage = document.getElementById('loading-message');
+
+    // Authentication State Listener
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        // User is signed in.
+        loginContainer.style.display = 'none';
+        dashboardContainer.style.display = 'block';
+        logoutBtn.style.display = 'block';
+        loadRegistrations();
+      } else {
+        // User is signed out.
+        loginContainer.style.display = 'flex';
+        dashboardContainer.style.display = 'none';
+        logoutBtn.style.display = 'none';
+      }
+    });
+
+    // Login Functionality
+    loginBtn.addEventListener('click', async () => {
+      const email = adminEmailInput.value;
+      const password = adminPasswordInput.value;
+      loginFeedback.style.display = 'none'; // Hide previous feedback
+
+      try {
+        await auth.signInWithEmailAndPassword(email, password);
+        loginFeedback.textContent = 'Login successful!';
+        loginFeedback.style.color = '#28a745'; // Green for success
+        loginFeedback.style.display = 'block';
+      } catch (error) {
+        console.error("Login Error:", error);
+        loginFeedback.textContent = `Login failed: ${error.message}`;
+        loginFeedback.style.color = '#D32F2F'; // Red for error
+        loginFeedback.style.display = 'block';
+      }
+    });
+
+    // Logout Functionality
+    logoutBtn.addEventListener('click', async () => {
+      try {
+        await auth.signOut();
+        // Clear inputs on logout for security
+        adminEmailInput.value = '';
+        adminPasswordInput.value = '';
+        loginFeedback.style.display = 'none';
+        registrationsTableBody.innerHTML = ''; // Clear table
+      } catch (error) {
+        console.error("Logout Error:", error);
+        alert("Logout failed. Please try again.");
+      }
+    });
+
+    // Load Registrations from Firestore
+    async function loadRegistrations() {
+      loadingMessage.style.display = 'block';
+      registrationsTableBody.innerHTML = ''; // Clear existing rows
+
+      try {
+        const querySnapshot = await db.collection('registrations').orderBy('registrationDate', 'desc').get();
+        if (querySnapshot.empty) {
+          loadingMessage.textContent = 'No registrations found yet.';
+          return;
+        }
+
+        querySnapshot.forEach(doc => {
+          const data = doc.data();
+          const row = registrationsTableBody.insertRow();
+
+          const regDate = data.registrationDate ? new Date(data.registrationDate.toDate()).toLocaleString() : 'N/A';
+          const paymentStatusClass = `payment-status-${data.paymentStatus || 'pending'}`;
+
+          row.innerHTML = `
+            <td data-label="Reg ID">${data.registrationId || doc.id}</td>
+            <td data-label="Full Name">${data.fullName || 'N/A'}</td>
+            <td data-label="Email">${data.email || 'N/A'}</td>
+            <td data-label="Phone">${data.phone || 'N/A'}</td>
+            <td data-label="Reg Date">${regDate}</td>
+            <td data-label="Payment Status" class="${paymentStatusClass}">${(data.paymentStatus || 'pending').toUpperCase()}</td>
+            <td data-label="Flutterwave TX Ref">${data.flutterwaveTxRef || 'N/A'}</td>
+          `;
+        });
+        loadingMessage.style.display = 'none'; // Hide loading message
+      } catch (error) {
+        console.error("Error loading registrations:", error);
+        loadingMessage.textContent = 'Error loading registrations. Please try again.';
+        loadingMessage.style.color = '#D32F2F';
+      }
+    }
+  </script>
+</body>
+</html>

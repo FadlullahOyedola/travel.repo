@@ -1,0 +1,327 @@
+/* General Styling */
+:root {
+    --primary-color: #FF5722; /* A vibrant orange */
+    --secondary-color: #f8f8f8; /* A very light grey for subtle contrast */
+    --dark-color: #1a1a1a; /* Deeper dark for text */
+    --light-color: #fff; /* Pure white */
+    --text-shadow: 0 2px 5px rgba(0,0,0,0.4); /* Subtle text shadow */
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: var(--secondary-color);
+    overflow-x: hidden; /* Prevent horizontal scroll on mobile */
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+/* Header/Hero Section */
+.hero-section {
+    width: 100%;
+    height: 100vh;
+    /* This background image is what you want to show behind the transparent nav */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
+                url('https://images.unsplash.com/photo-1506197603052-3bef9ef6a1aa?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDBwYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+    background-attachment: fixed; /* Makes the background image parallax as you scroll */
+    display: flex;
+    flex-direction: column;
+    color: var(--light-color);
+    position: relative;
+    animation: fadeInBackground 1.5s ease-out forwards;
+}
+
+@keyframes fadeInBackground {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    position: fixed; /* Makes the navbar stick to the top when scrolling */
+    width: 100%;
+    top: 0;
+    left: 0;
+    /* This background is for the navbar itself, allowing the hero background to show through */
+    background-color: rgba(0, 0, 0, 0.7); /* A darker, semi-transparent background */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Subtle shadow for depth */
+    z-index: 1000; /* Ensure nav is above other content */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+/* Class added by JavaScript when scrolled down */
+.navbar.scrolled {
+    background-color: rgba(0, 0, 0, 0.9); /* More opaque when scrolled for better contrast */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Stronger shadow when scrolled */
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 2.3em;
+    color: var(--light-color);
+    text-shadow: var(--text-shadow);
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links li a {
+    color: var(--light-color);
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.2s ease;
+    padding: 5px 0;
+    position: relative;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: var(--primary-color);
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-links li a:hover::after,
+.nav-links li a.active::after {
+    width: 100%;
+    background-color: var(--primary-color);
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Buttons */
+.btn {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border: none;
+    border-radius: 50px; /* Pill-like shape */
+    padding: 14px 30px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(255, 87, 34, 0.4);
+}
+
+.btn:hover {
+    background-color: #E64A19; /* Slightly darker primary color */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(255, 87, 34, 0.6);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(255, 87, 34, 0.3);
+}
+
+/* Hero Content */
+.hero-content {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 950px;
+    width: 90%;
+    padding: 20px;
+}
+
+.hero-subtitle {
+    font-size: 2em;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    text-shadow: var(--text-shadow);
+    letter-spacing: 1px;
+    animation: fadeInDown 1s ease-out;
+}
+
+.hero-title {
+    font-size: 5.5em;
+    color: var(--light-color);
+    margin-top: 0;
+    margin-bottom: 40px;
+    text-shadow: var(--text-shadow);
+    line-height: 1.1;
+    letter-spacing: -1px;
+    animation: fadeInUp 1s ease-out 0.3s backwards;
+}
+
+.hero-btn {
+    font-size: 1.3em;
+    padding: 18px 40px;
+    animation: zoomIn 1s ease-out 0.6s backwards;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.7); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Mobile Responsiveness */
+/* Menu Toggle for Mobile */
+.menu-toggle {
+    display: none; /* Hidden by default on desktop */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1001; /* Ensure it's above other elements */
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--light-color);
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Animation for menu icon */
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (max-width: 992px) {
+    .navbar {
+        padding: 15px 30px;
+    }
+    .logo {
+        font-size: 2.1em;
+    }
+    .nav-links {
+        gap: 25px;
+    }
+    .hero-title {
+        font-size: 4.2em;
+    }
+    .hero-subtitle {
+        font-size: 1.8em;
+    }
+    .btn {
+        padding: 12px 25px;
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+        position: fixed; /* Remains fixed for mobile */
+        background-color: rgba(0, 0, 0, 0.8); /* Slightly more opaque background for fixed nav */
+        box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Stronger shadow on mobile */
+    }
+
+    .nav-links {
+        display: none; /* Hide nav links by default on mobile */
+        flex-direction: column;
+        position: fixed; /* Changed to fixed for full-screen mobile menu */
+        top: 0;
+        right: -100%; /* Start off-screen */
+        width: 75%; /* Slightly wider mobile menu */
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.95); /* More opaque overlay */
+        padding-top: 100px;
+        align-items: center;
+        transition: right 0.4s ease-in-out;
+        box-shadow: -5px 0 20px rgba(0,0,0,0.5); /* Stronger shadow */
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        display: flex;
+        right: 0; /* Slide in */
+    }
+
+    .nav-links li {
+        margin: 25px 0; /* Increased margin for better spacing */
+    }
+
+    .nav-links li a {
+        font-size: 1.5em; /* Larger text in mobile menu */
+    }
+
+    .nav-btn {
+        display: none; /* Hide the register button in the nav on mobile when menu is active */
+    }
+
+    .menu-toggle {
+        display: flex; /* Show menu toggle on mobile */
+    }
+
+    .hero-title {
+        font-size: 3.5em;
+    }
+    .hero-subtitle {
+        font-size: 1.6em;
+    }
+    .hero-btn {
+        font-size: 1.1em;
+        padding: 14px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.9em;
+    }
+    .hero-title {
+        font-size: 2.5em;
+        line-height: 1.3;
+    }
+    .hero-subtitle {
+        font-size: 1.2em;
+    }
+    .hero-btn {
+        font-size: 1em;
+        padding: 12px 25px;
+    }
+    .navbar {
+        padding: 15px;
+    }
+}  

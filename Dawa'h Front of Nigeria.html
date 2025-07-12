@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width initial-scale=1.0">
+        <title>Daw'ah Front Of Nigeria</title>
+        <link rel="icon" href="">
+        <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #28a745;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        #home {
+            background: linear-gradient(to right, #28a745, #1e7e34);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        #home h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        #home p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .register-button {
+            display: inline-block;
+            background-color: white;
+            color: #28a745;
+            padding: 0.75rem 2rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .register-button:hover {
+            background-color: #f0fff0;
+        }
+
+        section {
+            padding: 3rem 0;
+            background-color: white;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            color: #28a745;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .about-content, .categories-grid, .payment-grid, .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+                @media (min-width: 768px) {
+            .about-content, .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .categories-grid, .payment-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 992px) {
+            .payment-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        </style>
+    </head>
+    <body>
+   <header>
+        <div class="container header-content">
+            <div class="logo">
+                <a href="#">Islamic Camp</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Camp</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#payment">Fees & Payment</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home">
+        <div class="container">
+            <h1>Experience a Spiritually Enriching Camp!</h1>
+            <p>Join us for an unforgettable Islamic camp experience filled with knowledge, fun, and spiritual growth for all ages.</p>
+            <a href="#payment" class="register-button">Register Now!</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container about-content">
+            <div class="about-text">
+                <h2>About Our Camp</h2>
+                <p>Our annual Islamic Camp is designed to provide a holistic environment for spiritual, intellectual, and physical development. We aim to instill Islamic values, foster brotherhood/sisterhood, and create lasting memories.</p>
+                <p>Participants will engage in a variety of activities including Quranic studies, Hadith lessons, interactive workshops, outdoor sports, team-building exercises, and inspiring lectures from renowned scholars.</p>
+                <p>The camp promotes a safe and nurturing atmosphere where individuals can deepen their understanding of Islam and connect with fellow Muslims in a positive setting.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://placehold.co/600x400/8FBC8F/FFFFFF?text=Camp+Activities" alt="Camp Activities" style="max-width: 100%; height: auto; border-radius: 0.5rem;">
+            </div>
+        </div>
+    </section>
+
+    <section id="categories">
+        <div class="container">
+            <h2>Camp Categories</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <h3>Children's Program (Ages 6-12)</h3>
+                    <p>Our children's program focuses on foundational Islamic knowledge, character building, and engaging activities tailored for younger minds.</p>
+                    <ul>
+                        <li>Basic Quranic recitation & memorization</li>
+                        <li>Stories of the Prophets & Sahabah</li>
+                        <li>Fun Islamic crafts & games</li>
+                        <li>Outdoor play & sports</li>
+                        <li>Interactive moral lessons</li>
+                    </ul>
+                </div>
+                <div class="category-card">
+                    <h3>Adult Program (Ages 13+)</h3>
+                    <p>The adult program offers deeper insights into Islamic sciences, contemporary issues, and personal development.</p>
+                    <ul>
+                        <li>Fiqh & Aqeedah sessions</li>
+                        <li>Seerah & Tafsir studies</li>
+                        <li>Marriage & family workshops</li>
+                        <li>Career development & leadership talks</li>
+                        <li>Q&A sessions with scholars</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+   <section id="categories">
+        <div class="container">
+            <h2>Camp Categories</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <h3>Children's Program (Ages 6-12)</h3>
+                    <p>Our children's program focuses on foundational Islamic knowledge, character building, and engaging activities tailored for younger minds.</p>
+                    <ul>
+                        <li>Basic Quranic recitation & memorization</li>
+                        <li>Stories of the Prophets & Sahabah</li>
+                        <li>Fun Islamic crafts & games</li>
+                        <li>Outdoor play & sports</li>
+                        <li>Interactive moral lessons</li>
+                    </ul>
+                </div>
+                <div class="category-card">
+                    <h3>Adult Program (Ages 13+)</h3>
+                    <p>The adult program offers deeper insights into Islamic sciences, contemporary issues, and personal development.</p>
+                    <ul>
+                        <li>Fiqh & Aqeedah sessions</li>
+                        <li>Seerah & Tafsir studies</li>
+                        <li>Marriage & family workshops</li>
+                        <li>Career development & leadership talks</li>
+                        <li>Q&A sessions with scholars</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="payment">
+        <div class="container">
+            <h2>Camp Fees & Payment</h2>
+            <div class="payment-grid">
+                <div class="payment-card">
+                    <h3>Children (6-12)</h3>
+                    <p class="price">$150</p>
+                    <p>Per child for the entire camp duration.</p>
+                </div>
+                <div class="payment-card">
+                    <h3>Adults (13+)</h3>
+                    <p class="price">$200</p>
+                    <p>Per adult for the entire camp duration.</p>
+                </div>
+                <div class="payment-card">
+                    <h3>Family Package</h3>
+                    <p class="price">$500</p>
+                    <p>For a family of 4 (2 adults, 2 children). Additional members at regular rates.</p>
+                </div>
+            </div>
+            <div class="payment-info">
+                <h3>How to Pay</h3>
+                <div class="payment-method">
+                    <h4>Bank Transfer</h4>
+                    <p>Please transfer the camp fee to the following bank account:<br>
+                    <strong>Bank Name:</strong> Example Bank<br>
+                    <strong>Account Name:</strong> Islamic Camp Organization<br>
+                    <strong>Account Number:</strong> 1234567890<br>
+                    <strong>Sort Code:</strong> 00-11-22</p>
+                </div>
+                <div class="payment-method">
+                    <h4>Online Payment (Coming Soon)</h4>
+                    <p>We are working on integrating an online payment gateway for your convenience. Please check back later for updates.</p>
+                </div>
+                <div class="payment-deadline">
+                    <h4>Payment Deadline</h4>
+                    <p>All payments must be completed by <strong>August 15, 2024</strong> to secure your spot.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container contact-grid">
+            <div class="contact-info">
+                <h2>Contact Us</h2>
+                <div>
+                    <h3>Our Location</h3>
+                    <p>123 Camp Road, Spiritual City, Country</p>
+                </div>
+                <div>
+                    <h3>Email Us</h3>
+                    <p><a href="mailto:info@islamiccamp.org">info@islamiccamp.org</a></p>
+                </div>
+                <div>
+                    <h3>Call Us</h3>
+                    <p><a href="tel:+1234567890">+1 (234) 567-890</a></p>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>Send Us a Message</h3>
+                <form action="#" method="POST">
+                    <div>
+                        <label for="name">Your Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div>
+                        <label for="email">Your Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div>
+                        <label for="message">Your Message:</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    </body>
+</html>

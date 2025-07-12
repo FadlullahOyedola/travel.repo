@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dawah Front of Nigeria</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="">
+  <style>
+    :root {
+      --primary-color: #1A237E; /* Dark Indigo Blue */
+      --secondary-color: #BBDEFB; /* Light Blue */
+      --accent-color: #D32F2F;   /* Strong Red */
+      --text-color: #333;
+      --bg-light: #F8F9FA;
+      --bg-dark: #E3F2FD; /* Slightly darker light blue */
+      --white: #fff;
+      --shadow: 0 4px 18px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
+      --radius: 10px;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      color: var(--text-color);
+      background: var(--bg-light);
+      line-height: 1.7;
+      scroll-behavior: smooth; /* Ensures smooth scrolling */
+    }
+
+    /* Top Info Bar */
+    .top-info-bar {
+      background: #000; /* Black for contrast */
+      color: var(--white);
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+      text-align: right;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .top-info-bar span {
+      white-space: nowrap; /* Prevent date/login from wrapping */
+    }
+
+    .top-info-bar .top-link {
+      color: var(--secondary-color); /* Light blue for top links */
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .top-info-bar .top-link:hover {
+      color: var(--accent-color); /* Red on hover */
+    }
+
+    header {
+      background: var(--primary-color);
+      color: var(--white);
+      padding: 2.5rem 1rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      position: sticky; /* Make header sticky */
+      top: 0;
+      z-index: 1000; /* Ensure it stays on top */
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      margin-top: 1.5rem;
+    }
+
+    nav a {
+      color: var(--white);
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: color 0.3s ease-in-out, border-bottom 0.3s ease;
+      white-space: nowrap; /* Prevent nav items from wrapping too early */
+      padding-bottom: 5px; /* Space for underline */
+      border-bottom: 2px solid transparent; /* Initial transparent border */
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--accent-color);
+      border-bottom: 2px solid var(--accent-color); /* Underline on hover/active */
+    }
+
+    section {
+      max-width: 960px;
+      margin: 2.5rem auto;
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 3rem;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    section:nth-of-type(odd) { /* Adjusted to odd for better alternating effect */
+      background: var(--bg-light);
+    }
+    section:nth-of-type(even) {
+      background: var(--bg-dark);
+    }
+
+    h2 {
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      font-size: 2.4rem;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      display: block;
+      margin: 0.75rem auto 0;
+      width: 70px;
+      height: 4px;
+      background: var(--accent-color);
+      border-radius: 2px;
+    }
+
+    h3 {
+      color: var(--primary-color);
+      font-size: 1.8rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    h4 {
+      color: var(--primary-color);
+      font-size: 1.4rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    p {
+      max-width: 750px;
+      margin: 1.2rem auto;
+      font-size: 1.15rem;
+      line-height: 1.8;
+      text-align: justify; /* Justify text for a more professional look */
+    }
+
+    ul {
+        text-align: left;
+        max-width: 700px;
+        margin: 1.5rem auto;
+        list-style-type: disc;
+        padding-left: 25px; /* Indent list items */
+    }
+
+    ul li {
+        margin-bottom: 0.8rem;
+        font-size: 1.1rem;
+    }
+
+    ul ul { /* Nested lists */
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        padding-left: 20px;
+        font-size: 1rem;
+    }
+
+    .hero-section {
+      padding: 4rem 3rem; /* More prominent hero */
+      background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-dark) 100%);
+      text-align: center;
+    }
+
+    .hero-section p {
+        font-size: 1.25rem;
+        max-width: 800px;
+    }
+
+    .executive-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Two columns on larger screens */
+        gap: 15px;
+        margin-top: 1.5rem;
+        text-align: left;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .executive-list p {
+        background: var(--bg-light);
+        padding: 1rem;
+        border-radius: 5px;
+        border-left: 4px solid var(--secondary-color);
+        margin: 0; /* Override default paragraph margin */
+        font-size: 1rem;
+        line-height: 1.5;
+        text-align: left;
+    }
+    .executive-list p strong {
+        color: var(--primary-color);
+    }
+
+    .prices {
+      background: var(--secondary-color);
+      padding: 2.5rem;
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      color: var(--primary-color);
+      font-weight: 600;
+      margin-top: 2rem; /* Space below countdown */
+    }
+
+    .prices div {
+      font-size: 1.3rem;
+    }
+
+    .prices div strong {
+      font-size: 1.6rem;
+      color: var(--primary-color);
+    }
+
+     .paybtn{
+      background: var(--accent-color);
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--white); /* White text on red button */
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .paybtn:hover {
+      background: #A92626; /* Darker red on hover */
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    form {
+      margin-top: 2.5rem;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: left;
+    }
+
+    input, textarea {
+      width: calc(100% - 24px); /* Adjust for padding within input */
+      padding: 12px;
+      margin-top: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.2); /* Focus ring effect with primary blue */
+      outline: none;
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    form button {
+      display: block;
+      width: 100%;
+      margin-top: 1.5rem;
+      background: var(--primary-color);
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    form button:hover {
+      background: #101859; /* Darker blue on hover */
+      transform: translateY(-2px);
+    }
+
+    /* Back to Top Button */
+    #backToTopBtn {
+      display: none; /* Hidden by default */
+      position: fixed; /* Fixed/sticky position */
+      bottom: 30px; /* Place at the bottom */
+      right: 30px; /* Place at the right */
+      z-index: 99; /* Make sure it does not overlap */
+      border: none; /* Remove borders */
+      outline: none; /* Remove outline */
+      background-color: var(--accent-color); /* Set a background color */
+      color: white; /* Text color */
+      cursor: pointer; /* Add a mouse pointer on hover */
+      padding: 15px; /* Some padding */
+      border-radius: 50%; /* Rounded corners */
+      font-size: 1.5rem; /* Increase font size */
+      box-shadow: var(--shadow);
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    #backToTopBtn:hover {
+      background-color: #A92626; /* Darker red on hover */
+      transform: translateY(-2px);
+    }
+
+    /* FAQ Accordion Styles */
+    .accordion-item {
+        background: var(--bg-light);
+        border: 1px solid var(--secondary-color);
+        margin-bottom: 10px;
+        border-radius: 8px;
+        overflow: hidden;
+        text-align: left; /* Align text within accordion item */
+    }
+
+    .accordion-header {
+        background-color: var(--secondary-color);
+        color: var(--primary-color);
+        padding: 15px 20px;
+        cursor: pointer;
+        font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background-color 0.3s ease;
+    }
+
+    .accordion-header:hover {
+        background-color: #A0CFF0; /* Slightly darker light blue on hover */
+    }
+
+    .accordion-header::after {
+        content: '+';
+        font-size: 1.5rem;
+        transition: transform 0.3s ease;
+    }
+
+    .accordion-header.active::after {
+        content: '-';
+        transform: rotate(0deg); /* No rotation needed for '-' */
+    }
+
+    .accordion-content {
+        padding: 0 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    }
+
+    .accordion-content p {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        margin: 0; /* Remove default paragraph margin */
+        font-size: 1rem;
+        color: var(--text-color);
+        text-align: justify;
+    }
+
+    .accordion-content.open {
+        max-height: 200px; /* Adjust as needed for content length */
+        padding-top: 15px;
+        padding-bottom: 15px;
+        overflow: auto; /* Enable scroll if content exceeds max-height */
+    }
+
+    /* Countdown Timer Styles */
+    .countdown-timer {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 2rem;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        flex-wrap: wrap;
+    }
+
+    .countdown-timer div {
+        background: var(--secondary-color);
+        padding: 15px 25px;
+        border-radius: var(--radius);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        min-width: 100px;
+        text-align: center;
+        line-height: 1.2;
+    }
+
+    .countdown-timer div span {
+        display: block;
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: var(--text-color);
+        margin-top: 5px;
+    }
+
+    /* Form Validation Styles */
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: var(--primary-color);
+    }
+
+    .form-group input, .form-group textarea {
+        margin-top: 0.5rem; /* Adjust margin since label is above */
+    }
+
+    .error-message {
+        color: var(--accent-color);
+        font-size: 0.9rem;
+        margin-top: 5px;
+        text-align: left;
+        display: block; /* Ensure it takes its own line */
+    }
+
+    .form-group.error input, .form-group.error textarea {
+        border-color: var(--accent-color);
+    }
+
+    footer {
+      background: var(--primary-color);
+      color: var(--white);
+      padding: 3rem 1rem 1.5rem; /* Adjust padding for multi-column */
+      margin-top: 3rem;
+      font-size: 0.95rem;
+      text-align: left; /* Adjust for grid columns */
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .footer-grid h3 {
+        color: var(--accent-color); /* Red headings in footer */
+        font-size: 1.3rem;
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+
+    .footer-grid p, .footer-grid ul {
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .footer-grid ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-grid ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-grid a {
+        color: var(--secondary-color); /* Light blue links in footer */
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .footer-grid a:hover {
+        color: var(--white);
+    }
+
+    .social-icon {
+        display: inline-block;
+        background: var(--accent-color);
+        color: var(--white);
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        text-decoration: none;
+        margin-top: 0.5rem;
+        transition: background 0.3s ease;
+    }
+
+    .social-icon:hover {
+        background: #A92626;
+    }
+
+    .tags-list span {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.2);
+        color: var(--white);
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        margin: 5px 5px 0 0;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        padding-top: 1.5rem;
+        font-size: 0.85rem;
+    }
+
+    /* Media Queries for Responsiveness */
+    @media (max-width: 992px) {
+        section {
+            padding: 2.5rem;
+        }
+        .footer-grid {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+    }
+
+    @media (max-width: 768px) {
+        .top-info-bar {
+            text-align: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            flex-wrap: wrap;
+        }
+        header h1 {
+            font-size: 2.2rem;
+        }
+        nav a {
+            margin: 0 10px;
+            font-size: 1rem;
+        }
+        section {
+            padding: 2rem 1.5rem;
+            margin: 1.5rem auto;
+        }
+        h2 {
+            font-size: 2rem;
+        }
+        h3 {
+            font-size: 1.6rem;
+        }
+        p {
+            font-size: 1rem;
+        }
+        .executive-list {
+            grid-template-columns: 1fr; /* Single column on smaller screens */
+        }
+        .prices {
+            padding: 1.8rem;
+        }
+        .prices div {
+            font-size: 1.1rem;
+        }
+        .prices div strong {
+            font-size: 1.3rem;
+        }
+        button {
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+        }
+        form {
+            padding: 1.8rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .top-info-bar {
+            flex-direction: column;
+            gap: 5px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 1.8rem;
+        }
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        nav a {
+            margin: 0.5rem 8px;
+        }
+        section {
+            padding: 1.5rem 1rem;
+            margin: 1rem auto;
+        }
+        h2 {
+            font-size: 1.8rem;
+        }
+        h3 {
+            font-size: 1.4rem;
+        }
+        p {
+            font-size: 0.95rem;
+            text-align: left; /* Prevent awkward single-word justifications */
+        }
+        ul {
+            padding-left: 20px;
+        }
+        ul li {
+            font-size: 0.95rem;
+        }
+        .prices {
+            padding: 1.5rem;
+        }
+        .prices div {
+            font-size: 1rem;
+        }
+        .prices div strong {
+            font-size: 1.2rem;
+        }
+        button {
+            padding: 0.7rem 1.5rem;
+            font-size: 0.9rem;
+        }
+        form {
+            padding: 1.5rem;
+        }
+        form button {
+            padding: 0.7rem 1rem;
+        }
+        .footer-grid {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+        .footer-grid h3 {
+            text-align: center;
+        }
+        .footer-grid ul, .footer-grid p {
+            text-align: center;
+            padding-left: 0;
+        }
+        .tags-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        /* Accordion adjustments for small screens */
+        .accordion-header {
+            padding: 12px 15px;
+            font-size: 1rem;
+        }
+        .accordion-header::after {
+            font-size: 1.2rem;
+        }
+        .accordion-content p {
+            font-size: 0.9rem;
+            padding: 10px 15px;
+        }
+        .countdown-timer {
+            font-size: 1.5rem;
+        }
+        .countdown-timer div {
+            padding: 10px 20px;
+            min-width: 70px;
+        }
+        .countdown-timer div span {
+            font-size: 0.7rem;
+        }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="top-info-bar">
+    <span>Date: <span id="current-date"></span></span>
+    <span>|</span>
+    <a href="Daura main page.html" class="top-link">Login</a>
+    <span>|</span>
+    <a href="#" class="top-link">Register</a>
+  </div>
+
+  <header>
+    <h1>Dawah Front of Nigeria</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about-us">About Us</a>
+      <a href="#what-we-do">What We Do</a>
+      <a href="#chapters">Chapters</a>
+      <a href="#events">Events</a>
+      <a href="#media">Media</a>
+      <a href="#resources">Resources</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact-dfn">Contact</a>
+    </nav>
+  </header>
+
+  <section id="home" class="hero-section">
+    <h2>Welcome to Dawah Front of Nigeria</h2>
+    <p>A modest response to the spiritual yearning and felt gap in the development of Muslims in our environment. We strive to provide accessible avenues for learning and practicing Islam in an easy-to-know manner.</p>
+    <p>With a motto – "Islam is Simple"; a vision to be a leading propagator of Islam as a simple, attractive and accessible way of life; and a mission to promote Islamic brotherhood, life fulfilment and excellence in Da’wah activities.</p>
+  </section>
+
+  <section id="about-us">
+    <h2>About Us</h2>
+    <p>Da’wah Front of Nigeria was established in 1996 in response to the pressure to bridge the gap, provide felt needs, and create opportune avenues for learning and practice of Islam in an easy-to-know manner. Our first objective of spiritual liberation was felt achievable through the institution of monthly Tahajjud vide Qur’an 17:78-81 and Qur’an 73:1-8. Alhamdulillaah, today ample private and public testimonies of Allaah’s promise and fulfilment and the spread of this command throughout the Southwest Nigeria and even beyond justify our hopes of reward from Allaah.</p>
+    <p>Since inception, Da’wah Front has worked towards the education and re-education of Muslims, especially the Muslim elites, and we also tried to present Islam in its best form to non-Muslims.</p>
+    <p>Da’wah Front of Nigeria is registered with the Corporate Affairs Commission, and is composed of:</p>
+    <ul>
+        <li>The Board of Trustees (BOT) – The Apex Organ;</li>
+        <li>The National Executive Council – The Administrative Organ;</li>
+        <li>The Chapter Executive Council – The Township Administrative Organ;</li>
+        <li>The Axis Executive Council – The Local Administrative Organ; and</li>
+        <li>The National General Meeting – The Overall Decision Ratifying Body.</li>
+    </ul>
+  </section>
+
+  <section id="what-we-do">
+    <h2>What We Do</h2>
+    <h3>Our Activities Include:</h3>
+    <ul>
+        <li><strong>Weekly Adhkaar on Sundays which features:</strong>
+            <ul>
+                <li>Family Seminar;</li>
+                <li>Lectures;</li>
+                <li>Counselling;</li>
+                <li>Da’wah workshop;</li>
+                <li>Academic and spiritual lessons for the children; and</li>
+                <li>Special prayers on the 5th Sundays of the month.</li>
+            </ul>
+        </li>
+        <li><strong>Weekly Da’wah on Television and Radio Stations</strong> across the country anchored by different Chapters and Axes of Da’wah Front of Nigeria.</li>
+        <li><strong>Weekly women programme</strong> at the “Ummu Forum” on Saturdays.</li>
+        <li><strong>Biannual youth programme</strong> on counselling, intellectual and spiritual development of our youths.</li>
+        <li>A monthly non-interest Cooperative programme at **Da’wah Front Multi-purpose Cooperative Society (DFMCS)**.</li>
+        <li>Yearly holiday programme tagged “Daura”.</li>
+        <li>Model nursery, primary and secondary schools across Southwest Nigeria.</li>
+    </ul>
+
+    <h3>National Programmes:</h3>
+    <p>These are major initiatives designed for broader spiritual and intellectual development.</p>
+    <div>
+        <h4>NATIONAL MUKHAYYAM:</h4>
+        <p>This is a 3-day weekend programme which holds quarterly, four times in every Hijrah calendar year. It features topical issues and discussion projects around a chosen theme. Selected participants visit Raatib Mosques around the venue of the programme to give Da’wah and invite people. The essence is to uplift, train and develop the spiritual and intellectual wellbeing of members and non-members, challenging them to rise to their duties and responsibilities as good Muslims. Attendees are expected to inculcate what has been taught and also teach others. The venue is rotated amongst Chapters.</p>
+    </div>
+    <div>
+        <h4>NATIONAL FAMILY SEMINAR:</h4>
+        <p>This programme holds alongside National Mukhayyam especially on Saturday mornings between the hours of 10am and Dhuhr prayers. The purpose is to identify and address issues and challenges facing Muslim families in their marriages, homes and workplaces, providing solutions within the Absolute Reference Frame (Qur’aan and Sunnah).</p>
+    </div>
+    <div>
+        <h4>DAURA:</h4>
+        <p>This is an annual holiday camping programme that holds in the month of December in every Gregorian calendar year, usually designed to coincide with Christmas celebrations. It has held since inception at Salawu Abiola Comprehensive High School, Osiele, Abeokuta. It is open to members and non-members, offering opportunities for youths, children, and parents to congregate for educational, spiritual, and social development activities. It is also flavoured with career counseling, various self-employment schemes, and entrepreneurial skill development for integrated success laced with the fear of Allah.</p>
+    </div>
+  </section>
+
+  <section id="chapters">
+    <h2>Chapters</h2>
+    <p>Da'wah Front of Nigeria has a wide reach with active chapters and axes across various towns and local administrative organs. We aim to foster Islamic brotherhood and community development at the grassroots level.</p>
+    <p>For more detailed information about our chapters or to find one near you, please contact us.</p>
+    </section>
+
+  <section id="events">
+    <h2>Our Events & Initiatives</h2>
+    <h3>My Islamic Camp</h3>
+    <p>My Islamic Camp is one of our signature events, designed to nurture faith, build community, and inspire growth through immersive Islamic experiences for adults and children alike. It's an opportunity to deepen your connection with Islam in a peaceful, friendly setting.</p>
+    <p>📍 <strong>Location:</strong> Al-Noor Retreat Center, City Name<br>
+      📅 <strong>Dates:</strong> 15th - 20th August<br>
+      ⏰ <strong>Activities:</strong> Engaging Quran circles, invigorating sports activities, insightful workshops, enlightening lectures by prominent scholars, and wholesome family fun for all ages!
+    </p>
+
+    <h3>Time until My Islamic Camp!</h3>
+    <div class="countdown-timer" id="camp-countdown">
+        <div><span id="days">00</span><span>Days</span></div>
+        <div><span id="hours">00</span><span>Hours</span></div>
+        <div><span id="minutes">00</span><span>Minutes</span></div>
+        <div><span id="seconds">00</span><span>Seconds</span></div>
+    </div>
+
+    <div class="prices">
+      <div>💼 Adult Camp Fee: <strong>$100</strong></div>
+      <div>👶 Children Camp Fee: <strong>$50</strong></div>
+      <a href="dfn 2.html" class="paybtn">Secure your spot now</a>
+    </div>
+  </section>
+
+  <section id="media">
+    <h2>Media</h2>
+    <p>Explore our rich collection of Islamic content, including recordings of lectures, workshops, and sermons from our weekly and national programmes. Our media resources aim to spread the teachings of Islam far and wide.</p>
+    <p>Stay tuned for updates on our latest broadcasts on television and radio stations across the country.</p>
+    </section>
+
+  <section id="resources">
+    <h2>Resources</h2>
+    <p>Access valuable Islamic resources curated by Da'wah Front of Nigeria to aid your spiritual and intellectual development. Our library includes scholarly articles, recommended readings, and study materials on various Islamic topics.</p>
+    <p>We are dedicated to providing accessible knowledge that empowers Muslims to live a life of fulfillment and excellence.</p>
+    </section>
+
+  <section id="gallery">
+    <h2>Gallery</h2>
+    <p>Browse through moments from our past events, camps, and activities. The gallery captures the spirit of brotherhood, learning, and joy experienced by participants in our various programmes.</p>
+    <p>See the community we're building and the impact of Da'wah Front of Nigeria in action!</p>
+    </section>
+
+  <section id="capital-projects">
+    <h2>Capital Projects</h2>
+    <div>
+        <h4>DA’WAH HOUSE:</h4>
+        <p>This is the National Headquarters of Da’wah Front of Nigeria situated in Abeokuta. It remains uncompleted due to paucity of funds, and we welcome contributions towards its completion to further our mission.</p>
+    </div>
+    <div>
+        <h4>EDUCATIONAL FACILITIES:</h4>
+        <ul>
+            <li><strong>Front Foundation College, Abeokuta:</strong> Located in Sokoto Town in the outskirts of Abeokuta, Ogun State Capital City. It is a co-educational secondary school with boarding facilities. Although the school has existed since 2008 and is presently located on its permanent site, a lot needs to be done in terms of infrastructural facilities.</li>
+            <li><strong>Front College, Ibadan:</strong> This school was established in 200- (year to be confirmed). It is located at Agric Bus Stop, Monatan, Ibadan and also a co-education secondary school, though presently without boarding facilities. The infrastructural facilities are gradually getting developed.</li>
+            <li><strong>Front Nursery and Primary School, Ibadan:</strong> This school, also co-educational, has two (2) branches within Ibadan Metropolis. One is located in Bashorun Area of Ibadan and the other is located at Agric Bus Stop, Monatan, Ibadan.</li>
+        </ul>
+        <p>These schools were established to provide qualitative education for Muslim children with the aims of raising Muslim personalities who would be intellectually and spiritually balanced, socially and morally sound, and imbued with the fear of Allah.</p>
+    </div>
+    <div>
+        <h4>DA’WAH FRONT MULTIPURPOSE COOPERATIVE SOCIETY (DFMCS):</h4>
+        <p>This is a Zero-interest based cooperative society established by Da’wah Front of Nigeria in October, 2001 where funds are created and lent to its members for general business ventures in accordance with Islamic injunctions. The following are some of the objectives of the cooperative society:</p>
+        <ul>
+            <li>The creation of funds to be lent to its members for necessary economic/productive purpose;</li>
+            <li>The provision of facilities for regular thrift savings by members, without such being removed from their control;</li>
+            <li>To invest and deal with money of the society in such a manner as may from time to time be determined by the management committee of the society;</li>
+            <li>To carry out the business of manufacturing and distribution of consumable items; and</li>
+            <li>To carry out the business of agriculture through mechanised farming, poultry, livestock, agro-allied products etc.</li>
+        </ul>
+        <p>The Society’s products include: Thrift and Credit Loan; Hajj Savings Scheme; Education Savings Scheme; Health Savings Scheme; Investment Windows; Asset Acquisition Scheme; Ileya Savings Scheme; and Consultancy Services on Zero interest-based Cooperative.</p>
+    </div>
+  </section>
+
+  <section id="leadership">
+    <h2>Our Leadership</h2>
+    <p>Da'wah Front of Nigeria has been guided by dedicated leaders throughout its journey. Here are the National Executives who have served the organization in various capacities:</p>
+
+    <h3>National Executives (1999-2002)</h3>
+    <div class="executive-list">
+        <p><strong>National Coordinator:</strong> Dr. Rabiu Kusimo</p>
+        <p><strong>Deputy National Coordinator:</strong> Arc. H. A. Akiyode</p>
+        <p><strong>National Secretary:</strong> Barrister Abdul-Fatah Bakre</p>
+        <p><strong>Assistant National Secretary:</strong> Arc. K. B. A. Jolaoso</p>
+        <p><strong>National Financial Secretary:</strong> Alh. Abdus-Samiu Akinwunmi</p>
+        <p><strong>National Auditor:</strong> Alh. Ismail Ewedairo</p>
+        <p><strong>National P.R.O.:</strong> Alh. Abdul-Kabir A. Omosanya</p>
+        <p><strong>National Treasurer:</strong> Alh. Abdul-Hafiz Ejio</p>
+        <p><strong>National Missionary:</strong> Imaam Prof. T. A. Azeez</p>
+        <p><strong>Administrative Secretary:</strong> Dr. Sharafadeen Abdul-Kareem</p>
+    </div>
+
+    <h3>National Executives (2002-2005)</h3>
+    <div class="executive-list">
+        <p><strong>National Coordinator:</strong> Dr. Rabiu Kusimo</p>
+        <p><strong>Deputy National Coordinator:</strong> Alh. Abdul-Kabir A. Omosanya</p>
+        <p><strong>National Secretary:</strong> Alh. Abdur-Rasheed Shokenu</p>
+        <p><strong>Assistant National Secretary:</strong> Dr. Abdul-Waheed Bamigbade</p>
+        <p><strong>National Financial Secretary:</strong> Alh. Ismail Ewedairo</p>
+        <p><strong>National Auditor:</strong> Mrs. Hidayat Adegbite</p>
+        <p><strong>National P.R.O.:</strong> Prof. Abdul-Lateef Sanni</p>
+        <p><strong>National Treasurer:</strong> Alh. Abdus-Samiu Akinwunmi</p>
+        <p><strong>National Missionary:</strong> Imaam Prof. Taofiq Abdul-Azeez</p>
+        <p><strong>Ex-Officio:</strong> Barrister Abdul-Fatah Bakre</p>
+    </div>
+
+    <h3>National Executives (2005-2008)</h3>
+    <div class="executive-list">
+        <p><strong>National Coordinator:</strong> Alh. Abdul-Kabir Omosanya</p>
+        <p><strong>Deputy National Coordinator:</strong> Alh. (Eng.) Qamarudeen I. Babalola</p>
+        <p><strong>National Secretary:</strong> Alh. Abdur-Rasheed Shokenu</p>
+        <p><strong>Assistant National Secretary:</strong> Bro. Abdul-Hakeem Dawud</p>
+        <p><strong>National Financial Secretary:</strong> Bro. A. A. Ma’ruf Mobolaji</p>
+        <p><strong>National Auditor:</strong> Mrs. Hidayat Adegbite</p>
+        <p><strong>National P.R.O.:</strong> Alh. Abdur-Rafiu Adeniji</p>
+        <p><strong>National Treasurer:</strong> Late Alhaja Latifat Ejio</p>
+        <p><strong>National Missionary:</strong> Imaam Prof. Taofiq Abdul-Azeez</p>
+        <p><strong>Ex-Officio I:</strong> Dr. Rabiu Kusimo</p>
+        <p><strong>Ex-Officio II:</strong> Barrister Abdul-Fatah Bakre</p>
+    </div>
+
+    <h3>National Executives (2008-2011)</h3>
+    <div class="executive-list">
+        <p><strong>National Coordinator:</strong> Alh. Abdul-Kabir Omosanya</p>
+        <p><strong>Deputy National Coordinator:</strong> Alh. (Eng.) Qamarudeen I. Babalola</p>
+        <p><strong>National Secretary:</strong> Alh. Abdur-Rafiu Adeniji</p>
+        <p><strong>Assistant National Secretary:</strong> Bro. Abdul-Hakeem Dawud</p>
+        <p><strong>National Financial Secretary:</strong> Bro. Abdul-Jelil Adebayo</p>
+        <p><strong>National Auditor:</strong> Alh. Muslihudeen Abdul-Ghaffaar</p>
+        <p><strong>National P.R.O.:</strong> Alh. Isqil Kilaso</p>
+        <p><strong>National Treasurer:</strong> Late Alhaja Latifat Ejio</p>
+        <p><strong>National Missionary:</strong> Imaam Prof. Taofiq Abdul-Azeez</p>
+        <p><strong>Ex-Officio I:</strong> Dr. Rabiu Kusimo</p>
+        <p><strong>Ex-Officio II:</strong> Alh. Abdur-Rasheed Shokenu</p>
+    </div>
+
+    <h3>National Executives (2011-2014, Term 1)</h3>
+    <div class="executive-list">
+        <p><strong>National Missionary:</strong> Imaam Prof. Taofiq Abdul-Azeez</p>
+        <p><strong>Deputy National Missionary:</strong> Alh. Munirudeen Sanni</p>
+        <p><strong>National Coordinator:</strong> Alh. (Eng.) Qamarudeen I. Babalola</p>
+        <p><strong>Deputy National Coordinator:</strong> Alh. Abdul-Hafiz Ejio</p>
+        <p><strong>National Secretary:</strong> Alh. Abdur-Razaq Adedayo</p>
+        <p><strong>Assistant National Secretary:</strong> Bro. Sulayman Abdul-Ghaniyy</p>
+        <p><strong>National Financial Secretary:</strong> Bro. Abdul-Jelil Adebayo</p>
+        <p><strong>National Auditor:</strong> Alh. Muslihudeen Abdul-Ghaffaar</p>
+        <p><strong>National P.R.O.:</strong> Alh. Isqil Kilaso</p>
+        <p><strong>Ex-Officio I:</strong> Alh. Abdul-Kabir Omosanya</p>
+        <p><strong>Ex-Officio II:</strong> Alh. Abdur-Rafiu Adeniji</p>
+    </div>
+
+    <h3>National Executives (2011-2014, Term 2)</h3>
+    <div class="executive-list">
+        <p><strong>National Missionary:</strong> Imaam Prof. Taofiq Abdul-Azeez</p>
+        <p><strong>Deputy National Missionary:</strong> Alh. Munirudeen Sanni</p>
+        <p><strong>National Coordinator:</strong> Alh. Abideen L. Ladeji</p>
+        <p><strong>Deputy National Coordinator:</strong> Alh. Muslihudeen Abdul-Ghaffaar</p>
+        <p><strong>National Secretary:</strong> Alh. Abdur-Rahman Maku</p>
+        <p><strong>Assistant National Secretary:</strong> Alh. Idris Najimdeen</p>
+        <p><strong>National Financial Secretary:</strong> Alh. Abdul-Ghaniyy Ajetunmobi</p>
+        <p><strong>National Auditor:</strong> Bro. Taofiq Mustafa</p>
+        <p><strong>National P.R.O.:</strong> Bro. Sulayman Abdul-Ghaniyy</p>
+        <p><strong>National Treasurer:</strong> Alhaja Taibat Alim</p>
+        <p><strong>Welfare Officer:</strong> T.P.L Abdur-Rauf Oyedele</p>
+        <p><strong>Ex-Officio I:</strong> Alh. (Eng.) Qamarudeen I. Babalola</p>
+        <p><strong>Ex-Officio II:</strong> Alh. Abdur-Razaq Adedayo</p>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Quick Questions (FAQ)</h2>
+    <div class="accordion-item">
+        <div class="accordion-header">What is Da’wah Front of Nigeria?</div>
+        <div class="accordion-content">
+            <p>Da’wah Front of Nigeria is an organization established in 1996 to address the spiritual and developmental needs of Muslims, providing avenues for learning and practicing Islam in an easy-to-understand manner. Our motto is "Islam is Simple."</p>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <div class="accordion-header">What are your main activities?</div>
+        <div class="accordion-content">
+            <p>Our activities include weekly Adhkaar sessions, TV and radio Dawah broadcasts, women's programmes, biannual youth programmes, a non-interest cooperative society (DFMCS), annual holiday camps ("Daura"), and running model schools. We also hold National Mukhayyam and Family Seminars quarterly.</p>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <div class="accordion-header">How can I support Dawah Front of Nigeria?</div>
+        <div class="accordion-content">
+            <p>You can support us through members' monthly subscriptions, voluntary contributions, and occasional donations. We also finance projects through Islamic investment windows. Donations can be made via cash, cheque, or direct/online bank transfer to our Guaranty Trust Bank account (details in the Contact & Support section).</p>
+        </div>
+    </div>
+  </section>
+
+  <section class="bot">
+    <h3>🤖 I am Mu'adh — How can I help you?</h3>
+    <p>Need help with booking for "My Islamic Camp", want more information about Da'wah Front of Nigeria, or have any special requests? Just drop your message below 👇 I'm here to assist you!</p>
+    <form id="muadh-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="form-group">
+        <label for="muadh-name">Your Name:</label>
+        <input type="text" id="muadh-name" name="name" placeholder="Your Name" required>
+        <span class="error-message" data-for="muadh-name"></span>
+      </div>
+      <div class="form-group">
+        <label for="muadh-email">Your Email:</label>
+        <input type="email" id="muadh-email" name="_replyto" placeholder="Your Email" required>
+        <span class="error-message" data-for="muadh-email"></span>
+      </div>
+      <div class="form-group">
+        <label for="muadh-message">Your Question or Message:</label>
+        <textarea id="muadh-message" name="message" placeholder="Your Question or Message" required></textarea>
+        <span class="error-message" data-for="muadh-message"></span>
+      </div>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <section id="contact-dfn">
+    <h2>Contact & Support</h2>
+    <p>We value your feedback and inquiries. Please feel free to reach out to us with any questions, suggestions, or comments you may have regarding Da’wah Front of Nigeria or My Islamic Camp.</p>
+    <h3>Donations:</h3>
+    <p>For all that we do, we rely solely on Allaah through our members’ monthly subscriptions, voluntary contributions from members and occasional donations from our well-wishers. Some of our projects are also financed through investment windows like partnership, joint venture, equity shareholding, and other ISLAMIC windows through our investment clubs, cooperative societies and members.</p>
+    <p>At DFN, all donations are acknowledged and receipted. You may assist our Da’wah Course by making your own donations too. Send in your cash or cheques in the name “Da’wah Front of Nigeria” to our National Secretariat at Suite 14, Alhaji Ayoola Shopping Complex, Asero, Abeokuta, Nigeria. You can also pay in directly or online to:</p>
+    <p><strong>Account Name:</strong> Dawah Front of Nigeria (Daurah) Account<br>
+    <strong>Account Number:</strong> 0175569802<br>
+    <strong>Bank:</strong> Guaranty Trust Bank</p>
+
+    <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="form-group">
+        <label for="contact-name">Your Name:</label>
+        <input type="text" id="contact-name" name="name" placeholder="Your Name" required>
+        <span class="error-message" data-for="contact-name"></span>
+      </div>
+      <div class="form-group">
+        <label for="contact-email">Your Email:</label>
+        <input type="email" id="contact-email" name="_replyto" placeholder="Your Email" required>
+        <span class="error-message" data-for="contact-email"></span>
+      </div>
+      <div class="form-group">
+        <label for="contact-message">Your Comments:</label>
+        <textarea id="contact-message" name="message" placeholder="Your Comments" required></textarea>
+        <span class="error-message" data-for="contact-message"></span>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+        <div class="footer-contact">
+            <h3>Contact DFN</h3>
+            <p><strong>Dawah Front of Nigeria,</strong><br>
+            National Secretariat<br>
+            Suite 14, Alhaji Ayoola Shopping Complex Asero,<br>
+            Abeokuta, Ogun State. Nigeria</p>
+            <p>📞 +234 817 677 2366</p>
+            <p>✉️ <a href="mailto:info@dawahfrontnigeria.com">info@dawahfrontnigeria.com</a></p>
+            <p>🌐 <a href="http://www.dawahfrontnigeria.com" target="_blank">www.dawahfrontnigeria.com</a></p>
+        </div>
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#about-us">About Us</a></li>
+                <li><a href="#what-we-do">What We Do</a></li>
+                <li><a href="#events">Our Events</a></li>
+                <li><a href="#">Marriage and Islam</a></li>
+                <li><a href="#">Importance of Prayer</a></li>
+                <li><a href="#">Quran Recitation</a></li>
+                <li><a href="#">Children Rights In Islam</a></li>
+                <li><a href="#">Pray! Before It Is Late</a></li>
+                <li><a href="#">Mosque, Center For Peace</a></li>
+            </ul>
+        </div>
+        <div class="footer-social-tags">
+            <h3>Follow Us</h3>
+            <p><a href="https://facebook.com/dawahfrontnigeria" target="_blank" class="social-icon">Facebook</a></p>
+            <h3>Tags</h3>
+            <div class="tags-list">
+                <span>islamic</span>
+                <span>Kalma</span>
+                <span>Mosque</span>
+                <span>Namaz</span>
+                <span>people</span>
+                <span>Project</span>
+                <span>Quran</span>
+                <span>Rights</span>
+                <span>Salat</span>
+                <span>Zakat</span>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>Dawah Front Nigeria &copy; <span id="current-year"></span> All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <button onclick="topFunction()" id="backToTopBtn" title="Go to top">&#9650;</button> <script src="https://checkout.flutterwave.com/v3.js"></script>
+  <script>
+    // 1. Dynamic Current Date in Top Bar
+    document.getElementById('current-date').innerText = new Date().toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+
+    // 2. Dynamic Current Year in Footer
+    document.getElementById('current-year').innerText = new Date().getFullYear();
+
+    // 3. Smooth Scroll for all Internal Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // 4. Active Navigation Link Highlighting
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            // Adjust offset to trigger 'active' class when section is more visible
+            if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // 5. Back-to-Top Button Functionality
+    const backToTopBtn = document.getElementById("backToTopBtn");
+
+    // When the user scrolls down 200px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        backToTopBtn.style.display = "block";
+      } else {
+        backToTopBtn.style.display = "none";
+      }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+
+    // 6. FAQ Accordion Functionality
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            const content = header.nextElementSibling;
+
+            // Close other open accordions
+            accordionHeaders.forEach(otherHeader => {
+                if (otherHeader !== header && otherHeader.classList.contains('active')) {
+                    otherHeader.classList.remove('active');
+                    otherHeader.nextElementSibling.classList.remove('open');
+                }
+            });
+
+            // Toggle the clicked accordion
+            header.classList.toggle('active');
+            content.classList.toggle('open');
+        });
+    });
+
+    // NEW FEATURE: 7. Event Countdown Timer
+    function startCountdown() {
+        // Set the date and time of your event (October 15th, 2025 at midnight)
+        // Adjust month (0-indexed: Jan=0, Oct=9)
+        const eventDate = new Date(2025, 9, 15, 0, 0, 0).getTime();
+
+        const countdownInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            // Calculate days, hours, minutes, and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the results in the elements
+            const daysEl = document.getElementById("days");
+            const hoursEl = document.getElementById("hours");
+            const minutesEl = document.getElementById("minutes");
+            const secondsEl = document.getElementById("seconds");
+
+            if (daysEl) daysEl.innerText = String(days).padStart(2, '0');
+            if (hoursEl) hoursEl.innerText = String(hours).padStart(2, '0');
+            if (minutesEl) minutesEl.innerText = String(minutes).padStart(2, '0');
+            if (secondsEl) secondsEl.innerText = String(seconds).padStart(2, '0');
+
+
+            // If the countdown is over, write some text
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                const campCountdownEl = document.getElementById("camp-countdown");
+                if (campCountdownEl) {
+                    campCountdownEl.innerHTML = "<div><strong style='color: var(--accent-color);'>CAMP IS LIVE!</strong></div>";
+                }
+            }
+        }, 1000); // Update every 1 second
+    }
+
+    // Start the countdown when the page loads
+    window.addEventListener('load', startCountdown);
+
+
+    // NEW FEATURE: 8. Form Validation
+    function setupFormValidation(formId) {
+        const form = document.getElementById(formId);
+        if (!form) return; // Exit if form doesn't exist
+
+        const inputs = form.querySelectorAll('input[required], textarea[required]');
+        const emailInput = form.querySelector('input[type="email"]');
+
+        form.addEventListener('submit', function(event) {
+            let formIsValid = true;
+
+            inputs.forEach(input => {
+                const errorMessageElement = form.querySelector(`.error-message[data-for="${input.id}"]`);
+                if (!errorMessageElement) return; // Skip if no error message element
+
+                if (input.value.trim() === '') {
+                    input.parentElement.classList.add('error');
+                    errorMessageElement.textContent = 'This field is required.';
+                    formIsValid = false;
+                } else {
+                    input.parentElement.classList.remove('error');
+                    errorMessageElement.textContent = '';
+                }
+            });
+
+            // Specific email validation
+            if (emailInput && emailInput.value.trim() !== '') {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                const emailErrorMessage = form.querySelector(`.error-message[data-for="${emailInput.id}"]`);
+                if (!emailRegex.test(emailInput.value.trim())) {
+                    emailInput.parentElement.classList.add('error');
+                    emailErrorMessage.textContent = 'Please enter a valid email address.';
+                    formIsValid = false;
+                } else {
+                    emailInput.parentElement.classList.remove('error');
+                    emailErrorMessage.textContent = '';
+                }
+            }
+
+            if (!formIsValid) {
+                event.preventDefault(); // Stop form submission if validation fails
+                // alert('Please correct the errors in the form.'); // Removed to avoid double alert on submission
+            }
+        });
+
+        // Add real-time validation feedback on input change
+        inputs.forEach(input => {
+            input.addEventListener('input', function() {
+                const errorMessageElement = form.querySelector(`.error-message[data-for="${input.id}"]`);
+                if (!errorMessageElement) return;
+
+                if (input.value.trim() !== '') {
+                    input.parentElement.classList.remove('error');
+                    errorMessageElement.textContent = '';
+                }
+
+                // For email, re-validate specific email format
+                if (input.type === 'email' && input.value.trim() !== '') {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(input.value.trim())) {
+                        input.parentElement.classList.add('error');
+                        errorMessageElement.textContent = 'Please enter a valid email address.';
+                    } else {
+                        input.parentElement.classList.remove('error');
+                        errorMessageElement.textContent = '';
+                    }
+                }
+            });
+        });
+    }
+
+    // Initialize validation for both forms
+    setupFormValidation('muadh-form');
+    setupFormValidation('contact-form');
+
+
+    // FLUTTERWAVE INTEGRATION (replacing Paystack)
+    const payBtn = document.getElementById('payBtn');
+    if (payBtn) { // Check if the button exists before adding listener
+        payBtn.addEventListener('click', payWithFlutterwave);
+    }
+
+    function payWithFlutterwave(e) {
+      e.preventDefault();
+
+      // IMPORTANT: Replace 'FLWPUBK_TEST-xxxxxxxxxxxxxxxxxxxxxxxxx-X' with your actual Flutterwave Public Test Key
+      // For a live site, you'll use your Live Public Key.
+      // Sign up at https://developer.flutterwave.com/ to get your keys.
+      const publicKey = 'FLWPUBK_TEST-xxxxxxxxxxxxxxxxxxxxxxxxx-X'; // <<< REPLACE THIS!
+
+      // This example uses the Adult Camp fee ($100).
+      // You'll need to implement logic to let the user choose Adult or Child fee.
+      // Flutterwave amount is in the base unit of the currency (e.g., Naira for NGN).
+      // Assuming $100 translates to 150,000 NGN for the camp (100 * 1500 NGN/USD - hypothetical rate)
+      const amountInNGN = 150000; // Example: Adult fee in NGN (100 USD * 1500 NGN/USD)
+
+      // For demonstration, let's use fixed customer details. In a real app, capture user's details from form or user session.
+      const customerEmail = 'customer@example.com'; // <<< REPLACE WITH DYNAMIC EMAIL
+      const customerName = 'John Doe'; // <<< REPLACE WITH DYNAMIC NAME
+      const customerPhone = '08012345678'; // <<< REPLACE WITH DYNAMIC PHONE
+
+      FlutterwaveCheckout({
+        public_key: publicKey,
+        tx_ref: "DFN_CAMP_" + Math.floor(Math.random() * 1000000000 + 1), // Unique transaction reference
+        amount: amountInNGN,
+        currency: "NGN", // Ensure this matches your Flutterwave account currency
+        country: "NG", // Country code for the transaction
+        payment_options: "card, banktransfer, ussd", // Customize payment options
+        customer: {
+          email: customerEmail,
+          phone_number: customerPhone,
+          name: customerName,
+        },
+        customizations: {
+          title: "My Islamic Camp Registration",
+          description: "Payment for Dawah Front of Nigeria Islamic Camp",
+          logo: "https://dawahfrontnigeria.com/wp-content/uploads/2023/12/logo-dfn.png", // Replace with your actual logo URL
+        },
+        callback: function (data) {
+          // This function is called after the payment is successful
+          console.log(data); // Log the response for debugging
+          if (data.status === 'successful') {
+             alert('Payment successful! Transaction reference: ' + data.tx_ref);
+             // Here, you would typically verify the payment on your server
+             // For a simple site, you might just redirect them to a thank you page or update UI.
+          } else {
+             alert('Payment failed or was cancelled. Please try again.');
+          }
+        },
+        onclose: function () {
+          // This function is called if the user closes the payment modal
+          alert('Payment window closed. Please try again if you wish to register.');
+        },
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kwara State University Student Union Portal</title>
+        <link rel="icon" href="#">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        
+        <style>
+            /* General Body Styling */
+            body {
+                font-family: 'Roboto', sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 0;
+                background-color: #f0f2f5; /* Light grey background */
+                color: #333;
+            }
+
+            /* Header Styling */
+            .stu-header {
+                background: #006400; /* Kwara State University Green */
+                color: #fff;
+                padding: 2rem 0;
+                text-align: center;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                display: flex; /* Use flexbox for alignment */
+                align-items: center; /* Vertically align items */
+                justify-content: center; /* Center content horizontally */
+                position: relative; /* For absolute positioning of logo */
+            }
+
+            .stu-header .logo {
+                position: absolute; /* Position the logo */
+                left: 5%; /* Adjust as needed */
+                top: 50%;
+                transform: translateY(-50%); /* Center vertically */
+                width: 100px; /* Adjust logo size */
+                height: auto;
+                border-radius: 50%; /* Make it circular */
+                background-color: #fff; /* White background for the logo */
+                padding: 5px; /* Padding around the logo */
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow for the logo */
+            }
+            @media (max-width: 768px) {
+                .stu-header .logo {
+                    position: static; /* Remove absolute positioning on smaller screens */
+                    margin-bottom: 1rem; /* Add some space below the logo */
+                    transform: none; /* Reset transform */
+                }
+                .stu-header {
+                    flex-direction: column; /* Stack items vertically on smaller screens */
+                    padding-top: 1rem;
+                    padding-bottom: 1rem;
+                }
+                .stu-header h1 {
+                    font-size: 2em !important; /* Adjust font size for smaller screens */
+                }
+                .stu-header p {
+                    font-size: 1em !important;
+                }
+            }
+
+
+            .stu-header h1 {
+                margin: 0;
+                font-size: 2.8em;
+                letter-spacing: 1px;
+            }
+            .stu-header p {
+                font-size: 1.1em;
+                margin-top: 0.5rem;
+                opacity: 0.9;
+            }
+
+            /* Search Bar Styling */
+            .search-bar-container {
+                max-width: 1000px;
+                margin: 1.5rem auto 2rem auto; /* Top/bottom margin, auto left/right */
+                padding: 0 5%;
+                text-align: center;
+            }
+
+            .search-bar-container input[type="search"] {
+                width: 100%;
+                padding: 12px 20px;
+                border: 1px solid #ccc;
+                border-radius: 25px; /* Rounded corners */
+                font-size: 1.1em;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+                transition: all 0.3s ease;
+            }
+
+            .search-bar-container input[type="search"]:focus {
+                border-color: #006400;
+                box-shadow: 0 0 0 3px rgba(0, 100, 0, 0.2); /* Green glow effect */
+                outline: none;
+            }
+
+
+            /* About Section Styling */
+            .about-union-section {
+                padding: 3rem 5%; /* Generous padding */
+                text-align: center;
+                max-width: 1000px; /* Constrain width for readability */
+                margin: 2rem auto; /* Center with top/bottom margin */
+                background-color: #ffffff; /* White background for this section */
+                border-radius: 12px;
+                box-shadow: 0 6px 15px rgba(0,0,0,0.05); /* Lighter shadow */
+            }
+            .about-union-section h2 {
+                font-size: 2em;
+                color: #006400; /* Kwara State University Green */
+                margin-bottom: 1.5rem;
+                position: relative;
+                display: inline-block;
+            }
+            .about-union-section h2::after {
+                content: '';
+                position: absolute;
+                width: 60%;
+                height: 3px;
+                background: #006400;
+                left: 20%;
+                bottom: -10px;
+                border-radius: 2px;
+            }
+            .about-union-section p {
+                font-size: 1.1em;
+                line-height: 1.8;
+                color: #444;
+                margin-bottom: 1em; /* Space between paragraphs */
+                text-align: justify; /* Justify text for a more formal look */
+            }
+            .about-union-section p:last-of-type {
+                margin-bottom: 0; /* No margin after the last paragraph */
+            }
+
+            /* Speech/Message Section Styling */
+            .speech-section {
+                padding: 3rem 5%;
+                max-width: 1000px;
+                margin: 2rem auto;
+                background-color: #ffffff;
+                border-radius: 12px;
+                box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+                text-align: center;
+            }
+
+            .speech-section h2 {
+                font-size: 2em;
+                color: #006400;
+                margin-bottom: 1.5rem;
+                position: relative;
+                display: inline-block;
+                width: 100%; /* Ensure pseudo-element is centered */
+            }
+
+            .speech-section h2::after {
+                content: '';
+                position: absolute;
+                width: 60%;
+                height: 3px;
+                background: #006400;
+                left: 20%;
+                bottom: -10px;
+                border-radius: 2px;
+            }
+
+            .speech-section .speaker-info {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 2rem;
+            }
+
+            .speech-section .speaker-info img {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin-bottom: 1rem;
+                border: 4px solid #006400; /* Green border for images */
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+
+            .speech-section .speaker-info h3 {
+                margin: 0;
+                color: #006400;
+                font-size: 1.5em;
+            }
+
+            .speech-section .speaker-info p {
+                margin: 0.5rem 0 0;
+                color: #555;
+                font-style: italic;
+                font-size: 1em;
+            }
+
+            .speech-section .speech-content {
+                text-align: justify;
+                color: #444;
+                font-size: 1.1em;
+                line-height: 1.8;
+            }
+
+            .speech-section .speech-content p {
+                margin-bottom: 1em;
+            }
+
+
+            /* Features Section Styling */
+            .features-section {
+                padding: 3rem 5%; /* Increased padding for more space */
+                text-align: center;
+                max-width: 1200px; /* Max width for content */
+                margin: 2rem auto; /* Center the content with margin */
+            }
+            .features-section h2 {
+                font-size: 2.2em;
+                color: #006400; /* Kwara State University Green */
+                margin-bottom: 2.5rem;
+                position: relative;
+                display: inline-block;
+            }
+            .features-section h2::after {
+                content: '';
+                position: absolute;
+                width: 60%;
+                height: 3px;
+                background: #006400;
+                left: 20%;
+                bottom: -10px;
+                border-radius: 2px;
+            }
+
+            .feature-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Larger min-width for items */
+                gap: 2.5rem; /* Increased gap between items */
+                margin-top: 2rem;
+            }
+            .feature-item {
+                background: #fff;
+                padding: 2rem; /* More internal padding */
+                border-radius: 12px;
+                box-shadow: 0 6px 15px rgba(0,0,0,0.08); /* Softer, more pronounced shadow */
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .feature-item:hover {
+                transform: translateY(-8px); /* Lift effect on hover */
+                box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            }
+            .feature-item img {
+                max-width: 80px; /* Slightly larger icons */
+                height: auto;
+                margin-bottom: 1.5rem;
+                filter: brightness(0.8); /* Slightly dim the icon for better text contrast */
+            }
+            .feature-item h3 {
+                color: #006400; /* Kwara State University Green */
+                margin-top: 0;
+                font-size: 1.5em;
+                margin-bottom: 1rem;
+            }
+            .feature-item p {
+                font-size: 1em;
+                color: #555;
+            }
+
+            /* New Section Styling (General for News, Resources, Contact, Constitution, Polls) */
+            .info-section {
+                padding: 3rem 5%;
+                max-width: 1000px;
+                margin: 2rem auto;
+                background-color: #ffffff;
+                border-radius: 12px;
+                box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+            }
+            .info-section h2 {
+                font-size: 2em;
+                color: #006400;
+                margin-bottom: 1.5rem;
+                text-align: center;
+                position: relative;
+                display: inline-block;
+                width: 100%; /* Ensure pseudo-element is centered */
+            }
+            .info-section h2::after {
+                content: '';
+                position: absolute;
+                width: 60%;
+                height: 3px;
+                background: #006400;
+                left: 20%;
+                bottom: -10px;
+                border-radius: 2px;
+            }
+            .info-section ul {
+                list-style: none; /* Remove default bullets */
+                padding: 0;
+            }
+            .info-section ul li {
+                background: #f9f9f9;
+                margin-bottom: 1rem;
+                padding: 1rem 1.5rem;
+                border-left: 5px solid #006400; /* Green accent */
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+                text-align: left; /* Ensure text inside list item is left-aligned */
+            }
+            .info-section ul li a {
+                color: #006400;
+                text-decoration: none;
+                font-weight: bold;
+                display: block; /* Make the whole list item clickable if desired */
+                font-size: 1.1em;
+            }
+            .info-section ul li a:hover {
+                text-decoration: underline;
+            }
+            .info-section .contact-details p,
+            .info-section .contact-details ul {
+                text-align: center; /* Center contact info */
+            }
+            .info-section .contact-details li {
+                background: none;
+                border: none;
+                box-shadow: none;
+                padding: 0.5rem 0;
+                margin-bottom: 0.5rem;
+            }
+            .info-section .contact-details li strong {
+                color: #006400;
+            }
+            .info-section .constitution-link a,
+            .info-section .poll-button { /* Added .poll-button for consistency */
+                display: inline-block;
+                background-color: #006400;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 8px;
+                text-decoration: none;
+                font-weight: bold;
+                margin-top: 1.5rem;
+                transition: background-color 0.3s ease;
+                border: none; /* Ensure buttons don't have default border */
+                cursor: pointer;
+            }
+            .info-section .constitution-link a:hover,
+            .info-section .poll-button:hover {
+                background-color: #004d00; /* Darker green on hover */
+            }
+
+            /* Forms styling for Feedback & Polls */
+            .feedback-form, .poll-form { /* Added .poll-form */
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                margin-top: 2rem;
+            }
+            .feedback-form label, .poll-form label { /* Added .poll-form label */
+                font-weight: bold;
+                color: #006400;
+                text-align: left;
+            }
+            .feedback-form input[type="text"],
+            .feedback-form input[type="email"],
+            .feedback-form textarea,
+            .poll-form input[type="text"],
+            .poll-form input[type="checkbox"], /* Changed from radio to checkbox */
+            .poll-form select { /* Added select box styling */
+                width: calc(100% - 20px); /* Account for padding */
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                font-size: 1em;
+                box-sizing: border-box; /* Include padding in width */
+            }
+            .feedback-form textarea {
+                resize: vertical; /* Allow vertical resizing */
+                min-height: 120px;
+            }
+            .feedback-form button, .poll-form button { /* Added .poll-form button */
+                background-color: #006400;
+                color: white;
+                padding: 12px 25px;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 1.1em;
+                font-weight: bold;
+                transition: background-color 0.3s ease;
+                align-self: center; /* Center the button */
+            }
+            .feedback-form button:hover, .poll-form button:hover {
+                background-color: #004d00;
+            }
+            .poll-options {
+                display: flex;
+                flex-direction: column;
+                gap: 0.8rem;
+                align-items: flex-start; /* Align checkboxes to the left */
+            }
+            .poll-option-item {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            .poll-option-item input[type="checkbox"] { /* Changed from radio to checkbox */
+                width: auto; /* Override full width for checkboxes */
+            }
+
+        </style>
+    </head>
+    <body>
+        <header class="stu-header">
+            <img src="http://googleusercontent.com/image_generation_content/0" alt="KWASU Logo" class="logo">
+            <div>
+                <h1>Kwara State University<br>Student Union, Malete</h1>
+                <p>We take full responsibility for our students, representing them humbly and effectively!</p>
+            </div>
+        </header>
+
+        <div class="search-bar-container">
+            <input type="search" id="site-search" placeholder="Search the KWASU SU Portal...">
+            <p style="font-size: 0.9em; margin-top: 0.5rem; color: #777;"><em>(Note: Search functionality requires JavaScript implementation.)</em></p>
+        </div>
+        ---
+
+        <section class="about-union-section">
+            <h2>Understanding Your Student Union</h2>
+            <p>A student union, also known as a student government or student council, is an organization that represents the interests of students at a university or college. The student union is typically made up of elected student leaders and is responsible for advocating for the needs and concerns of the student body.</p>
+            <p>The purpose of a student union is to give students a voice in the decision-making process at their institution. This can include issues suchs as course offerings, campus policies, and the allocation of resources. Student unions often work closely with faculty and administration to address student needs and improve the overall experience for students at the university.</p>
+            <p>In addition to advocating for student needs, student unions may also provide a range of services and resources for students. These can include social and recreational activities, support for student organizations, and assistance with career development and job searches.</p>
+            <p>Student unions may also play a role in campus life by organizing events and activities, such as lectures, concerts, and festivals. These events provide opportunities for students to engage with each other and the larger community, and can help foster a sense of community on campus.</p>
+            <p>Overall, a student union is an important resource for students at a university, helping to ensure that their voices are heard and their needs are met.</p>
+        </section>
+
+        ---
+
+        <section class="speech-section">
+            <h2>A Message from Our Student Union President</h2>
+            <div class="speaker-info">
+                <img src="https://via.placeholder.com/150/006400/FFFFFF?text=President" alt="SU President Photo">
+                <h3>Comrade [President's Name Here]</h3>
+                <p>President, Kwara State University Student Union</p>
+            </div>
+            <div class="speech-content">
+                <p>Dear fellow students,</p>
+                <p>It is with immense humility and profound gratitude that I address you as your Student Union President. Our union stands as a beacon of hope and progress, dedicated to fostering an environment where every student can thrive academically, socially, and personally. We are committed to championing your rights, addressing your concerns, and ensuring that your voices are not just heard, but acted upon.</p>
+                <p>This portal is one of our many initiatives to enhance transparency and accessibility. Here, you'll find vital information, updates, and resources designed to make your journey at KWASU smoother and more enriching. We believe in open communication and collaboration, and we encourage you to utilize this platform to stay informed and engage with us.</p>
+                <p>Let us work together to build a vibrant and inclusive campus community. Your active participation is key to our collective success. We promise to serve with integrity, dedication, and an unwavering commitment to your welfare. Aluta Continua!</p>
+            </div>
+        </section>
+
+        ---
+
+        <section class="speech-section">
+            <h2>From the Desk of the Vice-Chancellor</h2>
+            <div class="speaker-info">
+                <img src="https://via.placeholder.com/150/006400/FFFFFF?text=VC" alt="Vice-Chancellor Photo">
+                <h3>Prof. [Vice-Chancellor's Name Here]</h3>
+                <p>Vice-Chancellor, Kwara State University</p>
+            </div>
+            <div class="speech-content">
+                <p>Greetings, esteemed students of Kwara State University,</p>
+                <p>It is my distinct pleasure to welcome you to the official Student Union Portal. This platform is a testament to the robust relationship between the University Management and the Student Union Government, a partnership built on mutual respect and a shared vision for excellence.</p>
+                <p>Our students are the heartbeat of this institution, and your well-being, academic success, and personal development are paramount. The Student Union plays a crucial role in representing your interests and contributing to the dynamic intellectual and social fabric of our university. I commend their efforts in creating this accessible resource for all students.</p>
+                <p>I urge you to actively engage with the resources provided here and to leverage this platform for constructive dialogue and collaboration. Remember that your time at KWASU is a journey of growth, discovery, and preparation for a future of impact. We are here to support you every step of the way.</p>
+                <p>I wish you all a productive and fulfilling academic experience. Thank you.</p>
+            </div>
+        </section>
+
+        ---
+
+        <section class="features-section">
+            <h2>Our Core Responsibilities and Functions</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <img src="https://via.placeholder.com/80/006400/FFFFFF?text=W" alt="Welfare Icon">
+                    <h3>Student Welfare & Rights</h3>
+                    <p>The Union actively safeguards the welfare and rights of every student, working tirelessly to address their needs and concerns within the university community.</p>
+                </div>
+                <div class="feature-item">
+                    <img src="https://via.placeholder.com/80/006400/FFFFFF?text=A" alt="Advocacy Icon">
+                    <h3>Effective Student Advocacy</h3>
+                    <p>We serve as the vital link between students and university management, passionately advocating for student interests, policy improvements, and a conducive learning environment.</p>
+                </div>
+                <div class="feature-item">
+                    <img src="https://via.placeholder.com/80/006400/FFFFFF?text=E" alt="Events Icon">
+                    <h3>Diverse Events & Engagements</h3>
+                    <p>We plan and execute a wide array of social, cultural, and academic events, including freshers' orientations, vibrant festivals, insightful seminars, and thrilling sports competitions.</p>
+                </div>
+                <div class="feature-item">
+                    <img src="https://via.placeholder.com/80/006400/FFFFFF?text=R" alt="Resolution Icon">
+                    <h3>Conflict Resolution & Mediation</h3>
+                    <p>Our role includes mediating and resolving conflicts, whether they arise among students or between students and university authorities, ensuring fairness and understanding.</p>
+                </div>
+                <div class="feature-item">
+                    <img src="https://via.placeholder.com/80/006400/FFFFFF?text=I" alt="Information Icon">
+                    <h3>Timely Information Dissemination</h3>
+                    <p>We commit to keeping students well-informed about crucial university policies, exciting opportunities, important announcements, and deadlines to ensure no one misses out.</p>
+                </div>
+                <div class="feature-item">
+                    <img src="https://via.placeholder.com/80/006400/FFFFFF?text=C" alt="Community Icon">
+                    <h3>Community Development & Outreach</h3>
+                    <p>Beyond campus, we initiate and actively participate in community development projects and outreach programs, fostering a sense of social responsibility among students.</p>
+                 </div>
+                <div class="feature-item">
+                    <img src="https://via.placeholder.com/80/006400/FFFFFF?text=L" alt="Leadership Icon">
+                    <h3>Fostering Leadership Development</h3>
+                    <p>We provide invaluable platforms and opportunities for students to hone their leadership skills through active participation in various union activities and leadership roles.</p>
+                </div>
+                <div class="feature-item">
+                    <img src="https://via.placeholder.com/80/006400/FFFFFF?text=S" alt="Support Icon">
+                    <h3>Comprehensive Student Support</h3>
+                    <p>We offer various support services, which can include academic guidance, career counseling, mentorship programs, and, in some instances, limited financial assistance to students in need.</p>
+                </div>
+            </div>
+        </section>
+
+        ---
+
+        <section class="info-section">
+            <h2>Latest News & Announcements</h2>
+            <ul>
+                <li><p><strong>July 5, 2025:</strong> Important notice regarding second-semester examination registration. <a href="#">Read More</a></p></li>
+                <li><p><strong>June 28, 2025:</strong> Student Union elections schedule and guidelines released. <a href="#">View Details</a></p></li>
+                <li><p><strong>June 20, 2025:</strong> Kwara State University marks its 15th anniversary with a week-long celebration. <a href="#">See Highlights</a></p></li>
+                <li><p><strong>June 15, 2025:</strong> Scholarship opportunities for indigent students now open. <a href="#">Apply Now</a></p></li>
+            </ul>
+        </section>
+
+        ---
+
+        <section class="info-section">
+            <h2>Student Resources & Quick Links</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: #555;">Access essential university resources and key departmental information directly from here.</p>
+            <ul>
+                <li>
+                    <a href="#">
+                        <strong>Academic Calendar 2024/2025:</strong> View key dates for semesters, exams, and holidays.
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <strong>Admissions & Registration Portal:</strong> Your gateway for admissions processes and course registration.
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <strong>KWASU E-Library & Research Databases:</strong> Access a vast collection of academic resources and journals.
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <strong>University Health Services:</strong> Information on campus medical facilities and student health support.
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <strong>Career Development & Placement Unit:</strong> Explore job opportunities, internships, and career counseling services.
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <strong>Student Affairs Division:</strong> Guidelines, policies, and support services for student life.
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <strong>Bursary & Fees Information:</strong> Details on tuition fees, payment procedures, and financial aid.
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <strong>Campus Security & Emergency Contacts:</strong> Important numbers and procedures for safety on campus.
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        ---
+
+        <section class="info-section">
+            <h2>Feedback & Contact Us</h2>
+            <p>Your voice matters! Please use the form below to submit your feedback, suggestions, or complaints. You can also reach us directly.</p>
+            <form action="#" method="POST" class="feedback-form">
+                <label for="name">Your Name (Optional):</label>
+                <input type="text" id="name" name="name">
+
+                <label for="email">Your Email (Optional):</label>
+                <input type="email" id="email" name="email">
+
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required>
+
+                <label for="message">Your Message:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+            <div class="contact-details">
+                <p><strong>Direct Contact:</strong></p>
+                <ul>
+                    <li><strong>Email:</strong> su.president@kwasu.edu.ng</li>
+                    <li><strong>Phone:</strong> +234 801 234 5678</li>
+                    <li><strong>Office:</strong> Student Union Building, Main Campus, Malete.</li>
+                    <li><strong>Office Hours:</strong> Monday - Friday, 9:00 AM - 4:00 PM</li>
+                </ul>
+            </div>
+        </section>
+
+        ---
+
+        <section class="info-section">
+            <h2>Student Polls & Surveys</h2>
+            <p>Help us serve you better by participating in our quick polls and surveys. You can **select multiple options** that apply to you. Your feedback is crucial for improving campus life and student services!</p>
+            <form action="#" method="POST" class="poll-form">
+                <h3>Current Poll: What are your biggest concerns regarding campus facilities?</h3>
+                <div class="poll-options">
+                    <div class="poll-option-item">
+                        <input type="checkbox" id="concern_power" name="campus_concern[]" value="power">
+                        <label for="concern_power">Electricity & Power Supply</label>
+                    </div>
+                    <div class="poll-option-item">
+                        <input type="checkbox" id="concern_water" name="campus_concern[]" value="water">
+                        <label for="concern_water">Water Supply</label>
+                    </div>
+                    <div class="poll-option-item">
+                        <input type="checkbox" id="concern_transport" name="campus_concern[]" value="transport">
+                        <label for="concern_transport">Campus Transportation</label>
+                    </div>
+                    <div class="poll-option-item">
+                        <input type="checkbox" id="concern_hostel" name="campus_concern[]" value="hostel">
+                        <label for="concern_hostel">Hostel Accommodation</label>
+                    </div>
+                    <div class="poll-option-item">
+                        <input type="checkbox" id="concern_internet" name="campus_concern[]" value="internet">
+                        <label for="concern_internet">Internet Connectivity</label>
+                    </div>
+                     <div class="poll-option-item">
+                        <input type="checkbox" id="concern_library" name="campus_concern[]" value="library">
+                        <label for="concern_library">Library Resources/Study Spaces</label>
+                    </div>
+                    <div class="poll-option-item">
+                        <input type="checkbox" id="concern_health" name="campus_concern[]" value="health">
+                        <label for="concern_health">Health Services</label>
+                    </div>
+                </div>
+                <button type="submit" class="poll-button">Submit Your Votes</button>
+                <p style="font-size: 0.9em; margin-top: 1rem; color: #777;"><em>(Note: Poll submission requires backend processing to record multiple selections.)</em></p>
+            </form>
+
+            <h3 style="margin-top: 3rem; text-align: center; color: #006400;">Quick Survey: Tell us about your Academic Experience</h3>
+            <p style="text-align: center; color: #555;">(Link to an external survey)</p>
+            <div style="text-align: center;">
+                <a href="https://forms.gle/YOUR_SURVEY_LINK_HERE" target="_blank" class="poll-button">Take Our Academic Survey</a>
+            </div>
+        </section>
+
+        ---
+
+        <section class="info-section">
+            <h2>Student Union Constitution & Bylaws</h2>
+            <p>Understand the principles, structures, and regulations that govern the Kwara State University Student Union. This document outlines your rights, responsibilities, and the framework within which the union operates.</p>
+            <div class="constitution-link">
+                <a href="#" download="KWASU_SU_Constitution.pdf">Download Our Constitution (PDF)</a>
+            </div>
+            <p style="font-size: 0.9em; margin-top: 1rem; color: #777;"><em>(Note: Link to be updated with the actual constitution document)</em></p>
+        </section>
+
+        </body>
+</html>

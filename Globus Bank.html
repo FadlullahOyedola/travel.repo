@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=devicewidth, initial-scale=1.0">
+        <link rel="icon" href="#">
+        <style>
+            body{
+                font-family: Arial, Helvetica, sans-serif;
+                padding: 0;
+                margin: 0;
+                color: #333;
+                background-color: #f4f4f4;
+            }
+
+            header{
+                background-color: white;
+                color: red;
+                padding: 1em 0;
+            }
+
+            .container{
+                max-width: 1200px;
+                padding: 20px;
+                margin: 0 auto;
+            }
+
+            header .container{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            header h1{
+                margin: 0;
+                margin-right: 5px; /* Adjust as needed*/
+                display: inline-block;
+            }
+
+            header img{
+                vertical-align: middle;
+                display: inline-block;
+                height: auto;
+                width: 50px;
+                margin-left: 5px; /* Adjust as needed*/
+            }
+
+            nav ul{
+                display: flex;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            nav ul li a{
+                padding: 0.5em 0.75em;
+                transition: background-color 0.3s ease;
+                border-radius: 5px;
+                text-decoration: none;
+                color: red;
+                font-weight: bold;
+            }
+
+            nav ul li a:hover{
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            .login-button a{
+            display: inline-block;
+            border-radius: 5px;
+            color: white;
+            background-color:red;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            padding: 0.7em 1.5em;
+            border: 1px solid red;
+            }
+
+            .hero{
+                text-align: center;
+                background-color: #eee;
+            }
+
+            .hero h2{
+                font-size: 2em;
+                color: red;
+                font-weight: bold;
+            }
+
+            .hero p{
+                margin-top: 10px;
+            }
+
+            .btn{
+                padding: 1em 2em;
+                border-radius: 5px;
+                color: white;
+                background-color: red;
+                border: 1px solid red;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                margin-bottom: 20px;
+                font-weight: bold;
+            }
+
+            .feature{
+                padding: 40px 20px;
+                text-align: center;
+                text-decoration: none;
+            }
+
+            .feature h2{
+                text-align: center;
+                font-size: 2em;
+                margin-bottom: 20px;
+                margin-top: 10px;
+            }
+
+            .feature-grid{
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+            }
+
+            .feature-item img{
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+                display: block;
+                max-width: 200px;
+            }
+
+            .feature-item{
+                background-color: #fff;
+                overflow: hidden;
+                border-radius: 8px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+            
+            .contact{
+                text-align: center;
+                padding: 40px 20px;
+                font-size: 2em;
+            }
+
+        .Contact {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 20px;
+        }
+
+        .Contact h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .Contact p {
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .Contact form {
+            max-width: 500px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .Contact input[type="text"],
+        .Contact input[type="email"],
+        .Contact textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .Contact textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        footer {
+            text-align: center;
+            position: sticky;
+        }
+        </style>
+    </head>
+    <body>
+    <header>
+        <div class="container">
+            <h1>Globus Bank Limited</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Accounts</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Transactions</a></li>
+                    <li><a href="#">Contact-Us</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="login-button">
+                <a href="#" class="btn">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+        <section class="hero">
+            <h2>Welcome to Globus Bank Limited</h2>
+            <p>Enroll to enjoy smooth banking experience</p>
+            <button class="btn">Register</button>
+        </section>
+
+        <section class="feature">
+            <h2>Our Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <img src="#" alt="#">
+                    <h3>Account Type</h3>
+                    <p>Open Accounts of different categories</p>
+                    <button class="btn">Open-Account</button>
+                </div>
+                <div class="feature-item">
+                    <img src="#" alt="#">
+                    <h3>Transfer Funds</h3>
+                    <P>Send money to friends and family through our internet Banking Platform</P>
+                    <button class="btn">Register</button>
+                </div>
+                <div class="feature-item">
+                    <img src="#" alt="#">
+                    <h3>Pay Bills</h3>
+                    <p>Settle unpaid bills through trusted merchants</p>
+                    <button class="btn">Open-Account</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="Contact">
+            <h2>Contact Us</h2>
+            <p>Have any enquires. <i>Feel free to ask</i></p>
+            <p>We are ready to give responses</p>
+            <form action="#" method="posst">
+                <input type="text" placeholder="Your Full-name">
+                <input type="email" placeholder="Your Email">
+                <textarea placeholder="Drop your message"></textarea>
+                <button class="btn">Submit</button>
+            </form>
+        </section>
+
+        <footer>
+            <div class="foot">
+                <p>&copy;2025 Globus Bank Limited. All rights reserved</p>
+            </div>
+        </footer>
+    </body>
+</html>

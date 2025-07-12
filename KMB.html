@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kwasu Microfinace Bank</title>
+    <link rel="icon" href="#">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333;
+            background-color: #f4f4f4;
+            padding: 0;
+            margin: 0;
+        }
+
+        header {
+            background-color: #28a745;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            padding: 0.5rem 0.75rem;
+            text-decoration: none;
+            border-radius: 0.25rem;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        #home {
+            text-align: center;
+            color: white;
+            background: linear-gradient(to right, #28a745, #1e7e3e);
+            padding: 5rem 0;
+        }
+
+        #home h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        #home p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .register-button {
+            padding: 0.75rem 2rem;
+            text-decoration: none;
+            color: #28a745;
+            border-radius: 2rem;
+            display: inline-block;
+            background-color: white;
+            font-weight: bold;
+        }
+
+        .features {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .features h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-item {
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            background-color: #eee;
+        }
+
+        .btn {
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 25px;
+            color: white;
+            border-radius: 5px;
+            border: 1px solid #1e7e3e;
+            font-weight: bold;
+            padding: 0.75em 1em;
+            background-color: #1e7e3e;
+        }
+
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            max-width: 500px;
+            margin: auto;
+            gap: 15x;
+        }
+
+        .contact input[type='text'],
+        .contact input[type='email'],
+        .contact textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .contact textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit {
+            border-radius: 5px;
+            padding: 1em 2em;
+            text-decoration: none;
+            display: inline-block;
+            color: white;
+            background-color: #1e7e3e;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border: 1px solid #1e7e3e;
+            outline: none;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .contact {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <a href="#">Front Foundation College</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#accounts">Accounts</a></li>
+                    <li><a href="#transactions">Transactions</a></li>
+                    <li><a href="#loans">Loans</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home">
+        <div class="container">
+            <h1>Welcome to Kwasu Microfinace Bank</h2>
+                <p>Enjoy smooth banking experience</p>
+                <a href="#" class="register-button">Register</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>Our Key Features</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <img src="#" alt="#">
+                <h3>Account Opening</h3>
+                <p>Enroll for oepning different account categories</p>
+                <button class="btn">Open Account</button>
+            </div>
+            <div class="feature-item">
+                <img src="#" alt="#">
+                <h3>Loans</h3>
+                <p>Apply for differnet Loans Levels</p>
+                <button class="btn">Apply For Loans</button>
+            </div>
+            <div class="feature-item">
+                <img src="#" alt="#">
+                <h3>Pay Bills</h3>
+                <p>Settle unpaid bills with trsuted merchants</p>
+                <button class="btn">Pay Bills</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <form action="#" method="post">
+            <input type="text" id="name" placeholder="Your Full Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea placeholder="Drop your message"></textarea>
+            <button class="submit">Submit</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="foot">
+            <p>&copy;2025 Kwasu Microfinance Bank. All rights reserved</p>
+        </div>
+    </footer>
+</body>
+
+</html>

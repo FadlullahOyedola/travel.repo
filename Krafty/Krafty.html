@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krafty Kitchen - Authentic Delicacies, Unforgettable Taste</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            line-height: 1.7;
+            color: #333;
+            background-color: #FFFBF5; /* Creamy off-white for main background */
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+        }
+
+        /* Reusable Containers */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            /* Deeper gradient for better text contrast */
+            background: linear-gradient(rgba(46, 28, 26, 0.6), rgba(46, 28, 26, 0.6)), url(https://media.gettyimages.com/id/1403657533/photo/small-outdoor-caf%C3%A9.jpg?s=1024x1024&w=gi&k=20&c=Pz1gnHZkuV_d-HATtelExnmBEltC-WSh1JmXNtfE9RE=) center/cover no-repeat fixed; /* Parallax effect */
+            color: #fff;
+            padding-bottom: 20px; /* Space above hero content */
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: rgba(46, 28, 26, 0.3); /* Darker, transparent background for nav */
+            position: sticky; /* Sticky navigation */
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for sticky nav */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .Kitchen {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em; /* Slightly larger brand name */
+            font-weight: 700;
+            color: #FFD700; /* Gold color */
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        nav ul {
+            display: flex;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 35px; /* More space */
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 400;
+            padding: 5px 0; /* Add padding for a larger click area */
+            position: relative; /* For underline effect */
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a::after { /* Underline effect on hover */
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #FFD700;
+            left: 0;
+            bottom: 0;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #FFD700;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 150px 20px 180px; /* More vertical space */
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.8em; /* Even larger, more impactful heading */
+            margin-bottom: 20px;
+            color: #FFD700;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Stronger shadow for pop */
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.6em;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #eee;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .button {
+            cursor: pointer;
+            color: #2E1C1A; /* Dark brown text on gold button */
+            background-color: #FFD700;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            padding: 1.2em 3em; /* Generous padding */
+            display: inline-block;
+            font-weight: 700;
+            font-size: 1.2em; /* Larger button text */
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4); /* Gold shadow for buttons */
+        }
+
+        .button:hover {
+            background-color: #e6c200;
+            transform: translateY(-3px); /* More pronounced lift effect */
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.6);
+        }
+
+        /* --- Section Styles (General) --- */
+        section {
+            padding: 80px 0; /* More consistent vertical padding */
+            text-align: center;
+            position: relative; /* For potential background effects */
+        }
+
+        section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em; /* Larger section headings */
+            margin-bottom: 20px;
+            color: #8B0000; /* Dark Red */
+            position: relative;
+            display: inline-block; /* For underline effect */
+            padding-bottom: 10px;
+        }
+
+        section h2::after { /* Underline effect for headings */
+            content: '';
+            position: absolute;
+            width: 80px; /* Short underline */
+            height: 4px;
+            background: #FFD700; /* Gold underline */
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            border-radius: 2px;
+        }
+
+        /* Food Variety Section */
+        .Food {
+            background-color: #fcfcfc; /* Slightly brighter background for food */
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .Food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px; /* Increased gap */
+            margin-top: 50px;
+        }
+
+        .Food-item {
+            background: #fff;
+            overflow: hidden;
+            border-radius: 15px; /* More rounded corners */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Softer, more pronounced shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            border: 1px solid #f0f0f0; /* Subtle border */
+        }
+
+        .Food-item:hover {
+            transform: translateY(-8px); /* Stronger lift effect */
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
+        }
+
+        .Food-item img {
+            width: 100%;
+            height: 250px; /* Taller images */
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+            border-radius: 15px 15px 0 0; /* Rounded top corners only */
+        }
+
+        .Food-item h3 {
+            padding: 20px 15px 10px; /* Adjusted padding */
+            margin: 0;
+            font-size: 1.8em; /* Larger food item titles */
+            color: #8B0000;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .Food-item p {
+            padding: 0 20px;
+            margin: 0 0 15px 0;
+            color: #555;
+            font-size: 1.05em;
+        }
+
+        .Food-item .price {
+            font-weight: 700;
+            color: #FFD700;
+            font-size: 1.6em; /* Larger price text */
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .Food-item .button {
+            margin-bottom: 25px; /* More space below button */
+            padding: 0.9em 2em; /* Adjusted padding for item buttons */
+            font-size: 1.05em;
+        }
+
+        /* --- About Us Section --- */
+        .about-us {
+            background-color: #2E1C1A; /* Dark brown background */
+            color: #f5f5f5; /* Light text */
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .about-us h2 {
+            color: #FFD700; /* Gold heading */
+        }
+
+        .about-us p {
+            max-width: 800px;
+            margin: 20px auto 0;
+            font-size: 1.15em;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        .about-us-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .about-us-content img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+        }
+
+        /* --- Testimonials Section --- */
+        .testimonials {
+            background-color: #f8f8f8;
+            padding: 80px 20px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-item {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: left;
+            transition: transform 0.3s ease;
+            border-top: 4px solid #FFD700; /* Gold top border */
+        }
+
+        .testimonial-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-item p {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        .testimonial-item .customer-name {
+            font-weight: 700;
+            color: #8B0000;
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+
+        /* --- Call to Action Section --- */
+        .cta-section {
+            background: linear-gradient(rgba(139, 0, 0, 0.8), rgba(139, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1549420412-f2228d447f52?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcwMnwwfDF8c2VhcmNofDh8fGRlbGljaW91cyUyMGZvb2R8ZW58MHx8fHwxNzIwNDE3MzE0fDA&ixlib=rb-4.0.3&q=80&w=1080') center/cover no-repeat;
+            color: #fff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+
+        .cta-section h2::after {
+            background: #FFD700; /* Gold underline */
+        }
+
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 1.2em;
+            line-height: 1.8;
+        }
+
+        /* --- Contact Section --- */
+        .contact {
+            background-color: #fdfdfd; /* Very light background */
+            padding: 80px 20px;
+        }
+
+        .contact i {
+            display: block;
+            margin-bottom: 10px;
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .contact p {
+            font-size: 1.15em;
+            margin-bottom: 40px;
+            color: #555;
+        }
+
+        .contact form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 25px; /* More space */
+        }
+
+        .contact label { /* Added explicit labels for accessibility */
+            text-align: left;
+            font-weight: 700;
+            color: #8B0000;
+            font-size: 1.05em;
+        }
+
+        .contact input[type='text'],
+        .contact input[type='email'],
+        .contact textarea {
+            padding: 15px 20px; /* More padding */
+            border-radius: 10px; /* More rounded */
+            font-size: 1.1em;
+            border: 1px solid #ddd;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.05); /* Softer inner shadow */
+            width: 100%;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact input[type='text']:focus,
+        .contact input[type='email']:focus,
+        .contact textarea:focus {
+            border-color: #FFD700; /* Gold focus border */
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2); /* Gold glow */
+            outline: none;
+        }
+
+        .contact textarea {
+            min-height: 180px; /* Taller textarea */
+        }
+
+        .contact .button {
+            margin-top: 20px;
+            padding: 1.2em 3.5em; /* Larger button */
+        }
+
+        /* --- Footer Styling --- */
+        footer {
+            background-color: #2E1C1A; /* Dark brown footer */
+            color: #fff;
+            text-align: center;
+            padding: 30px 0; /* More padding */
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #aaa;
+            line-height: 1.5;
+        }
+
+        footer .social-icons a {
+            color: #FFD700;
+            font-size: 1.8em;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #fff;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 900px) {
+            .hero h1 {
+                font-size: 3.5em;
+            }
+            .hero p {
+                font-size: 1.3em;
+            }
+            .Food-grid, .testimonial-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            nav ul li {
+                margin: 8px 15px;
+            }
+            .Kitchen {
+                font-size: 2em;
+            }
+            .hero {
+                padding: 100px 20px 120px;
+            }
+            .hero h1 {
+                font-size: 2.8em;
+            }
+            .hero p {
+                font-size: 1.1em;
+            }
+            section {
+                padding: 60px 0;
+            }
+            section h2 {
+                font-size: 2.5em;
+            }
+            .about-us p, .cta-section p, .testimonials p, .contact p {
+                font-size: 1em;
+            }
+            .Food-item img {
+                height: 200px; /* Adjust image height for smaller screens */
+            }
+            .Food-item h3 {
+                font-size: 1.6em;
+            }
+            .Food-item .price {
+                font-size: 1.4em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul li {
+                margin: 5px 10px;
+            }
+            .hero h1 {
+                font-size: 2.2em;
+            }
+            .hero p {
+                font-size: 0.95em;
+            }
+            section h2 {
+                font-size: 2em;
+            }
+            .button {
+                padding: 1em 2em;
+                font-size: 1.0em;
+            }
+            .Food-grid, .testimonial-grid {
+                grid-template-columns: 1fr; /* Stack items on very small screens */
+            }
+            .Food-item img {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="Kitchen">Krafty Kitchen</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#food-varieties">Menu</a></li>
+                <li><a href="#about-us">About Us</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hero">
+            <h1>Taste the Difference, Feel the Crave!</h1>
+            <p>Experience an exquisite blend of authentic and modern delicacies, crafted with passion just for you. Every bite tells a story.</p>
+            <a href="#food-varieties" class="button">Explore Our Menu</a>
+        </div>
+    </header>
+
+    <section id="food-varieties" class="Food">
+        <div class="container">
+            <h2>Our Food Varieties</h2>
+            <div class="Food-grid">
+                <div class="Food-item">
+                    <img src="https://images.unsplash.com/photo-1629822602714-36a5a9d8c823?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcwMnwwfDF8c2VhcmNofDEzfHpvbWJpZSUyMHJpY2V8ZW58MHx8fHwxNzIwNDE2MDEzfDA&ixlib=rb-4.0.3&q=80&w=1080" alt="Smoky Jollof Rice">
+                    <h3>Smoky Jollof Rice</h3>
+                    <p>A very palatable jollof-rice prepared with authentic Nigerian flavors, just for your pleasure.</p>
+                    <p class="price">₦4,000</p>
+                    <button class="button">Order Now</button>
+                </div>
+                <div class="Food-item">
+                    <img src="https://images.unsplash.com/photo-1616262486749-0d195c898b0f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcwMnwwfDF8c2VhcmNofDEzfHpvbWJpZSUyMHJpY2V8ZW58MHx8fHwxNzIwNDE2MDEzfDA&ixlib=rb-4.0.3&q=80&w=1080" alt="Amala and Soup">
+                    <h3>Amala & Your Choice Soup</h3>
+                    <p>Savor our traditional Yoruba delicacy, served hot with your preferred rich soup (Efo Riro, Egusi, Gbegiri).</p>
+                    <p class="price">₦3,900</p>
+                    <button class="button">Order Now</button>
+                </div>
+                <div class="Food-item">
+                    <img src="https://images.unsplash.com/photo-1599553531637-299f0f972b2a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcwMnwwfDF8c2VhcmNofDF8fG9mYWRhJTIwcmljZXxlbnwwfHx8fDE3MjA0MTYwNTZ8MA&ixlib=rb-4.0.3&q=80&w=1080" alt="Ofada Rice and Sauce">
+                    <h3>Ofada Rice & Stew</h3>
+                    <p>Experience the unique taste of this rare local rice, paired with our fiery signature stew.</p>
+                    <p class="price">₦5,800</p>
+                    <button class="button">Order Now</button>
+                </div>
+                <div class="Food-item">
+                    <img src="https://images.unsplash.com/photo-1627993072619-3f41249b5c3d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcwMnwwfDF8c2VhcmNofDJ8fGZyaWVkJTIwcGxhbnRhaW4lMjBhbmQlMjBmaXNoJTIwTmlnZXJpYW58ZW58MHx8fHwxNzIwNDE2MzgxfDA&ixlib=rb-4.0.3&q=80&w=1080" alt="Fried Plantain and Fish">
+                    <h3>Dodo & Fried Fish</h3>
+                    <p>Sweet, succulent fried plantain (Dodo) served with crispy, seasoned fried fish – a perfect snack or light meal.</p>
+                    <p class="price">₦3,500</p>
+                    <button class="button">Order Now</button>
+                </div>
+                <div class="Food-item">
+                    <img src="https://images.unsplash.com/photo-1616262486749-0d195c898b0f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcwMnwwfDF8c2VhcmNofDN8fGZhc3QlMjBmb29kJTIwZGlzaGVzJTIwTmlnZXJpYW58ZW58MHx8fHwxNzIwNDE2NDMzfDA&ixlib=rb-4.0.3&q=80&w=1080" alt="Burger and Fries">
+                    <h3>Classic Burger & Fries</h3>
+                    <p>Our juicy beef patty, fresh veggies, and special sauce, served with golden crispy fries.</p>
+                    <p class="price">₦4,500</p>
+                    <button class="button">Order Now</button>
+                </div>
+                <div class="Food-item">
+                    <img src="https://images.unsplash.com/photo-1619652136199-ec366578a571?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcwMnwwfDF8c2VhcmNofDh8fG5pZ2VyaWFuJTIwcG9ycmlkZ2V8ZW58MHx8fHwxNzIwNDE2NDYxfDA&ixlib=rb-4.0.3&q=80&w=1080" alt="Porridge Beans">
+                    <h3>Ewa Agoyin (Porridge Beans)</h3>
+                    <p>Creamy and flavorful beans porridge, slow-cooked to perfection and served with spicy pepper sauce.</p>
+                    <p class="price">₦2,800</p>
+                    <button class="button">Order Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about-us" class="about-us">
+        <div class="container">
+            <h2>Our Story</h2>
+            <div class="about-us-content">
+                <p>
+                    At Krafty Kitchen, we believe that food is not just sustenance; it's an experience, a memory, and a celebration of culture. Born from a passion for authentic Nigerian cuisine blended with contemporary culinary techniques, we strive to bring you dishes that delight your palate and warm your soul.
+                </p>
+                <p>
+                    Every ingredient is carefully selected, every dish prepared with love and precision. From the smoky aroma of our jollof to the rich flavors of our traditional soups, we are committed to delivering exceptional quality and taste. Join us on a culinary journey where tradition meets innovation, and every meal is a masterpiece.
+                </p>
+                 <img src="https://images.unsplash.com/photo-1542478331-52a1a8c5b8e9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcwMnwwfDF8c2VhcmNofDIyfHJlc3RhdXJhbnQlMjBraXRjaGVufGVufDB8fHx8MTcxOTg3OTY2Nnww&ixlib=rb-4.0.3&q=80&w=1080" alt="Krafty Kitchen Interior">
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-item">
+                    <p>"Krafty Kitchen's Jollof Rice is simply the best I've had! The smoky flavor is perfection. It truly tastes like home."</p>
+                    <p class="customer-name">- Aisha K., Student</p>
+                </div>
+                <div class="testimonial-item">
+                    <p>"The Amala and Egusi soup are incredibly authentic. I appreciate the quality and speed of service. My new go-to for traditional meals!"</p>
+                    <p class="customer-name">- David O., Lecturer</p>
+                </div>
+                <div class="testimonial-item">
+                    <p>"I ordered the Ofada Rice out of curiosity, and I was absolutely blown away. So unique and delicious. Highly recommend!"</p>
+                    <p class="customer-name">- Funke A., Entrepreneur</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Taste Perfection?</h2>
+            <p>Don't miss out on an unforgettable culinary experience. Browse our full menu or place your order now!</p>
+            <a href="#food-varieties" class="button">View Full Menu</a>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Connect With Us</h2>
+            <p><i>We're ready to take your messages and reply to them promptly!</i></p>
+            <p>Have any questions, feedback, or special requests? Feel free to reach out to us. We love hearing from our customers!</p>
+            <form action="#" method="post">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" placeholder="E.g., John Doe" required>
+
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" placeholder="E.g., yourname@example.com" required>
+
+                <label for="message">Your Message:</label>
+                <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
+                <button type="submit" class="button">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p>&copy; 2025 Krafty Kitchen. All rights reserved.</p>
+            <p>Proudly serving Nigeria with authentic flavors.</p>
+        </div>
+    </footer>
+</body>
+</html>

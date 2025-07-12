@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LiveScore Clone</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #fff;
+    }
+
+    header {
+      background-color: #1e1e1e;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-around;
+      background-color: #1e1e1e;
+      border-bottom: 1px solid #333;
+    }
+
+    .tabs button {
+      flex: 1;
+      background: none;
+      border: none;
+      padding: 15px;
+      color: #bbb;
+      font-size: 16px;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .tabs button.active,
+    .tabs button:hover {
+      color: #fff;
+      border-bottom: 2px solid orange;
+    }
+
+    .matches {
+      padding: 20px;
+    }
+
+    .match {
+      background: #1f1f1f;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .match .teams {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .match .teams span {
+      margin: 2px 0;
+    }
+
+    .match .score {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .match .status {
+      font-size: 14px;
+      color: #bbb;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        font-size: 20px;
+      }
+
+      .tabs button {
+        font-size: 14px;
+        padding: 12px;
+      }
+
+      .match {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .match .score {
+        margin-top: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>LiveScore</header>
+
+  <div class="tabs">
+    <button class="active">Yesterday</button>
+    <button>Today</button>
+    <button>Tomorrow</button>
+  </div>
+
+  <div class="matches">
+    <div class="match">
+      <div class="teams">
+        <span><strong>Chelsea</strong></span>
+        <span><strong>Arsenal</strong></span>
+      </div>
+      <div class="score">2 - 1</div>
+      <div class="status">FT</div>
+    </div>
+
+    <div class="match">
+      <div class="teams">
+        <span><strong>Real Madrid</strong></span>
+        <span><strong>Barcelona</strong></span>
+      </div>
+      <div class="score">1 - 0</div>
+      <div class="status">67'</div>
+    </div>
+
+    <div class="match">
+      <div class="teams">
+        <span><strong>Liverpool</strong></span>
+        <span><strong>Man City</strong></span>
+      </div>
+      <div class="score">0 - 0</div>
+      <div class="status">20'</div>
+    </div>
+  </div>
+
+</body>
+</html>

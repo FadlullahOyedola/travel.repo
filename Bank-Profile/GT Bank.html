@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTBank Limited - Your Trusted Financial Partner</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="icon" href="https://www.gtbank.com/assets/img/favicon/favicon.ico">
+
+    <style>
+        /* Modernized GTBank-Specific Color Palette */
+        :root {
+            --gt-orange: #F7931E;   /* GTBank Primary Orange */
+            --gt-yellow: #FFD700;   /* Bright Yellow for highlights/buttons */
+            --gt-dark-grey: #212529; /* Very dark grey for primary text, almost black */
+            --gt-medium-grey: #495057; /* Medium grey for paragraph text */
+            --gt-light-grey: #F8F9FA; /* Very light background grey (used for borders/shadows) */
+            --gt-white: #FFFFFF;    /* Pure white for content backgrounds and text on dark */
+            --border-light: #DEE2E6; /* Light border for subtle separation */
+            --shadow-light: rgba(0, 0, 0, 0.08); /* Subtle shadow */
+            --shadow-medium: rgba(0, 0, 0, 0.15); /* More pronounced shadow */
+            --transition-speed: 0.3s ease-in-out; /* Standard transition time for hovers */
+        }
+
+        /* Basic Reset & Typography */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--gt-dark-grey); /* Default text color */
+            line-height: 1.7;
+            font-size: 16px;
+
+            /* Body Background Image */
+            background-image: url('https://africadailynews.net/wp-content/uploads/2019/07/gtbank-headoffice-768x537.jpg');
+            background-size: cover;
+            background-attachment: fixed; /* For parallax-like scroll effect */
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Subtle Dark Overlay for the body background image */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.2); /* Subtle dark overlay */
+            z-index: -1; /* Place behind all content */
+        }
+
+        /* Reusable Container */
+        .container {
+            max-width: 1200px;
+            padding: 0 25px;
+            margin: 0 auto;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: var(--gt-orange); /* GTBank Orange */
+            color: var(--gt-white); /* White text on orange */
+            padding: 20px 0;
+            box-shadow: 0 4px 15px var(--shadow-medium);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* Logo/Bank Name Styling */
+        header h1 {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            font-size: 2.2em;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            white-space: nowrap;
+        }
+        header h1 span {
+            color: var(--gt-yellow); /* Yellow 'Bank' on orange background for contrast */
+        }
+
+        /* Navigation Styling */
+        nav {
+            flex-grow: 1;
+            text-align: center;
+        }
+        nav ul {
+            display: flex;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: var(--gt-white);
+            text-decoration: none;
+            padding: 8px 0;
+            position: relative;
+            transition: color var(--transition-speed), transform 0.2s ease;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            background-color: var(--gt-yellow); /* Yellow underline for contrast */
+            left: 0;
+            bottom: -5px;
+            transition: width var(--transition-speed);
+        }
+
+        nav ul li a:hover {
+            color: var(--gt-yellow); /* Yellow text on hover */
+            transform: translateY(-2px); /* Slight lift on hover */
+        }
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Login Button */
+        .login-button a {
+            background-color: var(--gt-yellow); /* Yellow button */
+            color: var(--gt-dark-grey); /* Dark grey text on yellow */
+            border-radius: 25px;
+            border: none;
+            padding: 10px 25px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition-speed);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            white-space: nowrap;
+        }
+        
+        .login-button a:hover {
+            background-color: var(--gt-white); /* White button on hover for stark contrast */
+            color: var(--gt-orange); /* Orange text on white */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Main Section Padding */
+        main {
+            padding: 40px 0;
+            position: relative; /* Ensure main content is above body overlay */
+            z-index: 10;
+        }
+
+        /* Content Sections (Hero, Features, Info, Services) */
+        .hero, .features, .info-section-group, .service-overview-section {
+            background-color: var(--gt-white); /* Solid white background for all content sections */
+            padding: 80px 40px; /* Hero padding */
+            border-radius: 15px;
+            margin-bottom: 50px; /* Space between sections */
+            box-shadow: 0 10px 30px var(--shadow-light);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+
+            /* Initial state for pop-in effect */
+            opacity: 0; 
+            transform: translateY(50px); /* Starts lower */
+            transition: opacity 1s ease-out, transform 1s ease-out; /* Slower transition for pop-in */
+        }
+
+        /* Adjust padding for non-hero sections */
+        .features, .info-section-group, .service-overview-section {
+            padding: 50px 40px; /* Consistent padding for these sections */
+            margin-top: 50px; /* Add margin above to separate from previous section */
+        }
+
+        /* Class added by JavaScript when section is visible */
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered delays for sections to pop in */
+        .features { transition-delay: 0.2s; }
+        .info-section-group { transition-delay: 0.4s; }
+        .service-overview-section { transition-delay: 0.6s; }
+
+
+        .hero h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.2em;
+            margin-bottom: 15px;
+            color: var(--gt-dark-grey);
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            color: var(--gt-medium-grey);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero .button {
+            display: inline-block;
+            background-color: var(--gt-orange); /* Orange button */
+            color: var(--gt-white);
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all var(--transition-speed);
+            box-shadow: 0 5px 15px rgba(247, 147, 30, 0.4);
+        }
+
+        .hero .button:hover {
+            background-color: var(--gt-dark-grey); /* Dark grey on hover */
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Features Section */
+        .features h3, .info-section-group h3, .service-overview-section h2 {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: var(--gt-dark-grey);
+            font-weight: 700;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-item {
+            background-color: var(--gt-white); /* Ensures feature item background is white */
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 20px var(--shadow-light);
+            text-align: center;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            border: 1px solid var(--border-light);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px var(--shadow-medium);
+        }
+
+        .feature-item img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            object-fit: contain;
+            background-color: var(--gt-orange); /* Icon background in orange */
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .feature-item h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6em;
+            color: var(--gt-dark-grey);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .feature-item p {
+            color: var(--gt-medium-grey);
+            font-size: 1em;
+            line-height: 1.6;
+        }
+
+        /* Info Section Group (for History & Core Values) */
+        .info-section-group .grid-container { /* Added wrapper for grid */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+        }
+
+        .info-section {
+            background-color: var(--gt-white); /* Ensures info section background is white */
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px var(--shadow-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-light);
+        }
+
+        .info-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px var(--shadow-medium);
+        }
+
+        .info-section h2 { /* For History & Core Values */
+            font-family: 'Poppins', sans-serif;
+            color: var(--gt-dark-grey);
+            border-bottom: 3px solid var(--gt-orange); /* Orange underline */
+            padding-bottom: 15px;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 2.2em;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .info-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 12px;
+            height: 12px;
+            background-color: var(--gt-orange); /* Orange circle decor */
+            border-radius: 50%;
+        }
+
+        .info-section p {
+            margin-bottom: 1.2em;
+            color: var(--gt-medium-grey);
+        }
+
+        .info-section ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 20px;
+        }
+
+        .info-section ul li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 30px;
+            color: var(--gt-medium-grey);
+        }
+
+        .info-section ul li::before {
+            content: '✓';
+            color: var(--gt-orange); /* Orange checkmark */
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.2em;
+        }
+
+        /* Service Overview Section (for Digital, Retail, SME) */
+        .service-overview-section .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .service-item {
+            background-color: var(--gt-white); /* Ensures service item background is white */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px var(--shadow-light);
+            border: 1px solid var(--border-light);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            background-color: var(--gt-light-grey);
+        }
+
+        .service-item h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--gt-dark-grey);
+            margin-top: 0;
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .service-item p {
+            font-size: 0.95em;
+            color: var(--gt-medium-grey);
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: var(--gt-orange); /* GTBank Orange footer */
+            color: var(--gt-white); /* White text on orange */
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            font-size: 0.9em;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        #current-time {
+            font-weight: bold;
+            color: var(--gt-yellow); /* Yellow for current time on orange */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            header h1 {
+                margin-bottom: 0;
+            }
+            nav {
+                width: 100%;
+            }
+            nav ul {
+                gap: 10px;
+            }
+            .hero h2 {
+                font-size: 2.8em;
+            }
+            .hero p {
+                font-size: 1.2em;
+            }
+            .features h3, .info-section-group h3, .service-overview-section h2 {
+                font-size: 2em;
+            }
+            .info-section-group .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 5px 0;
+            }
+            .hero {
+                padding: 60px 20px;
+            }
+            .hero h2 {
+                font-size: 2.2em;
+            }
+            .hero p {
+                font-size: 1.1em;
+            }
+            .hero .button {
+                padding: 12px 30px;
+                font-size: 1em;
+            }
+            .features h3, .info-section-group h3, .service-overview-section h2 {
+                font-size: 1.8em;
+            }
+            .feature-item, .info-section, .service-item {
+                padding: 25px;
+            }
+            .feature-item h4, .service-item h3 {
+                font-size: 1.4em;
+            }
+            .info-section h2 {
+                font-size: 1.8em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            nav ul li a {
+                padding: 5px 0;
+            }
+            .login-button a {
+                padding: 8px 20px;
+                font-size: 0.9em;
+            }
+            .hero {
+                padding: 40px 15px;
+            }
+            .hero h2 {
+                font-size: 1.8em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+            .features h3, .info-section-group h3, .service-overview-section h2 {
+                font-size: 1.6em;
+            }
+            .feature-item img {
+                width: 60px;
+                height: 60px;
+            }
+            .feature-item h4, .service-item h3 {
+                font-size: 1.2em;
+            }
+            .info-section h2 {
+                font-size: 1.6em;
+            }
+            .service-overview-section .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>GT <span>Bank</span> Limited</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Accounts</a></li>
+                    <li><a href="#">Transactions</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="login-button">
+                <a href="#" class="button">Login</a>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Welcome to Your Secure Banking Portal</h2>
+                <p>Experience seamless and secure banking with innovative solutions tailored to your needs. Manage your finances effortlessly.</p>
+                <a href="#" class="button">Open Account Now</a>
+            </div>
+        </section>
+        
+        <section class="features">
+            <div class="container">
+                <h3>Our Key Features</h3>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <img src="https://via.placeholder.com/80/F7931E/FFFFFF?text=Acc" alt="Accounts">
+                        <h4>Diverse Account Options</h4>
+                        <p>Open accounts of different categories tailored for individuals, businesses, and specific financial goals.</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://via.placeholder.com/80/F7931E/FFFFFF?text=Bills" alt="Pay Bills">
+                        <h4>Convenient Bill Payments</h4>
+                        <p>Pay your utility bills, subscriptions, and other services with ease through our trusted and secure platforms.</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://via.placeholder.com/80/F7931E/FFFFFF?text=Transfer" alt="Transfer">
+                        <h4>Instant Funds Transfers</h4>
+                        <p>Send money to loved ones or business partners effortlessly using our secure and fast banking app or online portal.</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://via.placeholder.com/80/F7931E/FFFFFF?text=Loans" alt="Loans">
+                        <h4>Flexible Loan Solutions</h4>
+                        <p>Access quick and tailored loan products designed to meet your personal or business financial needs.</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://via.placeholder.com/80/F7931E/FFFFFF?text=Cards" alt="Cards">
+                        <h4>Secure Debit & Credit Cards</h4>
+                        <p>Benefit from a range of secure and widely accepted debit and credit cards for all your spending requirements.</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://via.placeholder.com/80/F7931E/FFFFFF?text=SME" alt="SME">
+                        <h4>Dedicated SME Support</h4>
+                        <p>We provide specialized banking services, advisory, and resources to help small and medium-sized enterprises thrive.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section-group">
+            <div class="container">
+                <h3>About GTBank</h3>
+                <div class="grid-container">
+                    <div class="info-section">
+                        <h2>History & Evolution</h2>
+                        <p>
+                            GTBank, established in Nigeria in 1990, began operations in February 1991. 
+                            It rapidly ascended to become a leading financial institution, now operating under the umbrella of Guaranty Trust Holding Company Plc (GTCO) since its transition in 2021.
+                            This strategic move has enabled GTCO to diversify its offerings beyond conventional banking.
+                        </p>
+                        <p>
+                            A trailblazer in the Nigerian banking sector, GTBank holds distinctions such as being an early adopter of online banking 
+                            and the first Nigerian bank to list on the prestigious London Stock Exchange in 2007, marking a significant milestone in its international presence.
+                        </p>
+                    </div>
+                    <div class="info-section">
+                        <h2>Core Values & Recognition</h2>
+                        <p>GTBank is renowned for its unwavering commitment to:</p>
+                        <ul>
+                            <li><strong>Exceptional Customer Service:</strong> Placing the client experience at the forefront of its operations.</li>
+                            <li><strong>Continuous Innovation:</strong> Consistently introducing cutting-edge digital banking solutions.</li>
+                            <li><strong>Ethical Principles:</strong> Adhering strictly to "The Orange Rules," which champion simplicity, professionalism, and unwavering trustworthiness.</li>
+                            <li><strong>Industry Leadership:</strong> Evidenced by numerous prestigious national and international awards for its robust financial performance, innovative solutions, and strong corporate governance.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-overview-section">
+            <div class="container">
+                <h2>Our Popular Services</h2>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <h3>Digital Banking Suite</h3>
+                        <p>Experience seamless transactions with the intuitive GTWorld App, secure Internet Banking, and convenient USSD (*737#) services, anytime, anywhere.</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>Comprehensive Retail Banking</h3>
+                        <p>From versatile current and savings accounts to quick and accessible loans like QuickCredit, alongside a wide array of debit and credit cards, we cater to all your personal financial needs.</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>Empowering SMEs</h3>
+                        <p>We provide dedicated support and tailored initiatives, including specialized platforms, to foster the growth and success of Small and Medium-sized Enterprises.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 GTBank Limited. All rights reserved.</p>
+            <p>Your trusted financial partner in Africa and beyond.</p>
+            <p>Current Time: <span id="current-time"></span></p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript to display and update the current time
+        function updateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric', 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit', 
+                timeZoneName: 'short' 
+            };
+            // Format time for Nigeria (WAT)
+            document.getElementById('current-time').textContent = now.toLocaleDateString('en-US', {
+                ...options,
+                timeZone: 'Africa/Lagos' // Explicitly set timezone for consistency
+            });
+        }
+        updateTime(); // Call once immediately
+        setInterval(updateTime, 1000); // Update every second
+
+        // Intersection Observer for fade-in/slide-up effect (pop-in)
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.hero, .features, .info-section-group, .service-overview-section');
+
+            const observerOptions = {
+                root: null, /* viewport as root */
+                rootMargin: '0px',
+                threshold: 0.1 /* trigger when 10% of element is visible */
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible'); // Add 'visible' class to trigger CSS transition
+                        observer.unobserve(entry.target); // Stop observing once visible
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>

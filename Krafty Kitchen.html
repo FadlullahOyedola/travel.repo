@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width device-width initial-scale=1.0">
+        <title>Krafty Kitchen</title>
+        <style>
+            body{
+                font-family: sans-serif;
+                padding: 0;
+                margin: 0;
+                line-height: 1.6;
+            }
+
+            header{
+                background: linear-gradient(rgba(0,0,0,0.3)), url(https://media.gettyimages.com/id/1403657533/photo/small-outdoor-caf%C3%A9.jpg?s=1024x1024&w=gi&k=20&c=Pz1gnHZkuV_d-HATtelExnmBEltC-WSh1JmXNtfE9RE=);
+                background-size: cover;
+                background-color: darkred;
+                color: yellow;
+                list-style: none;
+                padding: 0em ;
+            }
+            
+            .Kitchen{
+                margin-top: 10px;
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+            
+            nav{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 20px;
+            }
+
+            nav ul{
+                display: flex;
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+
+            nav ul li{
+                margin-left: 20px;
+            }
+
+            nav ul li a{
+                text-decoration: none;
+                color: yellow;
+            }
+            
+            .hero{
+                background-size: cover;
+                text-align: center;
+                padding: 100px 20px;
+            }
+            
+            .hero h1{
+                font-size: 3em;
+                margin-bottom: 10px;
+            }
+
+            .hero p{
+                font-size: 1.2em;
+                margin-bottom: 20px;
+            }
+
+            .button{
+                cursor: pointer;
+                color: #333;
+                background-color: yellow;
+                border-radius: 5px;
+                text-decoration: none;
+                padding: 1em 2em;
+                display: inline-block;
+            }
+
+            .Food{
+                text-align: center;
+                padding: 40px 20px;
+            }
+
+            .Food h2{
+                text-align: center;
+                margin-bottom: 20px;
+                font-size: 2em;
+            }
+
+            .Food-grid{
+                display: flex;
+                grid-template-columns: repeat(auto-fit, minmax(300px 3fr));
+                gap: 250px;
+            }
+
+            .Food-item{
+                background: #fff;
+                overflow: hidden;
+                border-radius: 8px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+
+            .Food-item img{
+                display: block;
+                width: 100%;
+                height: auto; /* Maintain aspect ratio */
+                object-fit: cover; /* Ensure image covers the area without distortion */
+                max-height: 200px; /* Optional: set a maximum height */
+            }
+
+            .Food-item h3{
+                padding: 15px;
+                margin: 0;
+                font-size: 1.2em;
+            }
+
+            .Food-item p{
+                padding: 0 15px 15px;
+                margin: 0;
+            }
+
+            .contact{
+                text-align: center;
+                font-size: 1em;
+            }
+            
+            .contact form{
+                max-width: 500px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+            .contact input[type='text'],
+            .contact input[type='E-mail'],
+            .contact textarea {
+                padding: 10px;
+                border-radius: 5px;
+                font-size: 1em;
+                border: 1px #ccc solid;
+            }
+
+            .contact textarea{
+                resize: vertical;
+                min-height: 100px;
+            }
+            
+            footer{
+                color: #fff;
+                background-color: #333;
+                text-align: center;
+                bottom: 0;
+                position: sticky;
+                padding: 1em 0;
+                width: 100%;
+            }
+        </style>
+        
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="Kitchen">Krafty Kitchen</div>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Food variety</a></li>
+                    <li><a href="#">Hot-Line</a></li>
+                    <li><a href="#">About us</a></li>
+                </ul>
+            </nav>
+            <div class="hero">
+                <h1>Enjoy</h1>
+                <p>Delicacy Foods of Different species</p>
+                <button class="button">See Foods</button>
+            </div>
+        </header>
+
+        <section>
+            <div class="Food">
+                <h2>Our Foods varieties</h2>
+                <div class="Food-grid">
+                    <div class="Food-item">
+                        <img src="">
+                        <h3>Smoky Jollof</h3>
+                        <p>A very palatable jollof-rice at ypur own pleasure</p>
+                        <p class="price">$4.00</p>
+                        <button class="button">Order-Now</button>
+                    </div>
+                    <div class="Food-item">
+                        <img src="">
+                        <h3>Amala and your own choice soup</h3>
+                        <p>Enjoy our yoruba traditional Delicacy</p>
+                        <p class="price">#3.90</p>
+                        <button class="button">Order-Now</button>
+                    </div>
+                    <div class="Food-item">
+                        <img src="">
+                        <h3>Ofada and sauce</h3>
+                        <p>Get a taste of a rare food</p>
+                        <p class="price">$5.80</p>
+                        <button class="button">Order-Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact">
+            <h2>Contact Us</h2>
+            <i>We are ready to take your messages aand reply to them!</i>
+            <p>Have any questions, Feel free to ask</p>
+            <form method="post">
+                <input type="text" class="Your Name">
+                <input type="text" class="E-mail">
+                <textarea placeholder="Your message">Message</textarea>
+                <button class="button">Send-Message</button>
+            </form>
+        </section>
+
+        <footer>
+            <div class="foot">
+                <p>&copy;2025 Krafty Kitchen. All rights reserved</p>
+            </div>
+        </footer>
+    </body>
+</html>

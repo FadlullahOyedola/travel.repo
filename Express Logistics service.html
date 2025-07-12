@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width initial-scale=1.0">
+        <title>Express Logistics services</title>
+        <link rel="icon" href="c:\Users\HP\Downloads\Blue & Green Modern Property Logo.png">
+        <style>
+            body{
+                font-family: Arial, Helvetica, sans-serif;
+                padding: 0;
+                margin: 0;
+                line-height: 1.6;
+            }
+
+            header{
+                font-size: 1em;
+                padding: 0;
+                background-color: brown;
+                list-style: none;
+                padding: 0em;
+            }
+
+            nav{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 20px;
+            }
+            .container{
+                font-size: 1.5em;
+                margin-top: 10px;
+                font-weight: bold;
+                color: #fff;
+            }
+            
+            nav ul{
+                list-style: none;
+                display: flex;
+                padding: 0;
+                margin: 0;
+            }
+
+            nav ul li{
+                margin-left: 20px;
+            }
+
+            nav ul li a{
+                text-decoration: none;
+                color: yellow;
+            }
+            
+            .buttonn{
+                display: inline-block;
+                color: brown;
+                background-color: yellow;
+                border-radius: 5px;
+                padding: 0 1em;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            .Name{
+                background-size: cover;
+                padding: 100px 20px;
+                text-align: center;
+            }
+            
+            .Name h1{
+                text-align: center;
+                color: yellow;
+                font-size: 3em;
+            }
+
+            .Name p{
+                font-size: 2em;
+                margin-bottom: 10px;
+                color: #fff;
+            }
+
+            .button{
+                display: inline-block;
+                text-decoration: none;
+                cursor: pointer;
+                padding: 1em 2em;
+                color: brown;
+                background: yellow;
+                border-radius: 5px;
+            }
+            
+            .contact{
+                text-align: center;
+                font-size: 1em;
+            }
+
+            .contact form{
+                max-width: 500px;
+                display: flex;
+                margin: 0 auto;
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .contact input[type='text'],
+            .contact input[type='email'],
+            .contact textarea{
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                font-size: 1em;
+            }
+
+            .contact textarea{
+                resize: vertical;
+                min-height: 100px;
+            }
+
+            footer{
+                text-align: center;
+                
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="container">Express Logistics Services</div>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <button class="buttonn">Check profile</button>
+                    </ul>
+            </nav>
+            <div class="Name">
+                <h1>Explore a top-notch delivery services</h1>
+                <p>We offer favorable logistics services</p>
+                <button class="button">login</button>
+            </div>
+        </header>
+
+        <section class="contact">
+            <h2>Contact Us</h2>
+            <i>We are ready to take your messages aand reply to them!</i>
+            <p>Have any questions, Feel free to ask</p>
+            <form method="post">
+                <input type="text" class="Your Name">
+                <input type="text" class="E-mail">
+                <textarea placeholder="Your message">Message</textarea>
+                <button class="button">Send-Message</button>
+            </form>
+        </section>
+
+        <footer>
+            <div class="foot">
+                <p>&copy;2025 Express Logistics Services. All rights reserved</p>
+            </div>
+        </footer>
+    </body>
+</html>

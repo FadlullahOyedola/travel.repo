@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Fan Zone</title>
+    <style>
+        body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+header {
+    background-color: #22543D; /* A sporty green */
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav li {
+    margin-left: 1.5rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #fdd835; /* A vibrant yellow/gold */
+}
+
+.hero {
+    background-image: url('football-hero.jpg'); /* Replace with your image */
+    background-size: cover;
+    color: #fff;
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.hero input[type="text"] {
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    width: 60%;
+}
+
+.hero button {
+    background-color: #fdd835;
+    color: #22543D;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.hero button:hover {
+    background-color: #e4c01c;
+}
+
+.news-section {
+    padding: 2rem;
+    text-align: center;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.news-item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.news-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.news-item h3 {
+    padding: 1rem;
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.news-item .date {
+    color: #777;
+    font-size: 0.9rem;
+    padding: 0 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.news-item p {
+    padding: 0 1rem 1rem;
+    color: #555;
+}
+
+.news-item a {
+    display: inline-block;
+    background-color: #22543D;
+    color: #fff;
+    padding: 0.6rem 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.news-item a:hover {
+    background-color: #1a402d;
+}
+
+.matches-section {
+    padding: 2rem;
+    text-align: center;
+    background-color: #f7f7f7;
+}
+
+.matches-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+}
+
+.matches-list li {
+    background-color: #fff;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.matches-list .team {
+    font-weight: bold;
+    color: #22543D;
+}
+
+.matches-list .time {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">⚽ FootballFan</div>
+        <nav>
+            <ul>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Matches</a></li>
+                <li><a href="#">Teams</a></li>
+                <li><a href="#">Standings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>The Latest in Football</h1>
+            <p>Stay updated with scores, news, and highlights from around the globe!</p>
+            <input type="text" placeholder="Search for teams, players...">
+            <button>Search</button>
+        </div>
+    </section>
+
+    <section class="news-section">
+        <h2>Latest News</h2>
+        <div class="news-grid">
+            <div class="news-item">
+                <img src="news1.jpg" alt="News Image 1">
+                <h3>Match Day Recap: Exciting Clash Ends in Draw</h3>
+                <p class="date">May 9, 2025</p>
+                <p>A thrilling encounter saw both teams battle fiercely until the final whistle...</p>
+                <a href="#">Read More</a>
+            </div>
+            <div class="news-item">
+                <img src="news2.jpg" alt="News Image 2">
+                <h3>Transfer Rumors Heat Up as Summer Approaches</h3>
+                <p class="date">May 8, 2025</p>
+                <p>Speculation is rife about potential player movements in the upcoming transfer window...</p>
+                <a href="#">Read More</a>
+            </div>
+            </div>
+    </section>
+
+    <section class="matches-section">
+        <h2>Upcoming Matches</h2>
+        <ul class="matches-list">
+            <li>
+                <span class="team">Team A</span> vs <span class="team">Team B</span>
+                <span class="time">May 12, 2025 - 8:00 PM WAT</span>
+            </li>
+            <li>
+                <span class="team">Team C</span> vs <span class="team">Team D</span>
+                <span class="time">May 13, 2025 - 10:30 PM WAT</span>
+            </li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 FootballFan. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

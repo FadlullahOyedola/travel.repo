@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spongebob Walking</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff; /* Light blue background */
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .spongebob-container {
+            position: relative;
+            width: 350px; /* Overall size for Spongebob */
+            height: 550px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Start from top */
+            transform: scale(0.9); /* Slightly shrink if too big for viewport */
+        }
+
+        /* --- Spongebob Head --- */
+        .spongebob-head {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            background-color: #fdd835; /* Spongebob yellow */
+            border: 5px solid #212121; /* Dark border */
+            border-radius: 15% / 10%; /* Slightly rounded corners for a sponge-like shape */
+            box-shadow: 10px 10px 20px rgba(0,0,0,0.3), inset 5px 5px 15px rgba(255,255,255,0.5);
+            z-index: 5; /* Ensure head is on top */
+        }
+
+        /* Sponge holes */
+        .hole {
+            position: absolute;
+            background-color: #e0b800; /* Slightly darker yellow for holes */
+            border-radius: 50%;
+            border: 1px solid rgba(0,0,0,0.2);
+            box-shadow: inset 1px 1px 3px rgba(0,0,0,0.2);
+            z-index: 6;
+        }
+        .hole.h1 { top: 20px; left: 30px; width: 25px; height: 25px; }
+        .hole.h2 { top: 10px; right: 40px; width: 18px; height: 18px; }
+        .hole.h3 { top: 70px; left: 90px; width: 30px; height: 30px; }
+        .hole.h4 { top: 60px; right: 10px; width: 20px; height: 20px; }
+        .hole.h5 { bottom: 30px; left: 50px; width: 22px; height: 22px; }
+        .hole.h6 { bottom: 10px; right: 70px; width: 28px; height: 28px; }
+        .hole.h7 { top: 120px; left: 10px; width: 15px; height: 15px; }
+        .hole.h8 { top: 150px; right: 80px; width: 20px; height: 20px; }
+
+        /* Eyes */
+        .eye-container {
+            position: absolute;
+            top: 60px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            z-index: 7;
+        }
+        .eye {
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+            border-radius: 50%;
+            border: 4px solid #212121;
+            position: relative;
+            box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .iris {
+            width: 45px;
+            height: 45px;
+            background-color: #4fc3f7; /* Light blue iris */
+            border-radius: 50%;
+            border: 2px solid #212121;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .pupil {
+            width: 20px;
+            height: 20px;
+            background-color: #212121;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .gloss {
+            width: 8px;
+            height: 8px;
+            background-color: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .eyelash {
+            position: absolute;
+            width: 2px;
+            height: 15px;
+            background-color: #212121;
+            top: -5px;
+            transform-origin: bottom center;
+            z-index: 8;
+        }
+        .eye.left .eyelash:nth-child(1) { left: 15px; transform: rotate(-20deg); }
+        .eye.left .eyelash:nth-child(2) { left: 30px; }
+        .eye.left .eyelash:nth-child(3) { left: 45px; transform: rotate(20deg); }
+
+        .eye.right .eyelash:nth-child(1) { left: 15px; transform: rotate(-20deg); }
+        .eye.right .eyelash:nth-child(2) { left: 30px; }
+        .eye.right .eyelash:nth-child(3) { left: 45px; transform: rotate(20deg); }
+
+        /* Nose */
+        .nose {
+            width: 30px;
+            height: 60px;
+            background-color: #fdd835; /* Spongebob yellow */
+            border: 4px solid #212121;
+            border-radius: 50%;
+            position: absolute;
+            top: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 8;
+            box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Mouth */
+        .mouth {
+            width: 150px;
+            height: 60px;
+            background-color: #8d0000; /* Dark red for mouth interior */
+            border: 4px solid #212121;
+            border-radius: 0 0 75px 75px / 0 0 30px 30px;
+            position: absolute;
+            top: 180px;
+            left: 50%;
+            transform: translateX(-50%);
+            overflow: hidden;
+            z-index: 7;
+        }
+        .teeth-container {
+            position: absolute;
+            top: 170px; /* Position above mouth, relative to head */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+            z-index: 8; /* Above mouth */
+        }
+        .tooth {
+            width: 30px;
+            height: 40px;
+            background-color: #fff;
+            border: 2px solid #212121;
+            border-radius: 5px;
+            box-shadow: inset 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        .tongue {
+            width: 80px;
+            height: 40px;
+            background-color: #ff7043; /* Orange tongue */
+            border-radius: 0 0 40px 40px / 0 0 20px 20px;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 2px solid #212121;
+            box-shadow: inset 1px 1px 3px rgba(0,0,0,0.1);
+            z-index: 8; /* Above mouth interior */
+        }
+
+        /* --- Spongebob Body (Shirt & Pants) --- */
+        .spongebob-body {
+            position: absolute;
+            top: 245px; /* Position right below the head */
+            width: 250px;
+            height: 200px; /* Total height for shirt + pants */
+            z-index: 4; /* Below head, above limbs */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .shirt {
+            width: 100%;
+            height: 100px;
+            background-color: #fff;
+            border: 5px solid #212121;
+            border-bottom: none; /* No bottom border as pants connect */
+            box-sizing: border-box; /* Include padding and border in width/height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 5;
+        }
+        .tie {
+            width: 20px;
+            height: 60px;
+            background-color: #e53935; /* Red tie */
+            border: 3px solid #212121;
+            border-radius: 5px;
+            position: absolute;
+            top: 0;
+            z-index: 6;
+        }
+        .tie::before { /* Tie knot */
+            content: '';
+            width: 15px;
+            height: 15px;
+            background-color: #e53935;
+            border: 2px solid #212121;
+            border-radius: 3px;
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 7;
+        }
+
+        .pants {
+            width: 100%;
+            height: 100px;
+            background-color: #a0522d; /* Brown pants */
+            border: 5px solid #212121;
+            border-top: none; /* No top border as shirt connects */
+            box-sizing: border-box;
+            position: relative;
+            z-index: 4;
+        }
+        .belt {
+            width: 100%;
+            height: 20px;
+            background-color: #212121; /* Black belt */
+            position: absolute;
+            top: -10px; /* Overlap shirt/pants border */
+            left: 0;
+            z-index: 5;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+        .belt-hole {
+            width: 8px;
+            height: 8px;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
+        /* --- Spongebob Limbs --- */
+
+        .arm {
+            position: absolute;
+            width: 20px;
+            height: 150px; /* Length of arm */
+            background-color: #fdd835; /* Yellow arm */
+            border: 4px solid #212121;
+            border-radius: 10px;
+            z-index: 3;
+            transform-origin: top center;
+            animation: walk-arm 0.8s infinite alternate ease-in-out; /* Arm walking animation */
+        }
+        .arm.left {
+            top: 250px; /* Starts from shoulder level */
+            left: 40px;
+            transform: rotate(-20deg);
+            animation-delay: 0s; /* Start immediately */
+        }
+        .arm.right {
+            top: 250px;
+            right: 40px;
+            transform: rotate(20deg);
+            animation-delay: 0.4s; /* Delay for opposite arm movement */
+        }
+
+        .sleeve {
+            position: absolute;
+            width: 50px; /* Wider than arm */
+            height: 50px;
+            background-color: #fff;
+            border: 4px solid #212121;
+            border-radius: 50%;
+            top: -20px; /* Overlap arm top */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 4;
+        }
+
+        .hand {
+            width: 50px;
+            height: 60px;
+            background-color: #fdd835; /* Yellow hand */
+            border: 4px solid #212121;
+            border-radius: 50% 50% 30% 30% / 100% 100% 0 0; /* Irregular hand shape */
+            position: absolute;
+            bottom: -30px; /* Below arm */
+            left: 50%;
+            transform: translateX(-50%) rotate(10deg);
+            z-index: 4;
+        }
+        .thumb {
+            width: 15px;
+            height: 25px;
+            background-color: #fdd835;
+            border: 2px solid #212121;
+            border-radius: 50%;
+            position: absolute;
+            top: 15px;
+            left: -10px;
+            transform: rotate(30deg);
+        }
+        /* Fingers (simple dots for knuckles) */
+        .finger {
+            width: 8px;
+            height: 8px;
+            background-color: #212121;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 5px;
+        }
+        .hand.left .finger:nth-child(1) { left: 5px; }
+        .hand.left .finger:nth-child(2) { left: 20px; }
+        .hand.left .finger:nth-child(3) { left: 35px; }
+
+        .leg {
+            position: absolute;
+            width: 25px;
+            height: 150px;
+            background-color: #fdd835; /* Yellow leg */
+            border: 4px solid #212121;
+            border-radius: 10px;
+            z-index: 2; /* Behind pants */
+            transform-origin: top center;
+            animation: walk-leg 0.8s infinite alternate ease-in-out; /* Leg walking animation */
+        }
+        .leg.left {
+            top: 430px; /* Below pants */
+            left: 80px;
+            transform: rotate(-5deg);
+            animation-delay: 0.4s; /* Delay for opposite leg movement */
+        }
+        .leg.right {
+            top: 430px;
+            right: 80px;
+            transform: rotate(5deg);
+            animation-delay: 0s; /* Start immediately */
+        }
+
+        .sock {
+            width: 40px;
+            height: 60px;
+            background-color: #fff;
+            border: 4px solid #212121;
+            border-radius: 5px;
+            position: absolute;
+            bottom: -30px; /* Below leg */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+        }
+        .shoe {
+            width: 70px;
+            height: 30px;
+            background-color: #212121; /* Black shoe */
+            border: 4px solid #212121;
+            border-radius: 15px;
+            position: absolute;
+            bottom: -40px; /* Below sock */
+            left: 50%;
+            transform: translateX(-50%) rotate(10deg); /* Slight angle for shoe */
+            z-index: 4;
+        }
+        .shoe.left {
+            transform: translateX(-50%) rotate(-10deg);
+        }
+
+        /* --- Animations --- */
+        @keyframes walk-arm {
+            0% { transform: rotate(-20deg); }
+            100% { transform: rotate(20deg); }
+        }
+
+        @keyframes walk-leg {
+            0% { transform: rotate(5deg); }
+            100% { transform: rotate(-5deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="spongebob-container">
+        <div class="spongebob-head">
+            <div class="hole h1"></div>
+            <div class="hole h2"></div>
+            <div class="hole h3"></div>
+            <div class="hole h4"></div>
+            <div class="hole h5"></div>
+            <div class="hole h6"></div>
+            <div class="hole h7"></div>
+            <div class="hole h8"></div>
+
+            <div class="eye-container">
+                <div class="eye left">
+                    <div class="iris">
+                        <div class="pupil"></div>
+                        <div class="gloss"></div>
+                    </div>
+                    <div class="eyelash"></div>
+                    <div class="eyelash"></div>
+                    <div class="eyelash"></div>
+                </div>
+                <div class="eye right">
+                    <div class="iris">
+                        <div class="pupil"></div>
+                        <div class="gloss"></div>
+                    </div>
+                    <div class="eyelash"></div>
+                    <div class="eyelash"></div>
+                    <div class="eyelash"></div>
+                </div>
+            </div>
+
+            <div class="nose"></div>
+
+            <div class="mouth">
+                <div class="tongue"></div>
+            </div>
+            <div class="teeth-container">
+                <div class="tooth"></div>
+                <div class="tooth"></div>
+            </div>
+        </div>
+
+        <div class="spongebob-body">
+            <div class="shirt">
+                <div class="tie"></div>
+            </div>
+            <div class="pants">
+                <div class="belt">
+                    <div class="belt-hole"></div>
+                    <div class="belt-hole"></div>
+                    <div class="belt-hole"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="arm left">
+            <div class="sleeve"></div>
+            <div class="hand left">
+                <div class="thumb"></div>
+                <div class="finger"></div>
+                <div class="finger"></div>
+            </div>
+        </div>
+        <div class="arm right">
+            <div class="sleeve"></div>
+            <div class="hand right">
+                <div class="thumb"></div>
+                <div class="finger"></div>
+                <div class="finger"></div>
+                <div class="finger"></div>
+            </div>
+        </div>
+
+        <div class="leg left">
+            <div class="sock"></div>
+            <div class="shoe left"></div>
+        </div>
+        <div class="leg right">
+            <div class="sock"></div>
+            <div class="shoe right"></div>
+        </div>
+    </div>
+</body>
+</html>

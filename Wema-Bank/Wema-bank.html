@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Wema/Alat Bank</title>
+        <link rel="icon" href="#">
+        <style>
+            body{
+                font-family: sans-serif;
+                padding: 0;
+                margin: 0;
+                color: #333;
+                background-color: #f4f4f4;
+            }
+
+            header{
+                background-color: rgb(45, 1, 1);
+                color: white;
+                padding: 1em 0;
+            }
+            
+            .container{
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+
+            header .container{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            nav ul{
+                display: flex;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+            nav ul li a{
+                color: white;
+                text-decoration: none;
+                padding: 0.5em 1em;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+            }
+
+            nav ul li a:hover{
+            background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            .login-button a{
+                display: inline-block;
+                border-radius: 5px;
+                color: rgba(45, 1, 1);
+                background-color: white;
+                text-decoration: none;
+                transition: background-color 0.3s ease;
+                padding: 0.7em 1.5em;
+                border: 1px solid white;
+            }
+
+            .hero{
+                text-align: center;
+                padding: 40px 20px;
+                background-color: #e9ecef;
+            }
+
+            .hero h2 {
+                margin: 20px;
+            }
+
+            .hero .btn {
+                display: inline-block;
+                padding: 1em 1em;
+                background-color: rgba(45, 1, 1);
+                transition: background-color 0.3s ease;
+                border-radius: 5px;
+                border: 1px solid white;
+                text-decoration: none;
+                color: white;
+            }
+
+            .feature{
+                text-align: center;
+                padding: 40px;
+            }
+
+            .feature-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
+            }
+
+            .feature-item{
+                background-color: white;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+
+            .features {
+                margin-bottom: 20px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <h1>Wema Bank Limited</h1>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Transactions</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Branch</a></li>
+                        <li><a href="#">Accounts</a></li>
+                        <li><a href="#">About-Us</a></li>
+                    </ul>
+                </nav>
+                <div class="login-button">
+                    <a href="#">Login</a>
+                </div>
+            </div>
+        </header>
+        
+        <section class="hero">
+            <div class="container">
+                <h1>Welcome to Zenith Bank Internet Bank</h1>
+                <p>Enjoy smooth banking experience</p>
+                <button class="btn">Open-Account</button>
+            </div>
+        </section>
+
+        <section class="feature">
+            <h2>Our Key Feature</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <img src="" alt="">
+                    <h3>Account Category</h3>
+                    <p>Open various account online/ No bank visitation required</p>
+                    <button class="btn">Open Account</button>
+                </div>
+                <div class="feature-item">
+                    <img src="#" alt="#">
+                    <h3>Trasnfer Funds</h3>
+                    <p>Send money to your eestemed one's swiftly</p>
+                    <button class="btn">Click this</button>
+                </div>
+                <div class="feature-item">
+                    <h3>Pay Bills</h3>
+                    <p>Settle unpaid bills with reliable merchant</p>
+                    <button class="btn">Pay Bills</button>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
